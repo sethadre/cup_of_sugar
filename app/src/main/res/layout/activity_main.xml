@@ -14,6 +14,7 @@
         android:layout_marginStart="158dp"
         android:layout_marginEnd="159dp"
         android:text="Cup Of Sugar"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,28 +23,32 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="188dp"
+        android:layout_height="106dp"
         android:layout_marginStart="158dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="108dp"
         android:layout_marginEnd="159dp"
         android:backgroundTint="#4CAF50"
         android:onClick="@android:string/yes"
         android:text="Log In"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="94dp"
-        android:layout_height="wrap_content"
+        android:layout_width="189dp"
+        android:layout_height="106dp"
         android:layout_marginStart="158dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="159dp"
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Sign Up"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
