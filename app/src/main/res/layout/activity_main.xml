@@ -28,10 +28,12 @@
         android:layout_marginStart="158dp"
         android:layout_marginTop="108dp"
         android:layout_marginEnd="159dp"
-        android:backgroundTint="#4CAF50"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#88E67D"
         android:onClick="@android:string/yes"
         android:text="Log In"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,12 +46,23 @@
         android:layout_marginStart="158dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="159dp"
-        android:backgroundTint="@android:color/holo_green_dark"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#8BC34A"
         android:text="Sign Up"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/image_cupofsugar"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,14 +109,6 @@
         tools:layout_editor_absoluteY="91dp" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Starred"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="167dp" />
-
-    <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
