@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
         <activity
+            android:name=".HelpActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
