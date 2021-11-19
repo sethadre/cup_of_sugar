@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "126304816875",
+    "project_id": "cupofsugar-9293f",
+    "storage_bucket": "cupofsugar-9293f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126304816875:android:7352347c76148b1ddfb8ae",
+        "android_client_info": {
+          "package_name": "com.example.cupofsugar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126304816875-kohfoh2sijr675lrupc6sda2tp4d6itf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpSDyKldcUeltNfG4sIpm4F36qDGkRz6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126304816875-kohfoh2sijr675lrupc6sda2tp4d6itf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

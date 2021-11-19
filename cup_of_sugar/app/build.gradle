@@ -3,10 +3,12 @@ plugins {
     id 'kotlin-android'
 }
 
+//apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-
+//31 for m1 mac
     defaultConfig {
         applicationId "com.example.cupofsugar"
         minSdkVersion 24
@@ -36,6 +38,17 @@ android {
 }
 
 dependencies {
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+
+    // Declare the dependencies for the desired Firebase products
+    // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
