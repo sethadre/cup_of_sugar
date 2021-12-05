@@ -1,22 +1,35 @@
 package com.example.cupofsugar
 
+import android.util.Log
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.firestoreSettings
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_register.*
+
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var  auth: FirebaseAuth
+    private  lateinit var db: FirebaseFirestore
+     // init database
+    private val TAG = "LoginActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         title="Register"
-
+        db= FirebaseFirestore.getInstance()
         auth= FirebaseAuth.getInstance()
+        db.collection("Users")
     }
 
     fun register(view: View) {
@@ -25,6 +38,20 @@ class RegisterActivity : AppCompatActivity() {
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
+
+                // Adding user to database
+                    val user = auth.currentUser
+                    val userString = user?.uid.toString()//gets new user
+                    Log.d(TAG,"RAN")
+                val userInfo = hashMapOf(
+                    "email" to email,
+                    "password" to password
+                )
+
+                db.collection("Users").document(userString).set(userInfo)
+                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
