@@ -14,7 +14,8 @@
         android:layout_gravity="bottom"
         app:backgroundTint="#BAE5A4"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="648dp" />
+        tools:layout_editor_absoluteY="648dp"
+        tools:ignore="BottomAppBar,MissingConstraints" />
 
     <Button
         android:id="@+id/button4"
@@ -23,7 +24,8 @@
         android:text="♥"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="348dp"
-        tools:layout_editor_absoluteY="6dp" />
+        tools:layout_editor_absoluteY="6dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -31,7 +33,8 @@
         android:layout_height="93dp"
         app:srcCompat="@android:drawable/gallery_thumb"
         tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="507dp" />
+        tools:layout_editor_absoluteY="507dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -39,7 +42,8 @@
         android:layout_height="93dp"
         app:srcCompat="@android:drawable/gallery_thumb"
         tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="507dp" />
+        tools:layout_editor_absoluteY="507dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -47,7 +51,8 @@
         android:layout_height="93dp"
         app:srcCompat="@android:drawable/gallery_thumb"
         tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="395dp" />
+        tools:layout_editor_absoluteY="395dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -55,7 +60,8 @@
         android:layout_height="93dp"
         app:srcCompat="@android:drawable/gallery_thumb"
         tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="395dp" />
+        tools:layout_editor_absoluteY="395dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView8"
@@ -64,7 +70,8 @@
         android:text="Friends"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="260dp" />
+        tools:layout_editor_absoluteY="260dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView7"
@@ -73,7 +80,8 @@
         android:text="Message"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="260dp" />
+        tools:layout_editor_absoluteY="260dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -81,7 +89,8 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="34dp"
         tools:layout_editor_absoluteY="91dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView2"
@@ -90,7 +99,8 @@
         android:text="John Doe"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="42dp" />
+        tools:layout_editor_absoluteY="42dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"
@@ -98,7 +108,8 @@
         android:layout_height="wrap_content"
         android:text="Donated"
         tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="91dp" />
+        tools:layout_editor_absoluteY="91dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView4"
@@ -106,7 +117,8 @@
         android:layout_height="wrap_content"
         android:text="Received"
         tools:layout_editor_absoluteX="265dp"
-        tools:layout_editor_absoluteY="91dp" />
+        tools:layout_editor_absoluteY="91dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView6"
@@ -115,7 +127,8 @@
         android:text="Posts"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="335dp" />
+        tools:layout_editor_absoluteY="335dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -123,7 +136,8 @@
         android:layout_height="93dp"
         app:srcCompat="@android:drawable/gallery_thumb"
         tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="395dp" />
+        tools:layout_editor_absoluteY="395dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button3"
@@ -132,6 +146,7 @@
         android:text="+"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="294dp"
-        tools:layout_editor_absoluteY="6dp" />
+        tools:layout_editor_absoluteY="6dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
