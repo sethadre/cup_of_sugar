@@ -61,5 +61,18 @@ class MainPageActivity : AppCompatActivity(){
     fun logout(view: View){
         val intent= Intent(this,LoginActivity::class.java)
         startActivity(intent)
+        finish()
+    }
+    fun goToHome(view: View){
+        // already home
+    }
+    fun goToItems(view: View){
+        val intent= Intent(this,ItemsPageActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+    fun goTo(view: View){
+        val intent= Intent(this,RegisterActivity::class.java)
+        startActivity(intent)
     }
 }

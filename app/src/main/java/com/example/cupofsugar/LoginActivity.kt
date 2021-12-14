@@ -40,9 +40,19 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun goToRegister(view: View){
-        val intent= Intent(this,RegisterActivity::class.java)
+    fun goToItems(view: View){
+        val intent= Intent(this,ItemsPageActivity::class.java)
         startActivity(intent)
+        finish()
     }
-
+    fun goToForum(view: View){
+        val intent= Intent(this,ForumPageActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+    fun goToProfile(view: View){
+        val intent= Intent(this,ProfileActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
