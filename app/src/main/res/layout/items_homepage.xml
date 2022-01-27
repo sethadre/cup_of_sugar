@@ -8,17 +8,32 @@
     android:background="#FFFFFF"
     android:backgroundTint="#474747">
 
+    <!-- TOP TOOLBAR -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="409dp"
+        android:layout_height="78dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#96D875"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-2dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="-2dp" />
+
+
+    <!--END TOP TOOLBAR -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="ITEMS PAGE"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="121dp" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -27,8 +42,63 @@
         android:layout_height="82dp"
         android:layout_gravity="bottom"
         app:backgroundTint="#96d875"
+        tools:ignore="BottomAppBar,MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="648dp"
-        tools:ignore="BottomAppBar,MissingConstraints" />
+        tools:layout_editor_absoluteY="648dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profileActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@drawable/iconsButtonUser"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="659dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/forumsActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@drawable/iconsButtonChat"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="659dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/homeActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:srcCompat="@drawable/iconsButtonHome"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="659dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/helpActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@drawable/iconsButtonHelp"
+        tools:layout_editor_absoluteX="252dp"
+        tools:layout_editor_absoluteY="659dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/settingsActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@drawable/iconsButtonSettings"
+        tools:layout_editor_absoluteX="339dp"
+        tools:layout_editor_absoluteY="659dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="355dp"
+        tools:layout_editor_absoluteY="13dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
