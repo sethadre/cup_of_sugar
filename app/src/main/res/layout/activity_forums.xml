@@ -51,7 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:srcCompat="@drawable/iconsButtonUser"
+        android:onClick="goToProfile"
+        app:srcCompat="@drawable/icon_button_user"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="659dp" />
 
@@ -60,8 +61,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="#FFFFFF"
-        app:srcCompat="@drawable/iconsButtonChat"
+        android:onClick="goToForum"
+        app:backgroundTint="@color/white"
+        app:srcCompat="@drawable/icon_button_chat"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="659dp" />
 
@@ -70,7 +72,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:srcCompat="@drawable/iconsButtonHome"
+        android:onClick="goToItems"
+        app:backgroundTint="#00BCD4"
+        app:srcCompat="@drawable/icon_button_home"
         tools:layout_editor_absoluteX="177dp"
         tools:layout_editor_absoluteY="659dp" />
 
@@ -79,7 +83,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:srcCompat="@drawable/iconsButtonHelp"
+        app:backgroundTint="#00BCD4"
+        app:srcCompat="@drawable/icon_button_help"
         tools:layout_editor_absoluteX="252dp"
         tools:layout_editor_absoluteY="659dp" />
 
@@ -88,7 +93,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:srcCompat="@drawable/iconsButtonSettings"
+        app:backgroundTint="@color/teal_200"
+        app:srcCompat="@drawable/icon_button_settings"
         tools:layout_editor_absoluteX="339dp"
         tools:layout_editor_absoluteY="659dp" />
 
