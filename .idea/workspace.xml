@@ -10,13 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33ad307d-4144-43c9-b3e2-4d7c529fab19" name="Default Changelist" comment="Adding the google maps api">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/icons8-chat-30.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/iconsButtonChat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/icons8-help-30.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/iconsButtonHelp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/icons8-home-30.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/iconsButtonHome.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/icons8-settings-24.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/iconsButtonSettings.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/icons8-user-30.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/iconsButtonUser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/items_homepage.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/items_homepage.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,8 +70,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
-        <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
