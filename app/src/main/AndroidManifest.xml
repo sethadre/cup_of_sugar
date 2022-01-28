@@ -18,6 +18,9 @@
             android:name=".HelpActivity"
             android:exported="false" />
         <activity
+            android:name=".ItemsPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainPageActivity"
             android:exported="false" />
         <activity
