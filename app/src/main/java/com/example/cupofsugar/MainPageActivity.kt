@@ -71,7 +71,7 @@ class MainPageActivity : AppCompatActivity(){
         startActivity(intent)
         finish()
     }
-    fun goTo(view: View){
+    fun goToRegister(view: View){
         val intent= Intent(this,RegisterActivity::class.java)
         startActivity(intent)
     }
