@@ -18,9 +18,6 @@
             android:name=".HelpActivity"
             android:exported="false" />
         <activity
-            android:name=".ItemsPageActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainPageActivity"
             android:exported="false" />
         <activity
@@ -50,8 +47,8 @@
 <!--            </intent-filter>-->
         </activity>
 
-
-        <activity android:name=".MainActivity"
+        <!--<activity android:name=".MainActivity" -->
+        <activity android:name=".ItemsPageActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
