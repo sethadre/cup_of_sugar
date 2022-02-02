@@ -4,11 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HelpActivity"
     android:background="#FFFFFF"
-    android:backgroundTint="#474747">
+    android:backgroundTint="#474747"
+    tools:context=".HelpActivity">
 
     <!-- TOP TOOLBAR -->
+
+    <Button
+        android:id="@+id/helpCupOfSugarActionButton"
+        android:layout_width="411dp"
+        android:layout_height="94dp"
+        android:text="HELP CUP OF SUGAR"
+        android:textSize="30sp"
+        app:backgroundTint="#96d875"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="479dp" />
+
+    <Button
+        android:id="@+id/resourcesActionButton"
+        android:layout_width="411dp"
+        android:layout_height="94dp"
+        android:text="RESOURCES"
+        android:textSize="30sp"
+        app:backgroundTint="#96d875"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="311dp" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
@@ -92,5 +118,18 @@
         app:srcCompat="@drawable/icon_button_settings"
         tools:layout_editor_absoluteX="339dp"
         tools:layout_editor_absoluteY="659dp" />
+
+    <Button
+        android:id="@+id/supportActionButton"
+        android:layout_width="411dp"
+        android:layout_height="94dp"
+        android:text="SUPPORT"
+        android:textSize="30sp"
+        app:backgroundTint="#96d875"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="141dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
