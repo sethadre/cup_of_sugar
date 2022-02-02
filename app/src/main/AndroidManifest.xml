@@ -18,6 +18,12 @@
             android:name=".HelpActivity"
             android:exported="false" />
         <activity
+            android:name=".ForumPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainPageActivity"
             android:exported="false" />
         <activity
