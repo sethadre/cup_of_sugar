@@ -104,7 +104,7 @@
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/helpActionButton"
+        app:layout_constraintStart_toEndOf="@+id/settingsActionButton"
         app:srcCompat="@drawable/icon_button_settings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
