@@ -10,57 +10,36 @@
 
     <!-- TOP TOOLBAR -->
 
-    <Button
-        android:id="@+id/helpCupOfSugarActionButton"
-        android:layout_width="411dp"
-        android:layout_height="94dp"
-        android:text="HELP CUP OF SUGAR"
-        android:textSize="30sp"
-        app:backgroundTint="#96d875"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="479dp" />
 
-    <Button
-        android:id="@+id/resourcesActionButton"
-        android:layout_width="411dp"
-        android:layout_height="94dp"
-        android:text="RESOURCES"
-        android:textSize="30sp"
-        app:backgroundTint="#96d875"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="311dp" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="409dp"
-        android:layout_height="78dp"
-        android:background="?attr/colorPrimary"
-        android:backgroundTint="#96D875"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="-2dp" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="HELP PAGE"
-        android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="121dp" />
     <!--END TOP TOOLBAR -->
 
 
     <!--BOTTOM  TOOLBAR -->
+
+    <Button
+        android:id="@+id/helpCupOfSugarActionButton"
+        android:layout_width="431dp"
+        android:layout_height="280dp"
+        android:clickable="true"
+        android:text="HELP CUP OF SUGAR"
+        android:textSize="25sp"
+        app:backgroundTint="#96d875"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="360dp" />
+
+    <Button
+        android:id="@+id/resourcesActionButton"
+        android:layout_width="201dp"
+        android:layout_height="381dp"
+        android:clickable="true"
+        android:text="FIND RESOURCES"
+        android:textSize="25sp"
+        app:backgroundTint="#96d875"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="-26dp" />
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
@@ -121,15 +100,13 @@
 
     <Button
         android:id="@+id/supportActionButton"
-        android:layout_width="411dp"
-        android:layout_height="94dp"
-        android:text="SUPPORT"
-        android:textSize="30sp"
-        app:backgroundTint="#96d875"
+        android:layout_width="201dp"
+        android:layout_height="381dp"
         android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="141dp" />
+        android:text="CONTACT SUPPORT"
+        android:textSize="25sp"
+        app:backgroundTint="#96d875"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-26dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
