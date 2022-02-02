@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
         val password=editTextPassword.text.toString()
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task ->
             if(task.isSuccessful){
-                val intent= Intent(this,MainPageActivity::class.java)
+                val intent= Intent(this,ItemsPageActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -40,11 +40,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun goToItems(view: View){
+  /*  fun goToItems(view: View){
         val intent= Intent(this,ItemsPageActivity::class.java)
         startActivity(intent)
         finish()
-    }
+    }*/
     fun goToForum(view: View){
         val intent= Intent(this,ForumPageActivity::class.java)
         startActivity(intent)
