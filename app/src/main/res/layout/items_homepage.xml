@@ -123,7 +123,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"
         android:text="logout"
+        android:onClick="logout"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintStart_toStartOf="@+id/toolbar2" />
-
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16sp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

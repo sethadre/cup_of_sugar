@@ -45,13 +45,8 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }*/
-    fun goToForum(view: View){
-        val intent= Intent(this,ForumPageActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-    fun goToProfile(view: View){
-        val intent= Intent(this,ProfileActivity::class.java)
+    fun goToRegister(view: View){
+        val intent= Intent(this,RegisterActivity::class.java)
         startActivity(intent)
         finish()
     }
