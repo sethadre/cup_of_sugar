@@ -41,6 +41,13 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        val settingsActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.settingsActionButton)
+        settingsActionButton.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 }

@@ -54,34 +54,38 @@
         android:id="@+id/profileActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
-        app:srcCompat="@drawable/icon_button_user" />
+        app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
+        app:srcCompat="@drawable/icon_button_user"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/forumsActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profileActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/homeActionButton"
         app:srcCompat="@drawable/icon_button_chat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="659dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/forumsActionButton"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomAppBar"
+        app:layout_constraintEnd_toStartOf="@+id/bottomAppBar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bottomAppBar"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon_button_home" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -122,10 +126,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"
-        android:text="logout"
         android:onClick="logout"
+        android:text="logout"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintStart_toStartOf="@+id/toolbar2" />
+
     <TextView
         android:id="@+id/textViewResult"
         android:layout_width="match_parent"
@@ -133,4 +138,5 @@
         android:text=""
         android:textSize="16sp"
         tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
