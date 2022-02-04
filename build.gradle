@@ -16,6 +16,13 @@ buildscript {
         // for google maps api
         classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.0")
 
+        // Import the BoM for the Firebase platform
+        implementation platform('com.google.firebase:firebase-bom:29.0.4')
+
+        // Declare the dependency for the Cloud Storage library
+        // When using the BoM, you don't specify versions in Firebase library dependencies
+        implementation 'com.google.firebase:firebase-storage-ktx'
+
     }
 }
 
