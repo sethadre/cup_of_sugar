@@ -8,7 +8,43 @@
     android:background="#FFFFFF"
     android:backgroundTint="#474747">
 
+    <!-- END SCROLL VIEW  -->
+
     <!-- TOP TOOLBAR -->
+
+
+    <ScrollView
+        android:layout_width="413dp"
+        android:layout_height="549dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF000000"
+            android:backgroundTint="#000000"
+            android:orientation="vertical">
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="3"
+                android:columnWidth="90dp"
+                android:verticalSpacing="10dp"
+                android:horizontalSpacing="10dp"
+                android:gravity="center">
+
+            </GridView>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
@@ -27,6 +63,7 @@
 
 
     <TextView
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -42,13 +79,15 @@
         android:id="@+id/bottomAppBar"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="413dp"
-        android:layout_height="82dp"
+        android:layout_height="85dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="1dp"
         app:backgroundTint="#96d875"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="BottomAppBar,MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profileActionButton"
@@ -133,10 +172,15 @@
 
     <TextView
         android:id="@+id/textViewResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="336dp"
+        android:layout_height="0dp"
         android:text=""
         android:textSize="16sp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
