@@ -82,6 +82,13 @@ class ItemsPageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        val createButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createActionButton)
+        createButton.setOnClickListener {
+            val intent = Intent(this, CreateItemActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     //firebase stuff
