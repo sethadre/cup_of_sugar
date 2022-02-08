@@ -116,8 +116,15 @@ class ItemsPageActivity : AppCompatActivity() {
         val intent= Intent(this,LoginActivity::class.java)
         startActivity(intent)
         finish()
+
+    }
+    fun goToPost(view: View) {
+        val intent = Intent(this, ItemPostActivity::class.java)
+        startActivity(intent)
+        finish()
     }
     fun goToHome(view: View) {
         // already home
     }
+
 }
