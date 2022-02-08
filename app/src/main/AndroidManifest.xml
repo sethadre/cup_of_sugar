@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
         <activity
-            android:name=".ItemPostActivity"
+            android:name=".CreatePostActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateItemActivity"
+            android:name=".ItemPostActivity"
             android:exported="false" />
         <activity
             android:name=".HelpActivity"

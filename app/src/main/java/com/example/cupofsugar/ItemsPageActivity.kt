@@ -43,6 +43,20 @@ class ItemsPageActivity : AppCompatActivity() {
 
         setContentView(R.layout.items_homepage) //moved this line lower
 
+        val postActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createPostActionButton)
+        profileActionButton.setOnClickListener {
+            val intent = Intent(this, ItemPostActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        val createPostActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createPostActionButton)
+        profileActionButton.setOnClickListener {
+            val intent = Intent(this, ItemPostActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
         profileActionButton.setOnClickListener {
@@ -115,8 +129,15 @@ class ItemsPageActivity : AppCompatActivity() {
         val intent= Intent(this,LoginActivity::class.java)
         startActivity(intent)
         finish()
+
+    }
+    fun goToPost(view: View) {
+        val intent = Intent(this, ItemPostActivity::class.java)
+        startActivity(intent)
+        finish()
     }
     fun goToHome(view: View) {
         // already home
     }
+
 }
