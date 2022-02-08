@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
         <activity
+            android:name=".CreatePostActivity"
+            android:exported="false" />
+        <activity
             android:name=".ItemPostActivity"
             android:exported="false" />
         <activity
@@ -51,7 +54,7 @@
         <activity
             android:name=".GoogleMapsActivity"
             android:exported="true"
-            android:label="GoogleMapsApi"></activity>
+            android:label="GoogleMapsApi" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
