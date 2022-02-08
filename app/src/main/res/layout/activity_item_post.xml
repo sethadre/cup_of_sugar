@@ -23,6 +23,7 @@
         app:srcCompat="@android:drawable/ic_delete" />
 
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="409dp"
