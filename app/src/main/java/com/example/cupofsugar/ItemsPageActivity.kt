@@ -46,14 +46,14 @@ class ItemsPageActivity : AppCompatActivity() {
         val postActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createPostActionButton)
         profileActionButton.setOnClickListener {
-            val intent = Intent(this, ItemPostActivity::class.java)
+            val intent = Intent(this, CreatePostActivity::class.java)
             startActivity(intent)
             finish()
         }
         val createPostActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createPostActionButton)
         profileActionButton.setOnClickListener {
-            val intent = Intent(this, ItemPostActivity::class.java)
+            val intent = Intent(this, CreatePostActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -125,7 +125,7 @@ class ItemsPageActivity : AppCompatActivity() {
 
     }
     fun goToPost(view: View) {
-        val intent = Intent(this, ItemPostActivity::class.java)
+        val intent = Intent(this, CreatePostActivity::class.java)
         startActivity(intent)
         finish()
     }
