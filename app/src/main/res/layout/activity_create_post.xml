@@ -28,8 +28,10 @@
         android:backgroundTint="#FFFFFF"
         android:text="Upload Photos"
         android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/button_take_photo"
-        tools:layout_editor_absoluteX="116dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_take_photo" />
 
     <Button
         android:id="@+id/button_take_photo"
@@ -40,7 +42,7 @@
         android:text="Take Photo"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,13 +54,13 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:clickable="true"
-        app:layout_constraintVertical_weight=".9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_weight=".9"
         app:srcCompat="@android:drawable/ic_media_play" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
