@@ -29,7 +29,7 @@ class CreatePostActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_post)
 
         val cancelActionButton =
-            findViewById<FloatingActionButton>(R.id.cancelActionButton)
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.cancelActionButton)
         cancelActionButton.setOnClickListener {
             val intent = Intent(this, ItemsPageActivity::class.java)
             startActivity(intent)
