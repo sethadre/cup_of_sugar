@@ -3,7 +3,8 @@ package com.example.cupofsugar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
-//hi
+
+
 class ItemPostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

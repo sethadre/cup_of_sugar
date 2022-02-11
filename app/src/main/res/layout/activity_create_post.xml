@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_grey"
+    android:backgroundTint="@color/background_grey"
     tools:context=".CreatePostActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,5 +19,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_delete" />
+
+    <Button
+        android:id="@+id/button_upload_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Upload Photos"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_take_photo" />
+
+    <Button
+        android:id="@+id/button_take_photo"
+        android:layout_width="256dp"
+        android:layout_height="186dp"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="#80FFFFFF"
+        android:text="Take Photo"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="307dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_weight=".9"
+        app:srcCompat="@android:drawable/ic_media_play" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

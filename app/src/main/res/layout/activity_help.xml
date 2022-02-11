@@ -12,8 +12,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="409dp"
-        android:layout_height="78dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#96D875"
         android:minHeight="?attr/actionBarSize"
@@ -21,10 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="2dp" />
-
-
-    <!--END TOP TOOLBAR -->
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,11 +34,19 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <!--END TOP TOOLBAR -->
+
+
+
+    <!--BOTTOM TOOLBAR-->
+    <!--BOTTOM TOOLBAR-->
+    <!--BOTTOM TOOLBAR-->
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
-        android:layout_width="413dp"
-        android:layout_height="82dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="1dp"
         app:backgroundTint="#96d875"
@@ -106,5 +110,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/helpActionButton"
         app:srcCompat="@drawable/icon_button_settings" />
+
+    <!-- END BOTTOM TOOLBAR-->
+    <!-- END BOTTOM TOOLBAR-->
+    <!-- END BOTTOM TOOLBAR-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
