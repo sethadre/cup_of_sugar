@@ -14,8 +14,10 @@ class CreatePostActivity : AppCompatActivity() {
     private  lateinit var db: FirebaseFirestore
     private val TAG = "CreatePostActivity"
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_create_post)
 
         val cancelActionButton =
