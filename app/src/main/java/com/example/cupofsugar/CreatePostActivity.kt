@@ -37,8 +37,14 @@ class CreatePostActivity : AppCompatActivity() {
         val buttonUploadPhotos =
             findViewById<Button>(R.id.button_upload_photo)
         buttonUploadPhotos.setOnClickListener{
-            //ask for photo
+            selectImage()
         }
 
+    }
+
+    private fun selectImage() {
+        val intent = Intent()
+        intent.type = "images/*"
+        intent.action = Intent.ACTION_GET_CONTENT
     }
 }

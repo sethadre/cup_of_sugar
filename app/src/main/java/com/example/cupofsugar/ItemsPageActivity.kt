@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.items_homepage.*
@@ -44,9 +45,9 @@ class ItemsPageActivity : AppCompatActivity() {
         setContentView(R.layout.items_homepage) //moved this line lower
 
         val postActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createPostActionButton)
+            findViewById<Button>(R.id.goToPostButton)
         profileActionButton.setOnClickListener {
-            val intent = Intent(this, CreatePostActivity::class.java)
+            val intent = Intent(this, ItemsPageActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -125,7 +126,7 @@ class ItemsPageActivity : AppCompatActivity() {
 
     }
     fun goToPost(view: View) {
-        val intent = Intent(this, CreatePostActivity::class.java)
+        val intent = Intent(this, ItemPostActivity::class.java)
         startActivity(intent)
         finish()
     }
