@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.items_homepage.*
 
 class ItemsPageActivity : AppCompatActivity() {
 
-    //Firebase stuff
+    //Firebase init
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
     private val TAG = "ItemsPageActivity"
@@ -21,7 +21,7 @@ class ItemsPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-        //Firebase stuff
+        //Firebase declare
         db= FirebaseFirestore.getInstance()
         auth= FirebaseAuth.getInstance()
         val user = auth.currentUser
@@ -94,6 +94,13 @@ class ItemsPageActivity : AppCompatActivity() {
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.settingsActionButton)
         settingsActionButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        val createButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createActionButton)
+        createButton.setOnClickListener {
+            val intent = Intent(this, CreateItemActivity::class.java)
             startActivity(intent)
             finish()
         }
