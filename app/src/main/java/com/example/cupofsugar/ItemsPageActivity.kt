@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.items_homepage.*
 
 class ItemsPageActivity : AppCompatActivity() {
 
-    //Firebase stuff
+    //Firebase init
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
     private val TAG = "ItemsPageActivity"
@@ -21,7 +21,7 @@ class ItemsPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-        //Firebase stuff
+        //Firebase declare
         db= FirebaseFirestore.getInstance()
         auth= FirebaseAuth.getInstance()
         val user = auth.currentUser

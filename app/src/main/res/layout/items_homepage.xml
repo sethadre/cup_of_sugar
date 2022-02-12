@@ -14,6 +14,7 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
@@ -25,20 +26,27 @@
 
         <LinearLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:background="#FF000000"
             android:backgroundTint="#000000"
             android:orientation="vertical">
+
             <GridView
+                android:id="@+id/homeGrid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:numColumns="3"
                 android:columnWidth="90dp"
-                android:verticalSpacing="10dp"
+                android:gravity="center"
                 android:horizontalSpacing="10dp"
-                android:gravity="center">
-
+                android:numColumns="3"
+                android:verticalSpacing="10dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+                app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+                app:layout_constraintStart_toStartOf="@+id/scrollView2"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+                tools:visibility="visible">
             </GridView>
 
         </LinearLayout>
@@ -54,9 +62,11 @@
         android:backgroundTint="#96D875"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="2dp" />
+        tools:ignore="MissingConstraints" />
 
 
     <!--END TOP TOOLBAR -->
@@ -66,13 +76,13 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="ITEMS PAGE"
         android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/toolbar2"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/toolbar2"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -179,6 +189,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="14dp"
         android:onClick="logout"
         android:text="logout"
@@ -189,13 +200,14 @@
         android:id="@+id/goToPostButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="100dp"
         android:layout_marginBottom="16dp"
         android:onClick="goToPost"
         android:text="g"
-        android:layout_marginLeft="45dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/textView11" />
+        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <TextView
         android:id="@+id/textViewResult"

@@ -24,7 +24,7 @@ class ItemPostActivity : AppCompatActivity() {
         // WE LOAD AN IMAGE IN IMAGEVIEW HERE
             imagePathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener {
                 // Data for "images/kirby.jpg" is returned, use this as needed
-                val bitmap = BitmapFactory.decodeByteArray(it,0,it.size)
+                val bitmap = BitmapFactory.decodeByteArray(it,0,it.size) //it is like "this" .getBytes is a task byte array is parameter
                 findViewById<ImageView>(R.id.postImg).setImageBitmap(bitmap)
         }.addOnFailureListener {
             //Make Toast incase image/post didn't exist
