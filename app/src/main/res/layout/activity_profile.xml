@@ -12,87 +12,241 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="409dp"
-        android:layout_height="78dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#96D875"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/profileScroll"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="-2dp" />
-
-
-    <!--END TOP TOOLBAR -->
-
+        tools:layout_editor_absoluteX="2dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="PROFILE PAGE"
+        android:layout_marginTop="16dp"
+        android:text="PROFILE"
         android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/toolbar2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/toolbar2"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="102dp" />
+        tools:ignore="MissingConstraints" />
 
+    <!--END TOP TOOLBAR -->
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/profileScroll"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="2">
+
+            <TableRow android:backgroundTint="@color/teal_200">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginBottom="20dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:layout_column="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="45dp"
+                    android:padding="3dip"
+                    android:text="Jimmy Donaldson"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="162dp"
+                    android:layout_height="46dp"
+                    android:layout_column="0"
+                    android:layout_marginLeft="10dp"
+                    android:text="Bio"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="@color/teal_200"
+                    android:text="Add Friend" />
+
+
+
+
+
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="This is an example Bio"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"></TextView>
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_weight="0"
+                    android:backgroundTint="@color/teal_200"
+                    android:text="Message" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text = "Posts"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    >
+                </TextView>
+            </TableRow>
+
+            <TableRow>
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic"
+                    tools:ignore="DuplicateIds" />
+
+            </TableRow>
+            <TableRow>
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic"
+                    tools:ignore="DuplicateIds" />
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic"
+                    tools:ignore="DuplicateIds" />
+
+            </TableRow>
+
+
+        </TableLayout>
+    </ScrollView>
+
+
+    <!--BOTTOM TOOLBAR-->
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
-        android:layout_width="413dp"
-        android:layout_height="82dp"
-        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         app:backgroundTint="#96d875"
-        tools:ignore="BottomAppBar,MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="BottomAppBar,MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profileActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:clickable="true"
-        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
+        app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
+        app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
+        app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_user"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="659dp" />
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/forumsActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:onClick="goToForum"
+        app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
+        app:layout_constraintEnd_toStartOf="@+id/homeActionButton"
+        app:layout_constraintStart_toEndOf="@id/profileActionButton"
+        app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_chat"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="659dp" />
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:onClick="goToItems"
-        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_home"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="659dp" />
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/helpActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
+        app:layout_constraintEnd_toStartOf="@id/settingsActionButton"
+        app:layout_constraintStart_toEndOf="@+id/homeActionButton"
+        app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_help"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="659dp" />
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/settingsActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
+        app:layout_constraintEnd_toEndOf="@+id/bottomAppBar"
+        app:layout_constraintStart_toEndOf="@+id/helpActionButton"
+        app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_settings"
-        tools:layout_editor_absoluteX="339dp"
-        tools:layout_editor_absoluteY="659dp" />
+        tools:ignore="ContentDescription" />
+
+    <!-- END BOTTOM TOOLBAR-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,16 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
         <activity
-            android:name=".SupportActivity"
+            android:name=".CreatePostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemPostActivity"
             android:exported="false" />
         <activity
             android:name=".HelpActivity"
             android:exported="false" />
         <activity
-            android:name=".ItemsPageActivity"
+            android:name=".ForumPageActivity"
             android:exported="false" />
         <activity
-            android:name=".MainPageActivity"
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemsPageActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -45,15 +54,7 @@
         <activity
             android:name=".GoogleMapsActivity"
             android:exported="true"
-            android:label="GoogleMapsApi">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:label="GoogleMapsApi" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

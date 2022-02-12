@@ -24,5 +24,6 @@ class MainActivity : AppCompatActivity() {
         Thread.sleep(3_000)
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

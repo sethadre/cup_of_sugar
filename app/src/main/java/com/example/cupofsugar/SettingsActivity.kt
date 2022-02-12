@@ -4,10 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class ForumPageActivity : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_forums)
+        setContentView(R.layout.activity_settings)
 
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
@@ -36,18 +36,9 @@ class ForumPageActivity : AppCompatActivity() {
         val helpActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.helpActionButton)
         helpActionButton.setOnClickListener {
-            val intent = Intent(this, HelpActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-        val settingsActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.settingsActionButton)
-        settingsActionButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
             finish()
         }
-
     }
-
 }
