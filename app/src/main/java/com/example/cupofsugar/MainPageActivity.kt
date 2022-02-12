@@ -1,3 +1,4 @@
+
 package com.example.cupofsugar
 
 import android.content.Intent
@@ -63,16 +64,8 @@ class MainPageActivity : AppCompatActivity(){
         startActivity(intent)
         finish()
     }
-    fun goToHome(view: View){
+    fun goToHome(view: View) {
         // already home
     }
-    fun goToItems(view: View){
-        val intent= Intent(this,ItemsPageActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-    fun goToRegister(view: View){
-        val intent= Intent(this,RegisterActivity::class.java)
-        startActivity(intent)
-    }
 }
+

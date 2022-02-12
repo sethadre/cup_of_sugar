@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cupofsugar">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,7 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
-        android:windowSoftInputMode="stateHidden"
+        <activity
+            android:name=".CreatePostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemPostActivity"
+            android:exported="false" />
         <activity
             android:name=".HelpActivity"
             android:exported="false" />
@@ -24,7 +30,10 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".MainPageActivity"
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemsPageActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -38,31 +47,23 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
+
         <activity
             android:name=".GoogleMapsActivity"
             android:exported="true"
-            android:label="GoogleMapsApi" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-
-        <!--<activity android:name=".MainActivity" -->
-        <activity android:name=".ItemsPageActivity"
-            android:exported="true" >
+            android:label="GoogleMapsApi" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

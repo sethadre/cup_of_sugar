@@ -10,10 +10,50 @@
 
     <!-- TOP TOOLBAR -->
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="366dp"
+        android:layout_height="144dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.884"
+        tools:context=".GoogleMapsActivity"></androidx.fragment.app.FragmentContainerView>
+
+    <ImageView
+        android:id="@+id/postImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/map"
+        app:layout_constraintEnd_toEndOf="@+id/gradient"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="@+id/gradient"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.0">
+
+    </ImageView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cancelActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="409dp"
+        android:layout_height="78dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#96D875"
         android:minHeight="?attr/actionBarSize"
@@ -22,11 +62,16 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="2dp" />
 
+
+    <!--END TOP TOOLBAR -->
+
+
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Help PAGE"
+        android:text="Item Post"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/toolbar2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -34,19 +79,11 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <!--END TOP TOOLBAR -->
-
-
-
-    <!--BOTTOM TOOLBAR-->
-    <!--BOTTOM TOOLBAR-->
-    <!--BOTTOM TOOLBAR-->
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="413dp"
+        android:layout_height="82dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="1dp"
         app:backgroundTint="#96d875"
@@ -110,9 +147,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/helpActionButton"
         app:srcCompat="@drawable/icon_button_settings" />
-
-    <!-- END BOTTOM TOOLBAR-->
-    <!-- END BOTTOM TOOLBAR-->
-    <!-- END BOTTOM TOOLBAR-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
