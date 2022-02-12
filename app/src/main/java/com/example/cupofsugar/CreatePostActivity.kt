@@ -1,16 +1,19 @@
 package com.example.cupofsugar
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
+import android.widget.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.items_homepage.*
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_create_post.*
 import kotlinx.android.synthetic.main.profile.*
 //import com.google.firebase.storage.ktx.storage
 import java.io.File
@@ -42,7 +45,24 @@ class CreatePostActivity : AppCompatActivity() {
             openGallery()
         }
 
-//        val buttonTakePhoto =
+        // Filter dropdown menu
+        spinner_filters.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                Toast.makeText(this@CreatePostActivity,
+                    adapterView?.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
+        }
+        // End filter dropdown menu
+
+
+    //        val buttonTakePhoto =
 //            findViewById<Button>(R.id.button_take_photo)
 //        buttonTakePhoto.setOnClickListener{
 //            //placeholder code to ask for camera privileges

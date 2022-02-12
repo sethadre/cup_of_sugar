@@ -6,6 +6,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory  //for decoding file
 import android.widget.ImageView
+import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -56,9 +58,9 @@ class ItemPostActivity : AppCompatActivity() {
             finish()
         }
 
-        val HomeActionButton =
+        val homeActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.homeActionButton)
-        HomeActionButton.setOnClickListener {
+        homeActionButton.setOnClickListener {
             val intent = Intent(this, ItemsPageActivity::class.java)
             startActivity(intent)
             finish()
