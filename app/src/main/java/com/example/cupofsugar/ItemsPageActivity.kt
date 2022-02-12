@@ -100,7 +100,7 @@ class ItemsPageActivity : AppCompatActivity() {
         val createButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createActionButton)
         createButton.setOnClickListener {
-            val intent = Intent(this, CreateItemActivity::class.java)
+            val intent = Intent(this, CreatePostActivity::class.java)
             startActivity(intent)
             finish()
         }
