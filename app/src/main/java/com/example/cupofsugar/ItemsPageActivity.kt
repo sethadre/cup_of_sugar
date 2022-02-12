@@ -44,16 +44,16 @@ class ItemsPageActivity : AppCompatActivity() {
 
         setContentView(R.layout.items_homepage) //moved this line lower
 
-        val postActionButton =
-            findViewById<Button>(R.id.goToPostButton)
-        profileActionButton.setOnClickListener {
-            val intent = Intent(this, ItemsPageActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val postActionButton =
+//            findViewById<Button>(R.id.goToPostButton)
+//        postActionButton.setOnClickListener {
+//            val intent = Intent(this, ItemsPageActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
         val createPostActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createPostActionButton)
-        profileActionButton.setOnClickListener {
+        createPostActionButton.setOnClickListener {
             val intent = Intent(this, CreatePostActivity::class.java)
             startActivity(intent)
             finish()
