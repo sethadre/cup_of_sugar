@@ -8,6 +8,12 @@
     android:background="#FFFFFF"
     android:backgroundTint="#474747">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frameLayout"
+        android:layout_margin="5dp"/>
+
 <!-- TOP TOOLBAR -->
 
 <androidx.appcompat.widget.Toolbar
