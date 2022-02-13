@@ -26,4 +26,11 @@
         <item>General Hygiene</item>item>
         <item>Feminine Hygiene</item>item>
     </string-array>
+
+    <string-array name ="support_reasons">
+        <item>Going crazy</item>
+        <item>Really going crazy</item>
+        <item>Coo Coo For Cocoa Puffs</item>
+        <item>Too Much Sugar</item>
+    </string-array>
 </resources>
