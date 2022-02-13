@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory  //for decoding file
+import android.view.View
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
@@ -73,5 +74,11 @@ class ItemPostActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    fun goToPostLocation(view: View) {
+        val intent = Intent(this, GoogleMapsActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
