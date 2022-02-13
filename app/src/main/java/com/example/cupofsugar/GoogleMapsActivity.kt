@@ -1,7 +1,9 @@
 package com.example.cupofsugar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -18,6 +20,7 @@ class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_maps)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -26,6 +29,7 @@ class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
     }
 
     /**
@@ -44,5 +48,11 @@ class GoogleMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+    }
+
+    fun goBackToPost(view: View) {
+        val intent = Intent(this, ItemPostActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
