@@ -19,16 +19,17 @@
         main account and grind out hours just for a level, but it has also invigorated me
         and given me goals for ym account. Uh oh there goes a double and in a sentence. My fiancee
         would roast my writing if she saw that."</string>
+    <string-array name ="filter_options">
+        <item>Clothes</item>item>
+        <item>Food</item>item>
+        <item>Water</item>item>
+        <item>General Hygiene</item>item>
+        <item>Feminine Hygiene</item>item>
+    </string-array>
 
-    <string-array name="support_reasons">
-        <item>Bugs/Technical issues</item>
+    <string-array name ="support_reasons">
+        <item>Bugs/Technical Issues</item>
         <item>Suggestions</item>
         <item>Other</item>
     </string-array>
-
-    <!-- Error messages -->
-    <string name="error_fragment_message">An error occurred</string>
-    <string name="dismiss_error">Dismiss</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

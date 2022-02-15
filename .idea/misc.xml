@@ -3,22 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/drawable/default_background.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_create_post.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_forums.xml" value="0.22735507246376813" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_hcos.xml" value="0.20572916666666666" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_help.xml" value="0.23505434782608695" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_item_post.xml" value="0.18568840579710144" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.18568840579710144" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_main.xml" value="0.22735507246376813" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_main_page.xml" value="0.22735507246376813" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_profile.xml" value="0.1766304347826087" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_settings.xml" value="0.22735507246376813" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/activity_support.xml" value="0.23505434782608695" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/dropdown_item.xml" value="0.33" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/fragment_support_dropdown.xml" value="0.2028985507246377" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/fragment_topic.xml" value="0.33" />
-        <entry key="..\:/Users/Nima/StudioProjects/cup_of_sugar/app/src/main/res/layout/profile.xml" value="0.22735507246376813" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/spinner_color.xml" value="0.2245" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_create_post.xml" value="0.25" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_item_post.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.33469202898550726" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/items_homepage.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/ryanh/OneDrive/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_main.xml" value="0.28306159420289856" />
         <entry key="..\:/Users/ryanh/OneDrive/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_main_page.xml" value="0.2694746376811594" />
         <entry key="..\:/Users/ryanh/OneDrive/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_maps.xml" value="0.20260416666666667" />
@@ -26,15 +15,17 @@
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/drawable/edittextbackground.xml" value="0.2911458333333333" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2911458333333333" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/a.xml" value="0.25769927536231885" />
+        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_create_post.xml" value="0.264" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_forums.xml" value="0.275" />
-        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_help.xml" value="0.275" />
-        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.1743659420289855" />
+        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_help.xml" value="0.264" />
+        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_item_post.xml" value="0.2412037037037037" />
+        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_main_page.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_profile.xml" value="0.275" />
+        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_register.xml" value="0.20833333333333334" />
-        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_settings.xml" value="0.275" />
-        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/items_homepage.xml" value="0.25" />
+        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/activity_settings.xml" value="0.2" />
+        <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/items_homepage.xml" value="0.4" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/profile.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main_page.xml" value="0.25" />

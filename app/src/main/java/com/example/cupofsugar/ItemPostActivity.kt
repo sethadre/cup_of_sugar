@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory  //for decoding file
+import android.view.View
 import android.widget.ImageView
+import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -56,9 +59,9 @@ class ItemPostActivity : AppCompatActivity() {
             finish()
         }
 
-        val HomeActionButton =
+        val homeActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.homeActionButton)
-        HomeActionButton.setOnClickListener {
+        homeActionButton.setOnClickListener {
             val intent = Intent(this, ItemsPageActivity::class.java)
             startActivity(intent)
             finish()
@@ -71,5 +74,11 @@ class ItemPostActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    fun goToPostLocation(view: View) {
+        val intent = Intent(this, GoogleMapsActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
