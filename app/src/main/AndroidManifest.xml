@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
         <activity
+            android:name=".hcosActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreatePostActivity"
             android:exported="false" />
         <activity
@@ -22,6 +25,9 @@
             android:exported="false" />
         <activity
             android:name=".HelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SupportActivity"
             android:exported="false" />
         <activity
             android:name=".ForumPageActivity"

@@ -15,51 +15,49 @@
 
 
     <!--BOTTOM  TOOLBAR -->
+
     <Button
-        android:id="@+id/supportActionButton"
-        android:layout_width="201dp"
-        android:layout_height="381dp"
+        android:id="@+id/supportButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="5dp"
         android:clickable="true"
         android:text="CONTACT SUPPORT"
-        android:textSize="25sp"
+        android:textSize="24sp"
         app:backgroundTint="#96d875"
-        app:layout_constraintBottom_toTopOf="@+id/helpCupOfSugarActionButton"
+        app:layout_constraintBottom_toTopOf="@+id/hcosButton"
         app:layout_constraintEnd_toStartOf="@+id/resourcesActionButton"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
-        android:id="@+id/helpCupOfSugarActionButton"
-        android:layout_width="431dp"
-        android:layout_height="280dp"
-        android:layout_marginBottom="35dp"
+        android:id="@+id/hcosButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:text="HELP CUP OF SUGAR"
-        android:textSize="25sp"
+        android:textSize="24sp"
         app:backgroundTint="#96d875"
         app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/supportActionButton" />
+        app:layout_constraintTop_toBottomOf="@+id/supportButton" />
 
     <Button
         android:id="@+id/resourcesActionButton"
-        android:layout_width="201dp"
-        android:layout_height="381dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="5dp"
         android:clickable="true"
         android:text="FIND RESOURCES"
-        android:textSize="25sp"
+        android:textSize="24sp"
         app:backgroundTint="#96d875"
-        app:layout_constraintBottom_toTopOf="@+id/helpCupOfSugarActionButton"
+        app:layout_constraintBottom_toBottomOf="@+id/supportButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/supportActionButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/supportButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -67,56 +65,67 @@
         android:layout_width="413dp"
         android:layout_height="82dp"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="1dp"
         app:backgroundTint="#96d875"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="BottomAppBar,MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="648dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profileActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
-        app:srcCompat="@drawable/icon_button_user"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="659dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
+        app:srcCompat="@drawable/icon_button_user" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/forumsActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
-        app:srcCompat="@drawable/icon_button_chat"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="659dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profileActionButton"
+        app:srcCompat="@drawable/icon_button_chat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="@color/teal_200"
-        app:srcCompat="@drawable/icon_button_home"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="659dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/forumsActionButton"
+        app:srcCompat="@drawable/icon_button_home" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/helpActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
-        app:backgroundTint="@color/white"
-        app:srcCompat="@drawable/icon_button_help"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="659dp" />
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homeActionButton"
+        app:srcCompat="@drawable/icon_button_help" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/settingsActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
-        app:srcCompat="@drawable/icon_button_settings"
-        tools:layout_editor_absoluteX="339dp"
-        tools:layout_editor_absoluteY="659dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/helpActionButton"
+        app:srcCompat="@drawable/icon_button_settings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,14 +10,17 @@ import com.example.cupofsugar.databinding.FragmentTopicBinding
 
 
 class TopicFragment : Fragment() {
+    private val binding get() = _binding!!
 
     private var _binding: FragmentTopicBinding? = null
-    private val binding get() = _binding!!
+
+    var arrayAdapter: ArrayAdapter<String>? = null
 
     override fun onResume() {
         super.onResume()
+
         val reasons = resources.getStringArray(R.array.support_reasons)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, reasons)
+        arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, reasons)
         binding.autoCompleteTextView.setAdapter(arrayAdapter)
     }
 

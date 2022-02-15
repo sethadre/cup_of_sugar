@@ -1,28 +1,14 @@
 package com.example.cupofsugar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.content.Intent
 
-class HelpActivity : AppCompatActivity() {
+class hcosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_help)
-
-        val supportActionButton = findViewById<Button>(R.id.supportButton)
-        supportActionButton.setOnClickListener {
-            val intent = Intent(this, SupportActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        val helpCupOfSugarActionButton = findViewById<Button>(R.id.hcosButton)
-        helpCupOfSugarActionButton.setOnClickListener {
-            val intent = Intent(this, hcosActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+        setContentView(R.layout.activity_hcos)
 
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
