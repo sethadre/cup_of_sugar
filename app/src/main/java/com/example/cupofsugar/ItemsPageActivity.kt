@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.GridView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.items_homepage.*
@@ -17,8 +18,18 @@ class ItemsPageActivity : AppCompatActivity() {
     private  lateinit var db: FirebaseFirestore
     private val TAG = "ItemsPageActivity"
 
+    //Grid
+    val postint = 0
+    private lateinit var gridView: GridView
+    private var posts = arrayOf("Post0")
+    private var postImages = intArrayOf(postint)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+      //Front End for Grid
+        //gridView = findViewById()
+
 
 
         //Firebase declare
