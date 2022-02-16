@@ -107,10 +107,13 @@ class CreatePostActivity : AppCompatActivity() {
         val fileName = formatter.format(now)
         val storageReference = FirebaseStorage.getInstance().getReference("postImages/$fileName")
         storageReference.putFile(imageUri).addOnSuccessListener {
-            //testImg.setImageURI(null)//this will clear preview after upload
+            testImg.setImageURI(null)//this will clear preview after upload
             Toast.makeText(this@CreatePostActivity,"Sucessful Upload",Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{
             Toast.makeText(this@CreatePostActivity,"Failed Upload",Toast.LENGTH_SHORT).show()
         }
+    }
+    fun submitPost(view: View){
+        uploadImage()
     }
 }

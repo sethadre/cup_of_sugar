@@ -120,7 +120,7 @@
         android:id="@+id/previewImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/button_take_photo"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_filters"
@@ -158,5 +158,16 @@
             android:textColor="#000000"
             app:layout_constraintVertical_bias="1.0" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"
+        android:onClick="submitPost"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_photoButtons" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
