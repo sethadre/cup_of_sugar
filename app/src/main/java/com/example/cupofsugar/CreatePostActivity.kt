@@ -30,9 +30,9 @@ class CreatePostActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
     val storage = Firebase.storage
-    
-    private val GALLERY_REQUEST_CODE = 100
 
+    private val GALLERY_REQUEST_CODE = 100
+    private lateinit var imageUri : Uri //uri for uploading to firebase
     private lateinit var testImg: ImageView //late init is so you can initialize later which loads xml
 
     companion object{
@@ -93,6 +93,7 @@ class CreatePostActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
+            imageUri = data?.data!! //passed to firebase below
             testImg.setImageURI(data?.data) //each line for a photo that may be previewed
             //needs option to delete photo preview
             //change photo size later
@@ -105,6 +106,11 @@ class CreatePostActivity : AppCompatActivity() {
         val now = Date()
         val fileName = formatter.format(now)
         val storageReference = FirebaseStorage.getInstance().getReference("postImages/$fileName")
-        //storageReference.putFile(ImageUri).addOnSuccessListener {  }.addOnFailureListener{ }
+        storageReference.putFile(imageUri).addOnSuccessListener {
+            //testImg.setImageURI(null)//this will clear preview after upload
+            Toast.makeText(this@CreatePostActivity,"Sucessful Upload",Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener{
+            Toast.makeText(this@CreatePostActivity,"Failed Upload",Toast.LENGTH_SHORT).show()
+        }
     }
 }
