@@ -105,16 +105,27 @@
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="15dp"
-        android:layout_marginBottom="100dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginBottom="100dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="Description"
         android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@id/textView_selectFilters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textView_selectFilters"
         app:layout_constraintTop_toBottomOf="@id/textView_addDescription_label" />
+
+    <ImageView
+        android:id="@+id/previewImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_filters"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
         android:id="@+id/linearLayout_photoButtons"
@@ -148,5 +159,28 @@
             android:textColor="#000000"
             app:layout_constraintVertical_bias="1.0" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"
+        android:onClick="submitPost"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_photoButtons" />
+
+    <EditText
+        android:id="@+id/postTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/textView_addDescription_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_newPost_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
