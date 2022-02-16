@@ -10,14 +10,21 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
 class ItemPostActivity : AppCompatActivity() {
+
+    private lateinit var db: FirebaseFirestore
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_post)
-        
+
+        db = FirebaseFirestore.getInstance()//important to place inside this function
+
         //Start of Back End Stuff
         val storage = Firebase.storage
         // Create a reference with an initial file path and name
