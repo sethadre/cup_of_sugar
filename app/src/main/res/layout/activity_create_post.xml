@@ -12,75 +12,60 @@
         android:id="@+id/cancelActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.915"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textView_newPost_label"
         app:srcCompat="@android:drawable/ic_delete" />
 
-    <Button
-        android:id="@+id/button_upload_photo"
-        android:layout_width="160dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Upload Photos"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/button_upload_photo"-->
+<!--        android:layout_width="160dp"-->
+<!--        android:layout_height="59dp"-->
+<!--        android:layout_marginBottom="100dp"-->
+<!--        android:backgroundTint="#FFFFFF"-->
+<!--        android:text="Upload Photos"-->
+<!--        android:textColor="#000000"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/button_take_photo"-->
+<!--        app:layout_constraintVertical_bias="1.0" />-->
 
-    <Button
-        android:id="@+id/button_take_photo"
-        android:layout_width="160dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="140dp"
-        android:backgroundTint="#80FFFFFF"
-        android:text="Take Photo"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="307dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintVertical_weight=".9"
-        app:srcCompat="@android:drawable/ic_media_play" />
+<!--    <Button-->
+<!--        android:id="@+id/button_take_photo"-->
+<!--        android:layout_width="160dp"-->
+<!--        android:layout_height="59dp"-->
+<!--        android:backgroundTint="#80FFFFFF"-->
+<!--        android:text="Take Photo"-->
+<!--        android:textColor="#000000"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/button_upload_photo"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/spinner_filters" />-->
 
     <TextView
         android:id="@+id/textView_newPost_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="New Post"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="NEW POST"
         android:textColor="#FFFFFF"
-        android:layout_marginBottom="50dp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@id/textView_addDescription_label"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/cancelActionButton" />
 
     <TextView
-        android:id="@+id/textView_filters"
+        android:id="@+id/textView_selectFilters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="Select Filter"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -93,36 +78,34 @@
         android:id="@+id/spinner_filters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/spinner_color"
         android:dropDownVerticalOffset="24dp"
         android:entries="@array/filter_options"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_filters" />
+        app:layout_constraintTop_toBottomOf="@id/textView_selectFilters"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout_photoButtons"/>
 
     <TextView
         android:id="@+id/textView_addDescription_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="Add Description"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/textView_newPost_label"
         app:layout_constraintBottom_toTopOf="@+id/textDescriptionBox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_newPost_label" />
 
     <EditText
         android:id="@+id/textDescriptionBox"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
         android:layout_marginEnd="15dp"
         android:ems="10"
         android:gravity="start|top"
@@ -130,7 +113,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textView_selectFilters"
         app:layout_constraintTop_toBottomOf="@id/textView_addDescription_label" />
 
+    <LinearLayout
+        android:id="@+id/linearLayout_photoButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_filters">
+
+        <Button
+            android:id="@+id/button_take_photo"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#80FFFFFF"
+            android:text="Take Photo"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/button_upload_photo"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Upload Photos"
+            android:textColor="#000000"
+            app:layout_constraintVertical_bias="1.0" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
