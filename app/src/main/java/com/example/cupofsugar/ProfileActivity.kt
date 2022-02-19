@@ -38,26 +38,26 @@ class ProfileActivity : AppCompatActivity() {
         val imageClick12 = findViewById<ImageView>(R.id.imageView12)
 
 
-        val postImagePathReference9 = storage.reference.child("postImages/post0/cake.jpg")
+        val postImagePathReference9 = storage.reference.child("postImages/post0/sugar.jpeg")
         postImagePathReference9.getBytes(ONE_MEGABYTE).addOnSuccessListener {
             val bitmap1 = BitmapFactory.decodeByteArray(it,0,it.size)
             findViewById<ImageView>(R.id.imageView9).setImageBitmap(bitmap1)
 
         }
 
-        val postImagePathReference10 = storage.reference.child("postImages/post0/candy.jpg")
+        val postImagePathReference10 = storage.reference.child("postImages/post0/laptop.jpg")
         postImagePathReference10.getBytes(ONE_MEGABYTE).addOnSuccessListener {
             val bitmap2 = BitmapFactory.decodeByteArray(it,0,it.size)
             findViewById<ImageView>(R.id.imageView10).setImageBitmap(bitmap2)
         }
 
-        val postImagePathReference11 = storage.reference.child("postImages/post0/tomato.jpg")
+        val postImagePathReference11 = storage.reference.child("postImages/post0/coffee.jpeg")
         postImagePathReference11.getBytes(ONE_MEGABYTE).addOnSuccessListener {
             val bitmap3 = BitmapFactory.decodeByteArray(it,0,it.size)
             findViewById<ImageView>(R.id.imageView11).setImageBitmap(bitmap3)
         }
 
-        val postImagePathReference12 = storage.reference.child("postImages/post0/cake.jpg")
+        val postImagePathReference12 = storage.reference.child("postImages/post0/sweater.jpeg")
         postImagePathReference12.getBytes(ONE_MEGABYTE).addOnSuccessListener {
             val bitmap4 = BitmapFactory.decodeByteArray(it,0,it.size)
             findViewById<ImageView>(R.id.imageView12).setImageBitmap(bitmap4)
