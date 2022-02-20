@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:backgroundTint="#474747"
+    android:backgroundTint="@color/background_grey"
     tools:context=".HelpActivity">
 
     <!-- TOP TOOLBAR -->
@@ -24,7 +24,7 @@
         android:clickable="true"
         android:text="CONTACT SUPPORT"
         android:textSize="24sp"
-        app:backgroundTint="#96d875"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toTopOf="@+id/hcosButton"
         app:layout_constraintEnd_toStartOf="@+id/resourcesActionButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
         android:clickable="true"
         android:text="HELP CUP OF SUGAR"
         android:textSize="24sp"
-        app:backgroundTint="#96d875"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
         android:clickable="true"
         android:text="FIND RESOURCES"
         android:textSize="24sp"
-        app:backgroundTint="#96d875"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="@+id/supportButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/supportButton"
@@ -66,7 +66,7 @@
         android:layout_height="82dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="1dp"
-        app:backgroundTint="#96d875"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="BottomAppBar,MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />

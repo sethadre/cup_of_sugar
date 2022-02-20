@@ -56,7 +56,7 @@
         android:layout_width="409dp"
         android:layout_height="78dp"
         android:background="?attr/colorPrimary"
-        android:backgroundTint="#96D875"
+        android:backgroundTint="@color/green"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintTop_toTopOf="parent"
@@ -83,7 +83,7 @@
         android:layout_height="82dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="1dp"
-        app:backgroundTint="#96d875"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="BottomAppBar,MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />

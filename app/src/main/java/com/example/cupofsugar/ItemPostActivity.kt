@@ -6,10 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory  //for decoding file
 import android.view.View
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -40,7 +37,6 @@ class ItemPostActivity : AppCompatActivity() {
             //Make Toast incase image/post didn't exist
         }
         //End Back End Stuff
-
 
         val cancelButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.cancelActionButton)

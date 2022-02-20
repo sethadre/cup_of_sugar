@@ -3,11 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/edittext_bordered_background.xml" value="0.341" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/edittextbackground.xml" value="0.341" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/round_button.xml" value="0.341" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/round_input_boxes.xml" value="0.2" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/spinner_color.xml" value="0.2245" />
-        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_create_post.xml" value="0.25" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_create_post.xml" value="0.33" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_forums.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_hcos.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_help.xml" value="0.3827614379084967" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_item_post.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.33469202898550726" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_main.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_main_page.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_maps.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_profile.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_settings.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_support.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/dropdown_item.xml" value="0.3827614379084967" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/fragment_topic.xml" value="0.3827614379084967" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/items_homepage.xml" value="0.24954710144927536" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/profile.xml" value="0.3827614379084967" />
         <entry key="..\:/Users/ryanh/OneDrive/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_main.xml" value="0.28306159420289856" />
         <entry key="..\:/Users/ryanh/OneDrive/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_main_page.xml" value="0.2694746376811594" />
         <entry key="..\:/Users/ryanh/OneDrive/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_maps.xml" value="0.20260416666666667" />
@@ -29,8 +45,6 @@
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/layout/profile.xml" value="0.2" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2911458333333333" />
         <entry key="..\:/Users/setha/Documents/Codes/Cup_Of_Sugar/cup_of_sugar/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2911458333333333" />
-        <entry key="..\:/Users/setha/Documents/Cup of Sugar/app/src/main/res/layout/activity_profile.xml" value="0.15890522875816993" />
-        <entry key="..\:/Users/setha/Documents/Cup of Sugar/app/src/main/res/layout/items_homepage.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.20833333333333334" />

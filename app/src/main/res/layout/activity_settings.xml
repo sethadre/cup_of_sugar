@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:backgroundTint="#474747">
+    android:backgroundTint="@color/background_grey">
 
     <!-- TOP TOOLBAR -->
 
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="?attr/colorPrimary"
-        android:backgroundTint="#96D875"
+        android:backgroundTint="@color/green"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +106,7 @@
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:backgroundTint="#96d875"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
