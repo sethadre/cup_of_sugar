@@ -134,7 +134,7 @@ class CreatePostActivity : AppCompatActivity() {
         val fileName = formatter.format(now)
         //GET USERID AND TITLE
         val newDirectory = "post#"+fileName //Each post's photos is a new directory
-        val storageReference = FirebaseStorage.getInstance().getReference("postImages/$fileName")
+        val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName")
         newImageURL = "postImages/$newDirectory/$fileName" //where to upload new post photo
         storageReference.putFile(imageUri).addOnSuccessListener {
             //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
