@@ -28,8 +28,8 @@
 
                 <ImageView
                     android:id="@+id/profileImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginLeft="45dp"
                     android:layout_marginTop="45dp"
                     android:layout_marginBottom="20dp"
@@ -66,11 +66,7 @@
                     android:layout_marginBottom="20dp"
                     android:backgroundTint="@color/teal_200"
                     android:text="Add Friend" />
-
-
-
-
-
+                
             </TableRow>
             <TableRow>
                 <TextView
