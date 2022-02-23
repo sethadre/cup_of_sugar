@@ -18,7 +18,7 @@ class ProfileActivity : AppCompatActivity() {
         //Start of Back End Stuff
         val storage = Firebase.storage
         // Create a reference with an initial file path and name
-        val imagePathReference = storage.reference.child("ProfilePictures/metaknight.jpg")
+        val imagePathReference = storage.reference.child("ProfilePictures/defaultProfilePic.jpg") //change to user's ProfileImageURL, its in their account
         //This is how we download to memory and not as local file
         val ONE_MEGABYTE: Long = 1024 * 1024
         // WE LOAD AN IMAGE IN IMAGEVIEW HERE
