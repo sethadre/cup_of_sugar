@@ -43,7 +43,7 @@
                     android:padding="3dip"
                     android:text="Jimmy Donaldson"
                     android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:textSize="22sp" />
 
 
             </TableRow>
@@ -61,7 +61,7 @@
                     android:id="@+id/button2"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="2"
+                    android:layout_column="1"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     android:backgroundTint="@color/green"
@@ -78,7 +78,7 @@
                     android:id="@+id/button3"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="2"
+                    android:layout_column="1"
                     android:layout_weight="0"
                     android:layout_marginRight="20dp"
                     android:backgroundTint="@color/green"
