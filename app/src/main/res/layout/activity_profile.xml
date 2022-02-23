@@ -30,7 +30,7 @@
                     android:id="@+id/profileImageView"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_marginLeft="45dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="45dp"
                     android:layout_marginBottom="20dp"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -49,12 +49,11 @@
             </TableRow>
 
             <TableRow>
-
                 <TextView
                     android:layout_width="162dp"
                     android:layout_height="46dp"
                     android:layout_column="0"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
                     android:text="Bio"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
@@ -62,9 +61,10 @@
                     android:id="@+id/button2"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
+                    android:layout_column="2"
+                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
-                    android:backgroundTint="@color/teal_200"
+                    android:backgroundTint="@color/green"
                     android:text="Add Friend" />
                 
             </TableRow>
@@ -72,15 +72,16 @@
                 <TextView
                     android:text="This is an example Bio"
                     android:textColor="@color/white"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
                     android:textSize="16sp"/>
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
+                    android:layout_column="2"
                     android:layout_weight="0"
-                    android:backgroundTint="@color/teal_200"
+                    android:layout_marginRight="20dp"
+                    android:backgroundTint="@color/green"
                     android:text="Message" />
             </TableRow>
 
@@ -110,8 +111,8 @@
                     android:layout_marginLeft="15dp"
                     tools:srcCompat="@tools:sample/backgrounds/scenic"
                     tools:ignore="DuplicateIds" />
-
             </TableRow>
+
             <TableRow>
                 <ImageView
                     android:id="@+id/imageView11"
@@ -127,10 +128,7 @@
                     android:layout_marginLeft="15dp"
                     tools:srcCompat="@tools:sample/backgrounds/scenic"
                     tools:ignore="DuplicateIds" />
-
             </TableRow>
-
-
         </TableLayout>
     </ScrollView>
 
