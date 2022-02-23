@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_grey"
     android:backgroundTint="@color/background_grey"
-    tools:context=".CreatePostActivity">
+    tools:context=".CreatePostActivity" >
 
     <RelativeLayout
         android:id="@+id/linearLayout_title_cancelButton"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
         <TextView
             android:id="@+id/textView_newPost_label"
@@ -99,8 +99,8 @@
 
     <ImageView
         android:id="@+id/previewImg1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.213"
@@ -111,8 +111,8 @@
 
     <ImageView
         android:id="@+id/previewImg2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.485"
@@ -123,8 +123,8 @@
 
     <ImageView
         android:id="@+id/previewImg3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.756"
