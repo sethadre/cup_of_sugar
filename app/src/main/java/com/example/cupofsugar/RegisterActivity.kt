@@ -8,12 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.firestoreSettings
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_register.*
 
 
@@ -35,6 +30,8 @@ class RegisterActivity : AppCompatActivity() {
     fun register(view: View) {
         val email = editTextEmailAddress.text.toString()
         val password = editTextPassword.text.toString()
+        val name = editName.text.toString()
+        val profileImageURL = "ProfilePictures/defaultProfilePic.jpg"
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
@@ -45,7 +42,9 @@ class RegisterActivity : AppCompatActivity() {
                     Log.d(TAG,"RAN")
                 val userInfo = hashMapOf(
                     "email" to email,
-                    "password" to password
+                    "password" to password,
+                    "name"     to name,
+                    "profileImageURL"  to profileImageURL
                 )
 
                 db.collection("Users").document(userString).set(userInfo)

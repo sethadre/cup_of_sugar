@@ -6,18 +6,22 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory  //for decoding file
 import android.view.View
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
 class ItemPostActivity : AppCompatActivity() {
+
+    private lateinit var db: FirebaseFirestore
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_post)
-        
+
+        db = FirebaseFirestore.getInstance()//important to place inside this function
+
         //Start of Back End Stuff
         val storage = Firebase.storage
         // Create a reference with an initial file path and name
@@ -33,7 +37,6 @@ class ItemPostActivity : AppCompatActivity() {
             //Make Toast incase image/post didn't exist
         }
         //End Back End Stuff
-
 
         val cancelButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.cancelActionButton)

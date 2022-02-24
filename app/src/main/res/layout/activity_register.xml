@@ -10,7 +10,7 @@
         android:id="@+id/editTextEmailAddress"
         android:layout_width="237dp"
         android:layout_height="49dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/edittextbackground"
         android:ems="10"
@@ -20,16 +20,34 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/editName" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="237dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/edittextbackground"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0
+
+" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="237dp"
         android:layout_height="49dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="41dp"
         android:background="@drawable/edittextbackground"
         android:ems="10"
         android:hint="Password"

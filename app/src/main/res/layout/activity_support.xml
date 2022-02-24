@@ -65,7 +65,7 @@
         android:layout_height="82dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="1dp"
-        app:backgroundTint="#96d875"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="BottomAppBar,MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />

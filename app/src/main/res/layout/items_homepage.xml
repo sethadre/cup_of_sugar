@@ -6,12 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:backgroundTint="#474747">
-
-    <!-- END SCROLL VIEW  -->
-
-    <!-- TOP TOOLBAR -->
-
+    android:backgroundTint="@color/background_grey">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -24,34 +19,99 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar2"
         app:layout_constraintVertical_bias="1.0">
 
-        <LinearLayout
+       <TableLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="10dp">
+           <TableRow
+               android:layout_marginTop="10dp">
+               <ImageView
+                   android:id="@+id/postView1"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+               <ImageView
+                   android:id="@+id/postView2"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+               <ImageView
+                   android:id="@+id/postView3"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+           </TableRow>
 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#FF000000"
-            android:backgroundTint="#000000"
-            android:orientation="vertical">
 
-            <GridView
-                android:id="@+id/homeGrid"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:columnWidth="90dp"
-                android:gravity="center"
-                android:horizontalSpacing="10dp"
-                android:numColumns="3"
-                android:verticalSpacing="10dp"
-                android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-                app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-                app:layout_constraintStart_toStartOf="@+id/scrollView2"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-                tools:visibility="visible">
-            </GridView>
+           <TableRow
+               android:layout_marginTop="10dp">
+               <ImageView
+                   android:id="@+id/postView4"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+               <ImageView
+                   android:id="@+id/postView5"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+               <ImageView
+                   android:id="@+id/postView6"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+           </TableRow>
 
-        </LinearLayout>
+           <TableRow
+               android:layout_marginTop="10dp">
+               <ImageView
+                   android:id="@+id/postView7"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+               <ImageView
+                   android:id="@+id/postView8"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+               <ImageView
+                   android:id="@+id/postView9"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+           </TableRow>
+           <TableRow
+               android:layout_marginTop="10dp">
+               <ImageView
+                   android:id="@+id/postView10"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+               <ImageView
+                   android:id="@+id/postView11"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+               <ImageView
+                   android:id="@+id/postView12"
+                   android:layout_height="150dp"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="15dp"
+                   />
+           </TableRow>
 
-
+       </TableLayout>
     </ScrollView>
 
     <androidx.appcompat.widget.Toolbar
@@ -59,7 +119,7 @@
         android:layout_width="match_parent"
         android:layout_height="78dp"
         android:background="?attr/colorPrimary"
-        android:backgroundTint="#96D875"
+        android:backgroundTint="@color/green"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
@@ -90,7 +150,7 @@
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:backgroundTint="#96d875"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -103,7 +163,6 @@
         android:id="@+id/profileActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
