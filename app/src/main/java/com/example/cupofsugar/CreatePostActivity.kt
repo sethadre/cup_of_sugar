@@ -40,6 +40,7 @@ class CreatePostActivity : AppCompatActivity() {
     //url for new post image might need to change to String Array for multiple images
     private var postCount = 0
     private var uploadCount = 1 //used in openGallery and activity result
+    private val city = "Long Beach"
 
     companion object{
         const val TAG = "CreatePostActivity"
@@ -155,11 +156,11 @@ class CreatePostActivity : AppCompatActivity() {
         val docRef = db.collection("Users").document(user?.uid.toString())
         val userString = user?.uid.toString()//gets user
         //val ifNoDirectory = userString  //Each post's photos is a new directory based on UserID
-        val newDirectory = "post:" + postCount.toString()
+        val newDirectory = postCount.toString()
         //val storageReference = FirebaseStorage.getInstance().getReference("postImages/$ifNoDirectory/$newDirectory/$fileName1")
         //newImageURL = "postImages/$newDirectory/$fileName" //where to upload new post photo [delete this line]
         if (testImg1.getDrawable() != null) { //if image not empty UPLOAD IT
-            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName1")
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$city/$newDirectory/$fileName1")
             storageReference.putFile(testImg1Uri).addOnSuccessListener {
                 image1URL = "postImages/$newDirectory/$fileName1" //where to upload new post photo
                 //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
