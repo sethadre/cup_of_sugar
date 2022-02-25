@@ -43,12 +43,14 @@ class ItemsPageActivity : AppCompatActivity() {
         //This is how we download to memory and not as local file
         val ONE_MEGABYTE: Long = 1024 * 1024
 
-        val iv1 = findViewById<ImageView>(R.id.postView1)
-        val iv2 = findViewById<ImageView>(R.id.postView2)
-        val iv3 = findViewById<ImageView>(R.id.postView3)
+//        val iv1 = findViewById<ImageView>(R.id.postView1)
+//        val iv2 = findViewById<ImageView>(R.id.postView2)
+//        val iv3 = findViewById<ImageView>(R.id.postView3)
 
         //Image View array
-        val IMGS = arrayListOf<ImageView>(iv1, iv2, iv3)
+
+        //val IMGS = arrayListOf<ImageView>(iv1, iv2, iv3)
+
         //IMGS += iv4
         //adds iv4 to IMGS array
 
@@ -62,12 +64,13 @@ class ItemsPageActivity : AppCompatActivity() {
         auth= FirebaseAuth.getInstance()
         val user = auth.currentUser
         val docRef = db.collection("Users").document(user?.uid.toString())
-        val itemRef = db.collection("Items").document("ufFoRA4axiYE5oQ7eLDnFqKl8bA3flowers 2")
+        //val itemRef = db.collection("Items").document("ufFoRA4axiYE5oQ7eLDnFqKl8bA3flowers 2")
+       // val photoRef = db.collection("Items").document(itemRef.toString()).collection("postImages/post#2022_02_23_17_28_37/2022_02_23_17_28_37")
 
 
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
-                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                Log.d(TAG, "DocumentSnapshot data: ${document.data}") //this gets the data
                 //Outputting users
                 val result: StringBuffer = StringBuffer()
                 result.append(document.data?.getValue("email")).append(" ")
