@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.items_homepage.*
@@ -64,10 +65,6 @@ class ItemsPageActivity : AppCompatActivity() {
         auth= FirebaseAuth.getInstance()
         val user = auth.currentUser
         val docRef = db.collection("Users").document(user?.uid.toString())
-        //val itemRef = db.collection("Items").document("ufFoRA4axiYE5oQ7eLDnFqKl8bA3flowers 2")
-       // val photoRef = db.collection("Items").document(itemRef.toString()).collection("postImages/post#2022_02_23_17_28_37/2022_02_23_17_28_37")
-
-
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}") //this gets the data
@@ -75,6 +72,46 @@ class ItemsPageActivity : AppCompatActivity() {
                 val result: StringBuffer = StringBuffer()
                 result.append(document.data?.getValue("email")).append(" ")
                 textViewResult.setText(result)
+            } else {
+                Log.d(TAG, "No such document")
+            }
+        }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+
+
+        //ITEM POST DATA
+        //ITEM POST DATA
+        //ITEM POST DATA
+        //ITEM POST DATA
+        //ITEM POST DATA
+        //put this in a loop
+        val itemRef = db.collection("Items").document("Long Beach").collection("2").document("2")
+
+        val string1 = itemRef.toString()
+        val string2 = docRef.toString()
+       // val photoRef = db.collection("Items").document(itemRef.toString()).collection("postImages/post#2022_02_23_17_28_37/2022_02_23_17_28_37")
+        Log.d("message 1","*********this is a message***********************")
+        Log.i("msg2",string1)
+        Log.i("msg2",string2)
+
+        itemRef.get().addOnSuccessListener { document ->
+            if (document != null) {
+                Log.d(TAG, "DocumentSnapshot data: ${document.data}\n\n") //this gets the data
+//                result.append(document.data?.getValue("email")).append(" ")
+                val imgURLResult: StringBuffer = StringBuffer()
+
+                val url0 = (document.data?.get("imageURLS") as List<String>)[0]
+                testTextView.setText(url0)
+
+                val postPath1   = storage.reference.child(url0)
+
+                postPath1.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+                val bitmap1 = BitmapFactory.decodeByteArray(it,0,it.size)
+                findViewById<ImageView>(R.id.postView1).setImageBitmap(bitmap1)
+                }
+
             } else {
                 Log.d(TAG, "No such document")
             }
