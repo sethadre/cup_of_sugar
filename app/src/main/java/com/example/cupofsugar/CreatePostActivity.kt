@@ -32,8 +32,11 @@ class CreatePostActivity : AppCompatActivity() {
     private val GALLERY_REQUEST_CODE = 100
     private lateinit var imageUri : Uri //uri for uploading to firebase
     private lateinit var testImg1: ImageView //late init is so you can initialize later which loads xml
+    private lateinit var testImg1Uri: Uri // uri for 1st image preview to be uploaded
     private lateinit var testImg2: ImageView
+    private lateinit var testImg2Uri: Uri // 2nd
     private lateinit var testImg3: ImageView
+    private lateinit var testImg3Uri: Uri // 3rd
     //url for new post image might need to change to String Array for multiple images
     private var newImageURL = ""
 
@@ -116,33 +119,74 @@ class CreatePostActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             imageUri = data?.data!! //passed to firebase below
-            if(uploadCount == 1)
+            if(uploadCount == 1) {
                 testImg1.setImageURI(data?.data) //each line for a photo that may be previewed
-            else if(uploadCount == 2)
+                testImg1Uri = data?.data!!
+            }
+            else if(uploadCount == 2) {
                 testImg2.setImageURI(data?.data)
-            else if(uploadCount == 3)
+                testImg2Uri = data?.data!!
+            }
+            else if(uploadCount == 3) {
                 testImg3.setImageURI(data?.data)
+                testImg3Uri = data?.data!!
+            }
              //needs option to delete photo preview
             //change photo size later
         }
     }
     //FireBase Post upload
-    private fun uploadImage(): String {
+    private fun uploadImage(): List<String> {
+        // upload Image and get URL it returns
+        //check if image previews 1,2,3 are null or not
+        var image1URL =""
+        var image2URL = ""
+        var image3URL = ""
+
+        var imageURLS: List<String> = listOf() //return this
+
         //val formatter = get USERID UI and add to formatter for folder
         val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
         val now = Date()
-        val fileName = formatter.format(now)
+        val fileName1 = formatter.format(now)+ "1"
+        val fileName2 = formatter.format(now) + "2"
+        val fileName3 = formatter.format(now) + "3"
         //GET USERID AND TITLE
-        val newDirectory = "post#"+fileName //Each post's photos is a new directory
-        val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName")
-        newImageURL = "postImages/$newDirectory/$fileName" //where to upload new post photo
-        storageReference.putFile(imageUri).addOnSuccessListener {
-            //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
-            Toast.makeText(this@CreatePostActivity,"Sucessful Upload",Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener{
-            Toast.makeText(this@CreatePostActivity,"Failed Upload",Toast.LENGTH_SHORT).show()
+        val user = auth.currentUser
+        val docRef = db.collection("Users").document(user?.uid.toString())
+        val userString = user?.uid.toString()//gets user
+        val ifNoDirectory = userString //Each post's photos is a new directory based on UserID
+        val newDirectory = title
+        val storageReference = FirebaseStorage.getInstance().getReference("postImages/$ifNoDirectory/$newDirectory/$fileName1")
+        //newImageURL = "postImages/$newDirectory/$fileName" //where to upload new post photo [delete this line]
+        if (testImg1.getDrawable() != null) { //if image not empty UPLOAD IT
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName1")
+            storageReference.putFile(testImg1Uri).addOnSuccessListener {
+                image1URL = "postImages/$newDirectory/$fileName1" //where to upload new post photo
+                //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
+                Toast.makeText(this@CreatePostActivity, "Sucessful Upload", Toast.LENGTH_SHORT)
+                    .show()
+            }.addOnFailureListener {
+                Toast.makeText(this@CreatePostActivity, "Failed Upload", Toast.LENGTH_SHORT).show()
+            }
+            image1URL = "postImages/$newDirectory/$fileName1" //where to upload new post photo
+            imageURLS += (image1URL)
         }
-        return newImageURL
+        //TEST NULL HERE
+        if (testImg2.getDrawable() != null) {
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName2")
+            storageReference.putFile(testImg2Uri)//for other images
+            image2URL = "postImages/$newDirectory/$fileName2" //where to upload new post photo
+            imageURLS += (image2URL)
+        }
+        if (testImg3.getDrawable() != null) {
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName3")
+            storageReference.putFile(testImg3Uri)//for other image
+            image3URL = "postImages/$newDirectory/$fileName3" //where to upload new post photo
+            imageURLS += (image3URL)
+        }
+
+        return imageURLS
     }
     fun submitPost(view: View){
 
@@ -152,22 +196,6 @@ class CreatePostActivity : AppCompatActivity() {
         auth= FirebaseAuth.getInstance()
         //get Image url
 
-        // upload Image and get URL it returns
-        //check if image previews 1,2,3 are null or not
-        var image1URL =""
-        var image2URL = ""
-        var image3URL = ""
-        if (testImg1.getDrawable() != null) {
-            image1URL = uploadImage()
-        }
-        if (testImg2.getDrawable() != null) {
-            image2URL = uploadImage()
-        }
-        if (testImg3.getDrawable() != null) {
-            image3URL = uploadImage()
-        }
-
-        var imageURLS: List<String> = listOf(image1URL,image2URL,image3URL)
 
         //get title, description, category
         var title: EditText = findViewById(R.id.postTitle) //get title
@@ -187,7 +215,9 @@ class CreatePostActivity : AppCompatActivity() {
 
        //End of location stuff
 
-
+        // upload Image and get URL it returns
+        //check if image previews 1,2,3 are null or not
+        var imageURLS: List<String> = uploadImage()
         //val rating = 5 //ITS FREE ITEM NO RATING give rating
         //get UserID, and that is a reference to a database location
         val user = auth.currentUser
@@ -195,7 +225,7 @@ class CreatePostActivity : AppCompatActivity() {
         //docRef.get()
         val userString = user?.uid.toString()//gets user
 
-        val postTitle = userString + titleString
+        val postTitle = titleString
 
         val postInfo = hashMapOf(
             "title" to titleString,
@@ -206,7 +236,7 @@ class CreatePostActivity : AppCompatActivity() {
             "owner"      to docRef
         )
         //Going to posts database
-        db.collection("Items").document(postTitle).set(postInfo)
+        db.collection("Items").document(userString).collection("$postTitle").document(postTitle).set(postInfo)
             .addOnSuccessListener { Log.d(TAG, "Post succesfully submitted") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
     }
