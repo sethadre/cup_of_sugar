@@ -27,9 +27,9 @@ class CreatePostActivity : AppCompatActivity() {
     //Firebase stuff
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
-    val storage = Firebase.storage
+    //val storage = Firebase.storage
 
-    private val GALLERY_REQUEST_CODE = 100
+    //private val GALLERY_REQUEST_CODE = 100
     private lateinit var imageUri : Uri //uri for uploading to firebase
     private lateinit var testImg1: ImageView //late init is so you can initialize later which loads xml
     private lateinit var testImg1Uri: Uri // uri for 1st image preview to be uploaded
@@ -38,8 +38,7 @@ class CreatePostActivity : AppCompatActivity() {
     private lateinit var testImg3: ImageView
     private lateinit var testImg3Uri: Uri // 3rd
     //url for new post image might need to change to String Array for multiple images
-    private var newImageURL = ""
-
+    private var postCount = 0
     private var uploadCount = 1 //used in openGallery and activity result
 
     companion object{
@@ -155,9 +154,9 @@ class CreatePostActivity : AppCompatActivity() {
         val user = auth.currentUser
         val docRef = db.collection("Users").document(user?.uid.toString())
         val userString = user?.uid.toString()//gets user
-        val ifNoDirectory = userString //Each post's photos is a new directory based on UserID
-        val newDirectory = title
-        val storageReference = FirebaseStorage.getInstance().getReference("postImages/$ifNoDirectory/$newDirectory/$fileName1")
+        //val ifNoDirectory = userString  //Each post's photos is a new directory based on UserID
+        val newDirectory = "post:" + postCount.toString()
+        //val storageReference = FirebaseStorage.getInstance().getReference("postImages/$ifNoDirectory/$newDirectory/$fileName1")
         //newImageURL = "postImages/$newDirectory/$fileName" //where to upload new post photo [delete this line]
         if (testImg1.getDrawable() != null) { //if image not empty UPLOAD IT
             val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName1")
@@ -213,6 +212,9 @@ class CreatePostActivity : AppCompatActivity() {
         var location: List<Double> = listOf(latitude,longitude)
         //var finalLocation = {location: new Firebase.Firestore.GeoPoint(latitude,longitude)}
 
+        //AFTER GETTING GEOPOINT YOU PLACE IT HERE TO CONVERT TO A CITY
+
+        val city = "Long Beach"
        //End of location stuff
 
         // upload Image and get URL it returns
@@ -221,11 +223,15 @@ class CreatePostActivity : AppCompatActivity() {
         //val rating = 5 //ITS FREE ITEM NO RATING give rating
         //get UserID, and that is a reference to a database location
         val user = auth.currentUser
-        val docRef = db.collection("Users").document(user?.uid.toString())
-        //docRef.get()
+        //val docRef = db.collection("Users").document(user?.uid.toString())
         val userString = user?.uid.toString()//gets user
 
-        val postTitle = titleString
+
+
+        //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
+        val postCountString = postCount.toString()
+        postCount += 1
+
 
         val postInfo = hashMapOf(
             "title" to titleString,
@@ -233,10 +239,10 @@ class CreatePostActivity : AppCompatActivity() {
             "category"  to categoryString,
             "location" to location,
             "imageURLS" to imageURLS,
-            "owner"      to docRef
+            "owner"      to userString
         )
         //Going to posts database
-        db.collection("Items").document(userString).collection("$postTitle").document(postTitle).set(postInfo)
+        db.collection("Items").document(city).collection("$postCountString").document(postCountString).set(postInfo)
             .addOnSuccessListener { Log.d(TAG, "Post succesfully submitted") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
     }
