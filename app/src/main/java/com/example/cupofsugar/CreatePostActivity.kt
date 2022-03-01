@@ -72,19 +72,19 @@ class CreatePostActivity : AppCompatActivity() {
             //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
 
         // Filter dropdown menu
-        spinner_filters.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                adapterView: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                Toast.makeText(this@CreatePostActivity,
-                    adapterView?.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) { }
-        }
+//        spinner_filters.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                adapterView: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                Toast.makeText(this@CreatePostActivity,
+//                    adapterView?.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>?) { }
+//        }
         // End filter dropdown menu
 
                                 //CAMERA
