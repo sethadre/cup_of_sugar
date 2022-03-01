@@ -38,9 +38,8 @@ class CreatePostActivity : AppCompatActivity() {
     private lateinit var testImg3: ImageView
     private lateinit var testImg3Uri: Uri // 3rd
     //url for new post image might need to change to String Array for multiple images
-    private var postCount = 0
     private var uploadCount = 1 //used in openGallery and activity result
-    private val city = "Long Beach"
+    //private var postCount = 0//database post count according to city
 
     companion object{
         const val TAG = "CreatePostActivity"
@@ -136,7 +135,7 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
     //FireBase Post upload
-    private fun uploadImage(): List<String> {
+    private fun uploadImage(city: String, postCount: Int): List<String> {
         // upload Image and get URL it returns
         //check if image previews 1,2,3 are null or not
         var image1URL =""
@@ -153,8 +152,9 @@ class CreatePostActivity : AppCompatActivity() {
         val fileName3 = formatter.format(now) + "3"
         //GET USERID AND TITLE
         val user = auth.currentUser
-        val docRef = db.collection("Users").document(user?.uid.toString())
-        val userString = user?.uid.toString()//gets user
+//        val docRef = db.collection("Users").document(user?.uid.toString())
+//        val userString = user?.uid.toString()//gets user
+
         //val ifNoDirectory = userString  //Each post's photos is a new directory based on UserID
         val newDirectory = postCount.toString()
         //val storageReference = FirebaseStorage.getInstance().getReference("postImages/$ifNoDirectory/$newDirectory/$fileName1")
@@ -218,9 +218,26 @@ class CreatePostActivity : AppCompatActivity() {
         val city = "Long Beach"
        //End of location stuff
 
+        //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
+        var postCount = 0
+        var postCountRef = db.collection("Items").document("{$city}")
+            postCountRef.get().addOnSuccessListener {
+            document -> if (document != null){
+                postCount = document.data?.getValue("postCount") as Int //casted Any? to Int. This is postCount for a city
+            }
+        }.addOnFailureListener{
+                exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+
+        val postCountString = postCount.toString()
+        postCount += 1 //update locally
+        postCountRef.update("postCount", postCount).addOnSuccessListener { Log.d(TAG, "postCount successfully updated!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error updating postCount", e) }//update to database
+
         // upload Image and get URL it returns
         //check if image previews 1,2,3 are null or not
-        var imageURLS: List<String> = uploadImage()
+        var imageURLS: List<String> = uploadImage(city,postCount)
         //val rating = 5 //ITS FREE ITEM NO RATING give rating
         //get UserID, and that is a reference to a database location
         val user = auth.currentUser
@@ -228,10 +245,11 @@ class CreatePostActivity : AppCompatActivity() {
         val userString = user?.uid.toString()//gets user
 
 
+        //Post Date
+        val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+        val now = Date()
+        val postDate = formatter.format(now)
 
-        //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
-        val postCountString = postCount.toString()
-        postCount += 1
 
 
         val postInfo = hashMapOf(
@@ -240,8 +258,10 @@ class CreatePostActivity : AppCompatActivity() {
             "category"  to categoryString,
             "location" to location,
             "imageURLS" to imageURLS,
-            "owner"      to userString
+            "owner"      to userString,
+            "postDate"   to postDate
         )
+
         //Going to posts database
         db.collection("Items").document(city).collection("$postCountString").document(postCountString).set(postInfo)
             .addOnSuccessListener { Log.d(TAG, "Post succesfully submitted") }
