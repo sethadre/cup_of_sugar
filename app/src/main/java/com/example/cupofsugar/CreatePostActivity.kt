@@ -3,19 +3,22 @@ package com.example.cupofsugar
 import android.Manifest
 import android.app.Activity
 import android.content.ContentProviderClient
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import android.net.Uri
 import android.util.Log
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.items_homepage.*
 import com.google.firebase.ktx.Firebase
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_create_post.*
@@ -25,6 +28,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 import android.location.Location
+import android.location.LocationManager
+import android.provider.Settings
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 
 
 class CreatePostActivity : AppCompatActivity() {
@@ -50,13 +57,17 @@ class CreatePostActivity : AppCompatActivity() {
     private var uploadCount = 1 //used in openGallery and activity result
     //private var postCount = 0//database post count according to city
 
+
     companion object{
         const val TAG = "CreatePostActivity"
+        private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
+
+        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         testImg1 = findViewById(R.id.previewImg1) //For use below for when photo is uploaded to preview here
         testImg2 = findViewById(R.id.previewImg2)
@@ -125,11 +136,50 @@ class CreatePostActivity : AppCompatActivity() {
             uploadCount = 1
         }
     }
+
+    private fun checkPermissions():Boolean{
+        if(ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
+        {
+          return true
+        }
+        return false
+    }
     private fun getLocation(){
-        //fusedLocationProviderClient=LocationServices.getFused
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+                //Permissions
+                val locationPermissionRequest = registerForActivityResult(
+                    ActivityResultContracts.RequestMultiplePermissions()
+                ){
+                    permissions -> when{
+                        permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) ->{
+                            //Precise Location access granted
+
+                        }
+                    permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION,false) -> {
+                    }else ->{
+                            //no location access granted
+                        }
+                    }
+                }
+        locationPermissionRequest.launch(arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION))
+        //get the location
+//        fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ task ->
+//            val location: Location? = task.result
+//            if(location == null){
+//                Toast.makeText(this,"Null Recieved", Toast.LENGTH_SHORT).show()
+//            }
+//            else{
+//                Toast.makeText(this,"Get Success", Toast.LENGTH_SHORT).show()
+//            }
+//        }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (resultCode == Activity.RESULT_OK) {
             imageUri = data?.data!! //passed to firebase below
             if(uploadCount == 1) {
