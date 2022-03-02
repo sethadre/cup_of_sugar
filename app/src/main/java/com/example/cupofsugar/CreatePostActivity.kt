@@ -1,6 +1,8 @@
 package com.example.cupofsugar
 
+import android.Manifest
 import android.app.Activity
+import android.content.ContentProviderClient
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.items_homepage.*
 import com.google.firebase.ktx.Firebase
-
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_create_post.*
@@ -22,12 +24,19 @@ import kotlinx.android.synthetic.main.profile.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+import android.location.Location
+
 
 class CreatePostActivity : AppCompatActivity() {
     //Firebase stuff
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
     //val storage = Firebase.storage
+
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
+
+
 
     //private val GALLERY_REQUEST_CODE = 100
     private lateinit var imageUri : Uri //uri for uploading to firebase
@@ -88,6 +97,7 @@ class CreatePostActivity : AppCompatActivity() {
         // End filter dropdown menu
 
                                 //CAMERA
+
     val buttonTakePhoto =
             findViewById<Button>(R.id.button_take_photo)
         buttonTakePhoto.setOnClickListener{
@@ -114,6 +124,9 @@ class CreatePostActivity : AppCompatActivity() {
             uploadCount = 1
         }
     }
+    private fun getLocation(){
+        //fusedLocationProviderClient=LocationServices.getFused
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
@@ -135,7 +148,7 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
     //FireBase Post upload
-    private fun uploadImage(city: String, postCount: Int): List<String> {
+    private fun uploadImage(state: String, city: String, postCount: Int): List<String> {
         // upload Image and get URL it returns
         //check if image previews 1,2,3 are null or not
         var image1URL =""
@@ -160,7 +173,7 @@ class CreatePostActivity : AppCompatActivity() {
         //val storageReference = FirebaseStorage.getInstance().getReference("postImages/$ifNoDirectory/$newDirectory/$fileName1")
         //newImageURL = "postImages/$newDirectory/$fileName" //where to upload new post photo [delete this line]
         if (testImg1.getDrawable() != null) { //if image not empty UPLOAD IT
-            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$city/$newDirectory/$fileName1")
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$state/$city/$newDirectory/$fileName1")
             storageReference.putFile(testImg1Uri).addOnSuccessListener {
                 image1URL = "postImages/$newDirectory/$fileName1" //where to upload new post photo
                 //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
@@ -216,14 +229,15 @@ class CreatePostActivity : AppCompatActivity() {
         //AFTER GETTING GEOPOINT YOU PLACE IT HERE TO CONVERT TO A CITY
 
         val city = "Long Beach"
+        val state = "CA"
        //End of location stuff
 
         //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
         var postCount = 0
-        var postCountRef = db.collection("Items").document("{$city}")
+        var postCountRef = db.collection("Items").document("{$state}").collection("{$city}").document("postCount")
             postCountRef.get().addOnSuccessListener {
             document -> if (document != null){
-                postCount = document.data?.getValue("postCount") as Int //casted Any? to Int. This is postCount for a city
+                postCount = document.data?.getValue("count") as Int //casted Any? to Int. This is postCount for a city
             }
         }.addOnFailureListener{
                 exception ->
@@ -237,7 +251,7 @@ class CreatePostActivity : AppCompatActivity() {
 
         // upload Image and get URL it returns
         //check if image previews 1,2,3 are null or not
-        var imageURLS: List<String> = uploadImage(city,postCount)
+        var imageURLS: List<String> = uploadImage(state,city,postCount)
         //val rating = 5 //ITS FREE ITEM NO RATING give rating
         //get UserID, and that is a reference to a database location
         val user = auth.currentUser
@@ -263,8 +277,6 @@ class CreatePostActivity : AppCompatActivity() {
         )
 
         //Going to posts database
-        db.collection("Items").document(city).collection("$postCountString").document(postCountString).set(postInfo)
-            .addOnSuccessListener { Log.d(TAG, "Post succesfully submitted") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
+        db.collection("Items").document("$state").collection("$city").document(postCountString).set(postInfo).addOnSuccessListener { Log.d(TAG, "Post succesfully submitted") }.addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
     }
 }
