@@ -71,6 +71,7 @@ class CreatePostActivity : AppCompatActivity() {
         //If (delete_preview_photo is pressed)
             //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
 
+
         // Filter dropdown menu
 //        spinner_filters.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //            override fun onItemSelected(
@@ -163,7 +164,7 @@ class CreatePostActivity : AppCompatActivity() {
             storageReference.putFile(testImg1Uri).addOnSuccessListener {
                 image1URL = "postImages/$newDirectory/$fileName1" //where to upload new post photo
                 //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
-                Toast.makeText(this@CreatePostActivity, "Sucessful Upload", Toast.LENGTH_SHORT)
+                Toast.makeText(this@CreatePostActivity, "Successful Upload", Toast.LENGTH_SHORT)
                     .show()
             }.addOnFailureListener {
                 Toast.makeText(this@CreatePostActivity, "Failed Upload", Toast.LENGTH_SHORT).show()

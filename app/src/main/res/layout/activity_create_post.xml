@@ -146,10 +146,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@id/button_removePhoto2"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/button_removePhoto2"
             android:clickable="true"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_removePhoto2"
@@ -160,7 +160,7 @@
             android:layout_marginLeft="65dp"
             android:layout_marginRight="65dp"
             android:clickable="true"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_removePhoto3"
@@ -169,7 +169,7 @@
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@id/button_removePhoto2"
             android:clickable="true"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+            app:srcCompat="@android:drawable/ic_menu_delete" />
     </RelativeLayout>
 
 
@@ -221,6 +221,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_photoButtons" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
