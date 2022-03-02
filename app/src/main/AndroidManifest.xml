@@ -60,7 +60,7 @@
         <activity
             android:name=".GoogleMapsActivity"
             android:exported="true"
-            android:label="Location Of Item" />
+             />
         <activity
             android:name=".MainActivity"
             android:exported="true">
