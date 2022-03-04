@@ -15,7 +15,7 @@ buildscript {
 
         // for google maps api
         classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.0")
-
+        classpath 'com.google.android.gms:play-services-location:19.0.1'
 
     }
 }

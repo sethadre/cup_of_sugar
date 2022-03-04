@@ -1,19 +1,24 @@
 package com.example.cupofsugar
 
+import android.Manifest
 import android.app.Activity
+import android.content.ContentProviderClient
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import android.net.Uri
 import android.util.Log
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.items_homepage.*
 import com.google.firebase.ktx.Firebase
-
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_create_post.*
@@ -22,12 +27,23 @@ import kotlinx.android.synthetic.main.profile.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+import android.location.Location
+import android.location.LocationManager
+import android.provider.Settings
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+
 
 class CreatePostActivity : AppCompatActivity() {
     //Firebase stuff
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
     //val storage = Firebase.storage
+
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
+
+
 
     //private val GALLERY_REQUEST_CODE = 100
     private lateinit var imageUri : Uri //uri for uploading to firebase
@@ -38,16 +54,20 @@ class CreatePostActivity : AppCompatActivity() {
     private lateinit var testImg3: ImageView
     private lateinit var testImg3Uri: Uri // 3rd
     //url for new post image might need to change to String Array for multiple images
-    private var postCount = 0
     private var uploadCount = 1 //used in openGallery and activity result
+    //private var postCount = 0//database post count according to city
+
 
     companion object{
         const val TAG = "CreatePostActivity"
+        private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
+
+        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         testImg1 = findViewById(R.id.previewImg1) //For use below for when photo is uploaded to preview here
         testImg2 = findViewById(R.id.previewImg2)
@@ -89,6 +109,7 @@ class CreatePostActivity : AppCompatActivity() {
         // End filter dropdown menu
 
                                 //CAMERA
+
     val buttonTakePhoto =
             findViewById<Button>(R.id.button_take_photo)
         buttonTakePhoto.setOnClickListener{
@@ -115,8 +136,48 @@ class CreatePostActivity : AppCompatActivity() {
             uploadCount = 1
         }
     }
+
+    private fun checkPermissions():Boolean{
+        if(ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
+        {
+          return true
+        }
+        return false
+    }
+    private fun getLocation(){
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+                //Permissions
+                val locationPermissionRequest = registerForActivityResult(
+                    ActivityResultContracts.RequestMultiplePermissions()
+                ){
+                    permissions -> when{
+                        permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) ->{
+                            //Precise Location access granted
+
+                        }
+                    permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION,false) -> {
+                            //Only Approx granted
+                    
+                    }else ->{
+                            //no location access granted
+                        }
+                    }
+                }
+        locationPermissionRequest.launch(arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION))
+        //get the location
+        fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ task ->
+            val location: Location? = task.result
+            if(location == null){ Toast.makeText(this,"Null Recieved", Toast.LENGTH_SHORT).show() }
+            else{ Toast.makeText(this,"Get Success", Toast.LENGTH_SHORT).show() }
+        }
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (resultCode == Activity.RESULT_OK) {
             imageUri = data?.data!! //passed to firebase below
             if(uploadCount == 1) {
@@ -136,7 +197,7 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
     //FireBase Post upload
-    private fun uploadImage(): List<String> {
+    private fun uploadImage(state: String, city: String, postCount: Int): List<String> {
         // upload Image and get URL it returns
         //check if image previews 1,2,3 are null or not
         var image1URL =""
@@ -153,14 +214,15 @@ class CreatePostActivity : AppCompatActivity() {
         val fileName3 = formatter.format(now) + "3"
         //GET USERID AND TITLE
         val user = auth.currentUser
-        val docRef = db.collection("Users").document(user?.uid.toString())
-        val userString = user?.uid.toString()//gets user
+//        val docRef = db.collection("Users").document(user?.uid.toString())
+//        val userString = user?.uid.toString()//gets user
+
         //val ifNoDirectory = userString  //Each post's photos is a new directory based on UserID
-        val newDirectory = "post:" + postCount.toString()
+        val newDirectory = postCount.toString()
         //val storageReference = FirebaseStorage.getInstance().getReference("postImages/$ifNoDirectory/$newDirectory/$fileName1")
         //newImageURL = "postImages/$newDirectory/$fileName" //where to upload new post photo [delete this line]
         if (testImg1.getDrawable() != null) { //if image not empty UPLOAD IT
-            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName1")
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$state/$city/$newDirectory/$fileName1")
             storageReference.putFile(testImg1Uri).addOnSuccessListener {
                 image1URL = "postImages/$newDirectory/$fileName1" //where to upload new post photo
                 //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
@@ -216,11 +278,29 @@ class CreatePostActivity : AppCompatActivity() {
         //AFTER GETTING GEOPOINT YOU PLACE IT HERE TO CONVERT TO A CITY
 
         val city = "Long Beach"
+        val state = "CA"
        //End of location stuff
+
+        //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
+        var postCount = 0
+        var postCountRef = db.collection("Items").document("{$state}").collection("{$city}").document("postCount")
+            postCountRef.get().addOnSuccessListener {
+            document -> if (document != null){
+                postCount = document.data?.getValue("count") as Int //casted Any? to Int. This is postCount for a city
+            }
+        }.addOnFailureListener{
+                exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+
+        val postCountString = postCount.toString()
+        postCount += 1 //update locally
+        postCountRef.update("postCount", postCount).addOnSuccessListener { Log.d(TAG, "postCount successfully updated!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error updating postCount", e) }//update to database
 
         // upload Image and get URL it returns
         //check if image previews 1,2,3 are null or not
-        var imageURLS: List<String> = uploadImage()
+        var imageURLS: List<String> = uploadImage(state,city,postCount)
         //val rating = 5 //ITS FREE ITEM NO RATING give rating
         //get UserID, and that is a reference to a database location
         val user = auth.currentUser
@@ -228,10 +308,11 @@ class CreatePostActivity : AppCompatActivity() {
         val userString = user?.uid.toString()//gets user
 
 
+        //Post Date
+        val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+        val now = Date()
+        val postDate = formatter.format(now)
 
-        //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
-        val postCountString = postCount.toString()
-        postCount += 1
 
 
         val postInfo = hashMapOf(
@@ -240,11 +321,11 @@ class CreatePostActivity : AppCompatActivity() {
             "category"  to categoryString,
             "location" to location,
             "imageURLS" to imageURLS,
-            "owner"      to userString
+            "owner"      to userString,
+            "postDate"   to postDate
         )
+
         //Going to posts database
-        db.collection("Items").document(city).collection("$postCountString").document(postCountString).set(postInfo)
-            .addOnSuccessListener { Log.d(TAG, "Post succesfully submitted") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
+        db.collection("Items").document("$state").collection("$city").document(postCountString).set(postInfo).addOnSuccessListener { Log.d(TAG, "Post succesfully submitted") }.addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
     }
 }
