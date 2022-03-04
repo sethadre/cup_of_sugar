@@ -158,6 +158,8 @@ class CreatePostActivity : AppCompatActivity() {
 
                         }
                     permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION,false) -> {
+                            //Only Approx granted
+                    
                     }else ->{
                             //no location access granted
                         }
@@ -167,15 +169,11 @@ class CreatePostActivity : AppCompatActivity() {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION))
         //get the location
-//        fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ task ->
-//            val location: Location? = task.result
-//            if(location == null){
-//                Toast.makeText(this,"Null Recieved", Toast.LENGTH_SHORT).show()
-//            }
-//            else{
-//                Toast.makeText(this,"Get Success", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+        fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ task ->
+            val location: Location? = task.result
+            if(location == null){ Toast.makeText(this,"Null Recieved", Toast.LENGTH_SHORT).show() }
+            else{ Toast.makeText(this,"Get Success", Toast.LENGTH_SHORT).show() }
+        }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
