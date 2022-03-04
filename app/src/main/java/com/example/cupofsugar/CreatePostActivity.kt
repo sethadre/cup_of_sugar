@@ -168,12 +168,12 @@ class CreatePostActivity : AppCompatActivity() {
         locationPermissionRequest.launch(arrayOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION))
-        //get the location
-        fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ task ->
-            val location: Location? = task.result
-            if(location == null){ Toast.makeText(this,"Null Recieved", Toast.LENGTH_SHORT).show() }
-            else{ Toast.makeText(this,"Get Success", Toast.LENGTH_SHORT).show() }
-        }
+//        //get the location
+//        fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ task ->
+//            val location: Location? = task.result
+//            if(location == null){ Toast.makeText(this,"Null Recieved", Toast.LENGTH_SHORT).show() }
+//            else{ Toast.makeText(this,"Get Success", Toast.LENGTH_SHORT).show() }
+//        }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -197,7 +197,7 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
     //FireBase Post upload
-    private fun uploadImage(state: String, city: String, postCount: Int): List<String> {
+    private fun uploadImage(state: String, city: String, postCount: Long): List<String> {
         // upload Image and get URL it returns
         //check if image previews 1,2,3 are null or not
         var image1URL =""
@@ -218,114 +218,135 @@ class CreatePostActivity : AppCompatActivity() {
 //        val userString = user?.uid.toString()//gets user
 
         //val ifNoDirectory = userString  //Each post's photos is a new directory based on UserID
-        val newDirectory = postCount.toString()
+        //val newDirectory = postCount.toString()
         //val storageReference = FirebaseStorage.getInstance().getReference("postImages/$ifNoDirectory/$newDirectory/$fileName1")
         //newImageURL = "postImages/$newDirectory/$fileName" //where to upload new post photo [delete this line]
         if (testImg1.getDrawable() != null) { //if image not empty UPLOAD IT
-            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$state/$city/$newDirectory/$fileName1")
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$state/$city/$postCount/$fileName1")
             storageReference.putFile(testImg1Uri).addOnSuccessListener {
-                image1URL = "postImages/$newDirectory/$fileName1" //where to upload new post photo
+                image1URL = "postImages/$state/$city/$postCount/$fileName1" //where to upload new post photo
                 //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
                 Toast.makeText(this@CreatePostActivity, "Successful Upload", Toast.LENGTH_SHORT)
                     .show()
             }.addOnFailureListener {
                 Toast.makeText(this@CreatePostActivity, "Failed Upload", Toast.LENGTH_SHORT).show()
             }
-            image1URL = "postImages/$newDirectory/$fileName1" //where to upload new post photo
+            image1URL = "postImages/$state/$city/$postCount/$fileName1" //where to upload new post photo
             imageURLS += (image1URL)
         }
         //TEST NULL HERE
         if (testImg2.getDrawable() != null) {
-            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName2")
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$state/$city/$postCount/$fileName2")
             storageReference.putFile(testImg2Uri)//for other images
-            image2URL = "postImages/$newDirectory/$fileName2" //where to upload new post photo
+            image2URL = "postImages/$state/$city/$postCount/$fileName2" //where to upload new post photo
             imageURLS += (image2URL)
         }
         if (testImg3.getDrawable() != null) {
-            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$newDirectory/$fileName3")
+            val storageReference = FirebaseStorage.getInstance().getReference("postImages/$state/$city/$postCount/$fileName3")
             storageReference.putFile(testImg3Uri)//for other image
-            image3URL = "postImages/$newDirectory/$fileName3" //where to upload new post photo
+            image3URL = "postImages/$state/$city/$postCount/$fileName3" //where to upload new post photo
             imageURLS += (image3URL)
         }
 
         return imageURLS
     }
-    fun submitPost(view: View){
+    fun submitPost(view: View) {
 
         //Tasks
         //Instances
-        db= FirebaseFirestore.getInstance()
-        auth= FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
         //get Image url
 
 
         //get title, description, category
         var title: EditText = findViewById(R.id.postTitle) //get title
-        var titleString :String = title.text.toString()
+        var titleString: String = title.text.toString()
         //get description
-        var desc : EditText = findViewById(R.id.textDescriptionBox)
-        var descString : String = desc.text.toString()//get desc
+        var desc: EditText = findViewById(R.id.textDescriptionBox)
+        var descString: String = desc.text.toString()//get desc
 
-        var categoryString : String = "plants"
+        var categoryString: String = "plants"
 
         //FOR RYAN
         val latitude = 0.0
         val longitude = 0.0
 
-        var location: List<Double> = listOf(latitude,longitude)
+        var location: List<Double> = listOf(latitude, longitude)
         //var finalLocation = {location: new Firebase.Firestore.GeoPoint(latitude,longitude)}
 
         //AFTER GETTING GEOPOINT YOU PLACE IT HERE TO CONVERT TO A CITY
 
         val city = "Long Beach"
         val state = "CA"
-       //End of location stuff
+        //End of location stuff
 
         //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
-        var postCount = 0
-        var postCountRef = db.collection("Items").document("{$state}").collection("{$city}").document("postCount")
-            postCountRef.get().addOnSuccessListener {
-            document -> if (document != null){
-                postCount = document.data?.getValue("count") as Int //casted Any? to Int. This is postCount for a city
+        var postCount: Long = 0
+        var postCountRef =
+            db.collection("Items").document(state).collection(city).document("postCount")
+        postCountRef.get().addOnSuccessListener { document ->
+            if (document != null) {
+                postCount =
+                    document.data?.getValue("count") as Long //casted Any? to Int. This is postCount for a city
+                //
+                Log.d(TAG, "Post number retrieved: $postCount")
+                postCount += 1 //update locally
+                Log.d(TAG, "Post count updated Locally: #$postCount")
+                //update now
+                postCountRef.update("count", postCount).addOnSuccessListener {
+                    Log.d(
+                        TAG,
+                        "postCount successfully updated! : $postCount"
+                    )
+                }
+                    .addOnFailureListener { e ->
+                        Log.w(
+                            TAG,
+                            "Error updating postCount",
+                            e
+                        )
+                    }//update to databas
             }
-        }.addOnFailureListener{
-                exception ->
+
+            val postCountString = postCount.toString()
+            Log.d(TAG, "Post String: $postCountString")
+            //postCount.toInt()
+            // upload Image and get URL it returns
+            //check if image previews 1,2,3 are null or not
+            var imageURLS: List<String> = uploadImage(state, city, postCount)
+            //val rating = 5 //ITS FREE ITEM NO RATING give rating
+            //get UserID, and that is a reference to a database location
+            val user = auth.currentUser
+            //val docRef = db.collection("Users").document(user?.uid.toString())
+            val userString = user?.uid.toString()//gets user
+
+            //Post Date
+            val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+            val now = Date()
+            val postDate = formatter.format(now)
+
+            val postInfo = hashMapOf(
+                "title" to titleString,
+                "description" to descString,
+                "category" to categoryString,
+                "location" to location,
+                "imageURLS" to imageURLS,
+                "owner" to userString,
+                "postDate" to postDate
+            )
+
+            //Going to posts database
+            db.collection("Items").document(state).collection(city).document(postCountString)
+                .set(postInfo).addOnSuccessListener {
+                Log.d(
+                    TAG,
+                    "Post succesfully submitted, post: $postCountString"
+                )
+            }.addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
+
+        }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
         }
-
-        val postCountString = postCount.toString()
-        postCount += 1 //update locally
-        postCountRef.update("postCount", postCount).addOnSuccessListener { Log.d(TAG, "postCount successfully updated!") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error updating postCount", e) }//update to database
-
-        // upload Image and get URL it returns
-        //check if image previews 1,2,3 are null or not
-        var imageURLS: List<String> = uploadImage(state,city,postCount)
-        //val rating = 5 //ITS FREE ITEM NO RATING give rating
-        //get UserID, and that is a reference to a database location
-        val user = auth.currentUser
-        //val docRef = db.collection("Users").document(user?.uid.toString())
-        val userString = user?.uid.toString()//gets user
-
-
-        //Post Date
-        val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
-        val now = Date()
-        val postDate = formatter.format(now)
-
-
-
-        val postInfo = hashMapOf(
-            "title" to titleString,
-            "description" to descString,
-            "category"  to categoryString,
-            "location" to location,
-            "imageURLS" to imageURLS,
-            "owner"      to userString,
-            "postDate"   to postDate
-        )
-
-        //Going to posts database
-        db.collection("Items").document("$state").collection("$city").document(postCountString).set(postInfo).addOnSuccessListener { Log.d(TAG, "Post succesfully submitted") }.addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
     }
 }
