@@ -24,6 +24,7 @@
        <TableLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:id="@+id/tableLayout"
            android:padding="10dp">
            <TableRow
                android:layout_marginTop="10dp">
@@ -50,72 +51,6 @@
                    android:layout_marginLeft="15dp"
                    />
 
-           </TableRow>
-
-
-           <TableRow
-               android:layout_marginTop="10dp">
-               <ImageView
-                   android:id="@+id/postView4"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView5"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView6"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-           </TableRow>
-
-           <TableRow
-               android:layout_marginTop="10dp">
-               <ImageView
-                   android:id="@+id/postView7"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView8"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView9"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-           </TableRow>
-           <TableRow
-               android:layout_marginTop="10dp">
-               <ImageView
-                   android:id="@+id/postView10"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView11"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView12"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
            </TableRow>
 
        </TableLayout>
@@ -290,3 +225,70 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+<!--<TableRow-->
+<!--android:layout_marginTop="10dp">-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView4"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView5"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView6"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--</TableRow>-->
+
+<!--<TableRow-->
+<!--android:layout_marginTop="10dp">-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView7"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView8"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView9"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--</TableRow>-->
+<!--<TableRow-->
+<!--android:layout_marginTop="10dp">-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView10"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView11"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView12"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--</TableRow>-->
