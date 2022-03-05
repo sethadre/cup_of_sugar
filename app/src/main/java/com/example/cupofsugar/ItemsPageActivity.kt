@@ -34,9 +34,8 @@ class ItemsPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-      //Front End for Grid
+        //Front End for Grid
         //gridView = findViewById()
-
 
 
         //Start of Back End Stuff
@@ -61,8 +60,8 @@ class ItemsPageActivity : AppCompatActivity() {
         //this pulls the email from the database
 
         //Firebase declare
-        db= FirebaseFirestore.getInstance()
-        auth= FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
         val docRef = db.collection("Users").document(user?.uid.toString())
         docRef.get().addOnSuccessListener { document ->
@@ -87,16 +86,29 @@ class ItemsPageActivity : AppCompatActivity() {
         //ITEM POST DATA
         //ITEM POST DATA
         //put this in a loop
-        val itemRef = db.collection("Items").document("Long Beach").collection("2").document("2")
 
-        val string1 = itemRef.toString()
-        val string2 = docRef.toString()
-       // val photoRef = db.collection("Items").document(itemRef.toString()).collection("postImages/post#2022_02_23_17_28_37/2022_02_23_17_28_37")
-        Log.d("message 1","*********this is a message***********************")
-        Log.i("msg2",string1)
-        Log.i("msg2",string2)
+        //LOOP
+        //Grab folder refs
+        val userState = "CA" //user.getState()
+        val userCity = "Long Beach" //user.getState()
 
-        itemRef.get().addOnSuccessListener { document ->
+        val cityRef = db.collection("Items").document(userState).collection(userCity)
+        val testPostRef = cityRef.document("0")
+
+        cityRef.get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                Log.d("ATTEMPTING TO RETURN ALL 'DOCS'","ATTEMPTING TO GET ALL DOCS")
+                Log.d(TAG, "${document.id} => ${document.data}")
+            }
+        }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error Getting Docs: ", exception)
+            }
+
+
+
+
+        testPostRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}\n\n") //this gets the data
 //                result.append(document.data?.getValue("email")).append(" ")
@@ -108,17 +120,49 @@ class ItemsPageActivity : AppCompatActivity() {
                 val postPath1   = storage.reference.child(url0)
 
                 postPath1.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-                val bitmap1 = BitmapFactory.decodeByteArray(it,0,it.size)
-                findViewById<ImageView>(R.id.postView1).setImageBitmap(bitmap1)
+                    val bitmap1 = BitmapFactory.decodeByteArray(it,0,it.size)
+                    findViewById<ImageView>(R.id.postView1).setImageBitmap(bitmap1)
                 }
 
             } else {
                 Log.d(TAG, "No such document")
-            }
-        }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
+            } }
+
+
+
+
+        val itemRef = db.collection("Items").document("Long Beach").collection("2").document("2")
+
+        val string1 = itemRef.toString()
+        val string2 = docRef.toString()
+       // val photoRef = db.collection("Items").document(itemRef.toString()).collection("postImages/post#2022_02_23_17_28_37/2022_02_23_17_28_37")
+        Log.d("message 1","*********this is a message***********************")
+        Log.i("msg2",string1)
+        Log.i("msg2",string2)
+
+//        itemRef.get().addOnSuccessListener { document ->
+//            if (document != null) {
+//                Log.d(TAG, "DocumentSnapshot data: ${document.data}\n\n") //this gets the data
+////                result.append(document.data?.getValue("email")).append(" ")
+//                val imgURLResult: StringBuffer = StringBuffer()
+//
+//                val url0 = (document.data?.get("imageURLS") as List<String>)[0]
+//                testTextView.setText(url0)
+//
+//                val postPath1   = storage.reference.child(url0)
+//
+//                postPath1.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+//                val bitmap1 = BitmapFactory.decodeByteArray(it,0,it.size)
+//                findViewById<ImageView>(R.id.postView1).setImageBitmap(bitmap1)
+//                }
+//
+//            } else {
+//                Log.d(TAG, "No such document")
+//            }
+//        }
+//            .addOnFailureListener { exception ->
+//                Log.d(TAG, "get failed with ", exception)
+//            }
         // end of firebase stuff
 
         setContentView(R.layout.items_homepage) //moved this line lower
