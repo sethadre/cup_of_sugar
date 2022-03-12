@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="43dp"
+        android:layout_height="56dp"
+        app:srcCompat="@drawable/icon_button_user"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="146dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name_of_user"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="146dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="preview_of_recent_msg"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="175dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="date"
+        tools:layout_editor_absoluteX="533dp"
+        tools:layout_editor_absoluteY="149dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="522dp"
+        android:layout_height="34dp"
+        android:background="@drawable/bordered_round_button"
+        android:ems="10"
+        android:hint="     Search"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="175dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="@color/green"
+        app:srcCompat="@drawable/icon_button_chat"
+        tools:layout_editor_absoluteX="505dp"
+        tools:layout_editor_absoluteY="840dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

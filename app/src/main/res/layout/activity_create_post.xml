@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_grey"
-    android:backgroundTint="@color/background_grey"
-    tools:context=".CreatePostActivity" >
+    tools:context=".CreatePostActivity">
 
     <RelativeLayout
         android:id="@+id/linearLayout_title_cancelButton"
@@ -18,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView_newPost_label"
@@ -49,6 +48,7 @@
             android:layout_marginEnd="15dp"
             android:backgroundTint="@color/white"
             android:clickable="true"
+            app:backgroundTint="@color/white"
             app:srcCompat="@android:drawable/ic_menu_mylocation" />
     </RelativeLayout>
 
@@ -112,11 +112,10 @@
         android:layout_width="fill_parent"
         android:layout_height="175dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_filters"
         app:layout_constraintBottom_toTopOf="@id/linearLayout_photoButtons"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_filters">
 
         <ImageView
             android:id="@+id/previewImg1"
@@ -148,7 +147,9 @@
             android:layout_alignParentBottom="true"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/button_removePhoto2"
+            android:backgroundTint="@color/light_grey"
             android:clickable="true"
+            app:backgroundTint="@color/light_grey"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -159,7 +160,9 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="65dp"
             android:layout_marginRight="65dp"
+            android:backgroundTint="@color/light_grey"
             android:clickable="true"
+            app:backgroundTint="@color/light_grey"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -168,11 +171,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@id/button_removePhoto2"
+            android:backgroundTint="@color/light_grey"
             android:clickable="true"
+            app:backgroundTint="@color/light_grey"
             app:srcCompat="@android:drawable/ic_menu_delete" />
     </RelativeLayout>
-
-
 
 
     <LinearLayout
@@ -184,8 +187,8 @@
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/submitBtn"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_previewPhotos">
 
         <Button
@@ -213,15 +216,14 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginBottom="40dp"
-        android:text="SUBMIT"
-        android:onClick="submitPost"
         android:backgroundTint="@color/green"
+        android:onClick="submitPost"
+        android:text="SUBMIT"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_photoButtons" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
