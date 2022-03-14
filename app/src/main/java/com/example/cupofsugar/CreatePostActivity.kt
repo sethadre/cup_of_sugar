@@ -12,8 +12,6 @@ import android.view.View
 import android.widget.*
 import android.net.Uri
 import android.util.Log
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,6 +30,8 @@ import android.location.LocationManager
 import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.*
+import java.util.concurrent.TimeUnit
 
 
 class CreatePostActivity : AppCompatActivity() {
@@ -39,11 +39,9 @@ class CreatePostActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
     //val storage = Firebase.storage
-
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-
-
-
+    //private lateinit var currentLocation: Location
+    private val permissionCode =101 //for location permission
 
     //private val GALLERY_REQUEST_CODE = 100
     private lateinit var imageUri : Uri //uri for uploading to firebase
@@ -60,14 +58,15 @@ class CreatePostActivity : AppCompatActivity() {
 
     companion object{
         const val TAG = "CreatePostActivity"
-        private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
+        //private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
+    private const val permissionCode=100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
 
-        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
 
         testImg1 = findViewById(R.id.previewImg1) //For use below for when photo is uploaded to preview here
         testImg2 = findViewById(R.id.previewImg2)
@@ -85,6 +84,7 @@ class CreatePostActivity : AppCompatActivity() {
         buttonUploadPhoto.setOnClickListener{
             openGallery()
         }
+
 
         //FOR DELETE IMAGE PREVIEW
         //USE THIS LINE FOR EACH PREVIEW AND CHANGE COMMENT THE ONE BELOW
@@ -115,8 +115,50 @@ class CreatePostActivity : AppCompatActivity() {
         buttonTakePhoto.setOnClickListener{
             //placeholder code to ask for camera privileges
         }
+        val getLocationButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.locationButton)
+        getLocationButton.setOnClickListener{
+            //isLocationPermissionGranted()
+            getLocation()
+        }
+    }
+
+    private fun getLocation(){
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+            PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, android.Manifest.permission.ACCESS_COARSE_LOCATION
+            ) !=
+            PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), permissionCode)
+            return
+        }
+        val task = fusedLocationProviderClient.lastLocation
+        task.addOnSuccessListener { location ->
+            if (location != null){
+                currentLocation = location
+                Log.d(TAG, currentLocation!!.latitude.toString() + "" + currentLocation!!.longitude.toString())
+            }
+        }
 
     }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode) {
+            permissionCode -> if (grantResults.isEmpty() && grantResults[0] ==
+                PackageManager.PERMISSION_GRANTED
+            ) {
+                getLocation()
+            }
+            }
+        }
      private fun openGallery() { //this function opens gallery and the photo you pick is displayed
 
          //upload count variable is global to actvity until activity canceled
@@ -136,45 +178,30 @@ class CreatePostActivity : AppCompatActivity() {
             uploadCount = 1
         }
     }
-
-    private fun checkPermissions():Boolean{
-        if(ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED ||
-                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
-        {
-          return true
-        }
-        return false
-    }
-    private fun getLocation(){
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-                //Permissions
-                val locationPermissionRequest = registerForActivityResult(
-                    ActivityResultContracts.RequestMultiplePermissions()
-                ){
-                    permissions -> when{
-                        permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) ->{
-                            //Precise Location access granted
-
-                        }
-                    permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION,false) -> {
-                            //Only Approx granted
-                    
-                    }else ->{
-                            //no location access granted
-                        }
-                    }
-                }
-        locationPermissionRequest.launch(arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION))
-//        //get the location
-//        fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ task ->
-//            val location: Location? = task.result
-//            if(location == null){ Toast.makeText(this,"Null Recieved", Toast.LENGTH_SHORT).show() }
-//            else{ Toast.makeText(this,"Get Success", Toast.LENGTH_SHORT).show() }
+//    private fun isLocationPermissionGranted(): Boolean {
+//        return if (ActivityCompat.checkSelfPermission(
+//                this,
+//                android.Manifest.permission.ACCESS_COARSE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+//                this,
+//                android.Manifest.permission.ACCESS_FINE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(
+//                    android.Manifest.permission.ACCESS_FINE_LOCATION,
+//                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+//                ),
+//                requestcode
+//            )
+//            false
+//        } else {
+//            true
 //        }
-    }
+//    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
