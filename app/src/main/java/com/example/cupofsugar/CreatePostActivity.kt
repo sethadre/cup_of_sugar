@@ -31,7 +31,6 @@ import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
-import java.util.concurrent.TimeUnit
 
 
 class CreatePostActivity : AppCompatActivity() {
@@ -40,7 +39,7 @@ class CreatePostActivity : AppCompatActivity() {
     private  lateinit var db: FirebaseFirestore
     //val storage = Firebase.storage
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    //private lateinit var currentLocation: Location
+    private lateinit var currentLocation: Location
     private val permissionCode =101 //for location permission
 
     //private val GALLERY_REQUEST_CODE = 100
@@ -54,8 +53,9 @@ class CreatePostActivity : AppCompatActivity() {
     //url for new post image might need to change to String Array for multiple images
     private var uploadCount = 1 //used in openGallery and activity result
     //private var postCount = 0//database post count according to city
-
-
+    private var lat: Double = 0.0
+    private var long: Double = 0.0
+    private var locationList: MutableList<Double> = mutableListOf(lat,long)
     companion object{
         const val TAG = "CreatePostActivity"
         //private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
@@ -139,7 +139,11 @@ class CreatePostActivity : AppCompatActivity() {
         task.addOnSuccessListener { location ->
             if (location != null){
                 currentLocation = location
-                Log.d(TAG, currentLocation!!.latitude.toString() + "" + currentLocation!!.longitude.toString())
+                lat = currentLocation!!.latitude
+                long = currentLocation!!.longitude
+                locationList.set(0, lat)
+                locationList.set(1,long)
+                Log.d(TAG, lat.toString() + "" + long.toString())
             }
         }
 
@@ -296,10 +300,7 @@ class CreatePostActivity : AppCompatActivity() {
         var categoryString: String = "plants"
 
         //FOR RYAN
-        val latitude = 0.0
-        val longitude = 0.0
 
-        var location: List<Double> = listOf(latitude, longitude)
         //var finalLocation = {location: new Firebase.Firestore.GeoPoint(latitude,longitude)}
 
         //AFTER GETTING GEOPOINT YOU PLACE IT HERE TO CONVERT TO A CITY
@@ -357,7 +358,7 @@ class CreatePostActivity : AppCompatActivity() {
                 "title" to titleString,
                 "description" to descString,
                 "category" to categoryString,
-                "location" to location,
+                "location" to locationList,
                 "imageURLS" to imageURLS,
                 "owner" to userString,
                 "postDate" to postDate
