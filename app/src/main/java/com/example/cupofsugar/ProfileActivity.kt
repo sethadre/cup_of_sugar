@@ -4,23 +4,54 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
 class ProfileActivity : AppCompatActivity() {
+
+    private lateinit var db: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth//to get current user
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
         //Start of Back End Stuff
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        val userString = user?.uid.toString()
+        db = FirebaseFirestore.getInstance()
         val storage = Firebase.storage
         // Create a reference with an initial file path and name
         val imagePathReference = storage.reference.child("ProfilePictures/defaultProfilePic.jpg") //change to user's ProfileImageURL, its in their account
         //This is how we download to memory and not as local file
         val ONE_MEGABYTE: Long = 1024 * 1024
+
+        //Here we get the Owner of the Post and receive it here to pass to the profile of that person.
+        val ownerIDPass = intent.getStringExtra("ownerIDKey")
+        val ownerRef = db.collection("Users").document(ownerIDPass.toString())
+        ownerRef.get().addOnSuccessListener { document ->
+
+            if (document != null) {
+                Log.d("TAG", "DocumentSnapshot data: ${document.data}")
+                val userName: StringBuffer = StringBuffer()
+                userName.append(document.data?.getValue("name"))
+                val ownerTextView: TextView = findViewById(R.id.ownerText)
+                ownerTextView.text = "Owner: $userName"
+            } else {
+                Log.d("TAG", "No such document")
+            }
+        }
+            .addOnFailureListener { exception ->
+                Log.d("TAG", "get failed with ", exception)
+            }
         // WE LOAD AN IMAGE IN IMAGEVIEW HERE
         imagePathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener {
             // Data for "images/kirby.jpg" is returned, use this as needed
@@ -79,6 +110,12 @@ class ProfileActivity : AppCompatActivity() {
             Toast.makeText(this,"Image clicked, the cake is a lie",Toast.LENGTH_SHORT).show()
         }
 
+        val messageActionButton =
+            findViewById<android.widget.Button>(R.id.button3)
+            messageActionButton.setOnClickListener{
+                //user String and Owner user
+                //You will load conversation Page Activity here
+            }
 
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)

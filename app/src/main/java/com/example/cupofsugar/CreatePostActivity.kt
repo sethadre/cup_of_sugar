@@ -6,14 +6,13 @@ import android.content.ContentProviderClient
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import android.net.Uri
 import android.util.Log
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,9 +28,11 @@ import java.util.*
 
 import android.location.Location
 import android.location.LocationManager
+import android.os.Handler
 import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.*
 
 
 class CreatePostActivity : AppCompatActivity() {
@@ -39,11 +40,9 @@ class CreatePostActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
     //val storage = Firebase.storage
-
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-
-
-
+    private lateinit var currentLocation: Location
+    private val permissionCode =101 //for location permission
 
     //private val GALLERY_REQUEST_CODE = 100
     private lateinit var imageUri : Uri //uri for uploading to firebase
@@ -56,18 +55,21 @@ class CreatePostActivity : AppCompatActivity() {
     //url for new post image might need to change to String Array for multiple images
     private var uploadCount = 1 //used in openGallery and activity result
     //private var postCount = 0//database post count according to city
-
-
+    private var lat: Double = 0.0
+    private var long: Double = 0.0
+    private var locationList: MutableList<Double> = mutableListOf(lat,long)
+    private lateinit var addressString :Array<String>
     companion object{
         const val TAG = "CreatePostActivity"
-        private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
+        //private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
+    private const val permissionCode=100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
 
-        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
 
         testImg1 = findViewById(R.id.previewImg1) //For use below for when photo is uploaded to preview here
         testImg2 = findViewById(R.id.previewImg2)
@@ -85,6 +87,7 @@ class CreatePostActivity : AppCompatActivity() {
         buttonUploadPhoto.setOnClickListener{
             openGallery()
         }
+
 
         //FOR DELETE IMAGE PREVIEW
         //USE THIS LINE FOR EACH PREVIEW AND CHANGE COMMENT THE ONE BELOW
@@ -115,7 +118,67 @@ class CreatePostActivity : AppCompatActivity() {
         buttonTakePhoto.setOnClickListener{
             //placeholder code to ask for camera privileges
         }
+        val getLocationButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.locationButton)
+        getLocationButton.setOnClickListener{
+            //isLocationPermissionGranted()
+            getLocation()
+            Handler().postDelayed(Runnable {
+                //after 3s
+                addressString = getAddress(locationList.get(0),locationList.get(1))
+            }, 5000)
 
+        }
+    }
+
+    private fun getLocation(){
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+            PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, android.Manifest.permission.ACCESS_COARSE_LOCATION
+            ) !=
+            PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), permissionCode)
+            return
+        }
+        val task = fusedLocationProviderClient.lastLocation
+        task.addOnSuccessListener { location ->
+            if (location != null){
+                currentLocation = location
+                lat = currentLocation!!.latitude
+                long = currentLocation!!.longitude
+                locationList.set(0, lat)
+                locationList.set(1,long)
+                Log.d(TAG, lat.toString() + "" + long.toString())
+            }
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode) {
+            permissionCode -> if (grantResults.isEmpty() && grantResults[0] ==
+                PackageManager.PERMISSION_GRANTED
+            ) {
+                getLocation()
+            }
+            }
+        }
+    private fun getAddress(lat: Double, lng: Double): Array<String> {
+        val geocoder = Geocoder(this)
+        val list = geocoder.getFromLocation(lat, lng, 1)
+        Log.d(TAG,list[0].getAddressLine(0))
+        //We get a ful address starting from address, city, state, zip code, country
+        //Now we must split this string to just city and state
+        val stringArray= list[0].getAddressLine(0).split(",").toTypedArray()
+        return stringArray
     }
      private fun openGallery() { //this function opens gallery and the photo you pick is displayed
 
@@ -136,45 +199,30 @@ class CreatePostActivity : AppCompatActivity() {
             uploadCount = 1
         }
     }
-
-    private fun checkPermissions():Boolean{
-        if(ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED ||
-                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
-        {
-          return true
-        }
-        return false
-    }
-    private fun getLocation(){
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-                //Permissions
-                val locationPermissionRequest = registerForActivityResult(
-                    ActivityResultContracts.RequestMultiplePermissions()
-                ){
-                    permissions -> when{
-                        permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) ->{
-                            //Precise Location access granted
-
-                        }
-                    permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION,false) -> {
-                            //Only Approx granted
-                    
-                    }else ->{
-                            //no location access granted
-                        }
-                    }
-                }
-        locationPermissionRequest.launch(arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION))
-//        //get the location
-//        fusedLocationProviderClient.lastLocation.addOnCompleteListener(this){ task ->
-//            val location: Location? = task.result
-//            if(location == null){ Toast.makeText(this,"Null Recieved", Toast.LENGTH_SHORT).show() }
-//            else{ Toast.makeText(this,"Get Success", Toast.LENGTH_SHORT).show() }
+//    private fun isLocationPermissionGranted(): Boolean {
+//        return if (ActivityCompat.checkSelfPermission(
+//                this,
+//                android.Manifest.permission.ACCESS_COARSE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+//                this,
+//                android.Manifest.permission.ACCESS_FINE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(
+//                    android.Manifest.permission.ACCESS_FINE_LOCATION,
+//                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+//                ),
+//                requestcode
+//            )
+//            false
+//        } else {
+//            true
 //        }
-    }
+//    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -269,16 +317,14 @@ class CreatePostActivity : AppCompatActivity() {
         var categoryString: String = "plants"
 
         //FOR RYAN
-        val latitude = 0.0
-        val longitude = 0.0
 
-        var location: List<Double> = listOf(latitude, longitude)
         //var finalLocation = {location: new Firebase.Firestore.GeoPoint(latitude,longitude)}
 
         //AFTER GETTING GEOPOINT YOU PLACE IT HERE TO CONVERT TO A CITY
+        //getAddress(locationList.get(0),locationList.get(1))
 
-        val city = "Long Beach"
-        val state = "CA"
+        val city = addressString[1] //City
+        val state = addressString[2] //State
         //End of location stuff
 
         //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
@@ -330,7 +376,7 @@ class CreatePostActivity : AppCompatActivity() {
                 "title" to titleString,
                 "description" to descString,
                 "category" to categoryString,
-                "location" to location,
+                "location" to locationList,
                 "imageURLS" to imageURLS,
                 "owner" to userString,
                 "postDate" to postDate
