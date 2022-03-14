@@ -6,6 +6,7 @@ import android.content.ContentProviderClient
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -27,6 +28,7 @@ import java.util.*
 
 import android.location.Location
 import android.location.LocationManager
+import android.os.Handler
 import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -56,6 +58,7 @@ class CreatePostActivity : AppCompatActivity() {
     private var lat: Double = 0.0
     private var long: Double = 0.0
     private var locationList: MutableList<Double> = mutableListOf(lat,long)
+    private lateinit var addressString :Array<String>
     companion object{
         const val TAG = "CreatePostActivity"
         //private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
@@ -120,6 +123,11 @@ class CreatePostActivity : AppCompatActivity() {
         getLocationButton.setOnClickListener{
             //isLocationPermissionGranted()
             getLocation()
+            Handler().postDelayed(Runnable {
+                //after 3s
+                addressString = getAddress(locationList.get(0),locationList.get(1))
+            }, 5000)
+
         }
     }
 
@@ -163,6 +171,15 @@ class CreatePostActivity : AppCompatActivity() {
             }
             }
         }
+    private fun getAddress(lat: Double, lng: Double): Array<String> {
+        val geocoder = Geocoder(this)
+        val list = geocoder.getFromLocation(lat, lng, 1)
+        Log.d(TAG,list[0].getAddressLine(0))
+        //We get a ful address starting from address, city, state, zip code, country
+        //Now we must split this string to just city and state
+        val stringArray= list[0].getAddressLine(0).split(",").toTypedArray()
+        return stringArray
+    }
      private fun openGallery() { //this function opens gallery and the photo you pick is displayed
 
          //upload count variable is global to actvity until activity canceled
@@ -304,9 +321,10 @@ class CreatePostActivity : AppCompatActivity() {
         //var finalLocation = {location: new Firebase.Firestore.GeoPoint(latitude,longitude)}
 
         //AFTER GETTING GEOPOINT YOU PLACE IT HERE TO CONVERT TO A CITY
+        //getAddress(locationList.get(0),locationList.get(1))
 
-        val city = "Long Beach"
-        val state = "CA"
+        val city = addressString[1] //City
+        val state = addressString[2] //State
         //End of location stuff
 
         //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
