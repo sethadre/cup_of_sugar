@@ -11,9 +11,7 @@ import androidx.fragment.app.FragmentManager
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_support.*
 import android.widget.AutoCompleteTextView
-
-
-
+import kotlinx.android.synthetic.main.fragment_topic.*
 
 
 class SupportActivity : AppCompatActivity() {
@@ -28,10 +26,11 @@ class SupportActivity : AppCompatActivity() {
 
         val submitButton = findViewById<Button>(R.id.submitButton)
         submitButton.setOnClickListener {
+            val s: String = autoCompleteTextView.text.toString()
             val i = Intent(Intent.ACTION_SEND)
             i.type = "message/rfc822"
             i.putExtra(Intent.EXTRA_EMAIL, arrayOf("cupofsugar.com@gmail.com"))
-            i.putExtra(Intent.EXTRA_SUBJECT, "Sample Title")
+            i.putExtra(Intent.EXTRA_SUBJECT, s)
             i.putExtra(Intent.EXTRA_TEXT, messageText.text.toString())
             try {
                 startActivity(Intent.createChooser(i, "Send mail..."))
