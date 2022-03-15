@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name_of_user"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="59dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="@color/green"
+        app:srcCompat="@drawable/icon_button_chat"
+        tools:layout_editor_absoluteX="505dp"
+        tools:layout_editor_absoluteY="840dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

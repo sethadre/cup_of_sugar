@@ -8,6 +8,8 @@
     android:background="#FFFFFF"
     android:backgroundTint="@color/background_grey">
 
+
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
@@ -18,101 +20,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2"
         app:layout_constraintVertical_bias="1.0">
-
+<!--        <GridView-->
+<!--            android:id="@+id/GridView"-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:numColumns="3"-->
+<!--            />-->
        <TableLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:id="@+id/tableLayout"
            android:padding="10dp">
            <TableRow
                android:layout_marginTop="10dp">
                <ImageView
                    android:id="@+id/postView1"
                    android:layout_height="150dp"
+                   android:maxWidth="150dp"
                    android:layout_weight="1"
+                   android:onClick="goToPost"
                    android:layout_marginLeft="15dp"
                    />
                <ImageView
                    android:id="@+id/postView2"
                    android:layout_height="150dp"
                    android:layout_weight="1"
+                   android:onClick="goToPost"
                    android:layout_marginLeft="15dp"
                    />
                <ImageView
                    android:id="@+id/postView3"
                    android:layout_height="150dp"
                    android:layout_weight="1"
+                   android:onClick="goToPost"
                    android:layout_marginLeft="15dp"
                    />
-           </TableRow>
 
-
-           <TableRow
-               android:layout_marginTop="10dp">
-               <ImageView
-                   android:id="@+id/postView4"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView5"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView6"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-           </TableRow>
-
-           <TableRow
-               android:layout_marginTop="10dp">
-               <ImageView
-                   android:id="@+id/postView7"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView8"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView9"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-           </TableRow>
-           <TableRow
-               android:layout_marginTop="10dp">
-               <ImageView
-                   android:id="@+id/postView10"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView11"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
-               <ImageView
-                   android:id="@+id/postView12"
-                   android:layout_height="150dp"
-                   android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   />
            </TableRow>
 
        </TableLayout>
     </ScrollView>
+
+
+    <!--END TOP TOOLBAR -->
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
@@ -124,13 +75,10 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
-
-
-    <!--END TOP TOOLBAR -->
-
 
     <TextView
         android:id="@+id/textView11"
@@ -187,6 +135,7 @@
         android:id="@+id/homeActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_green"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -213,24 +162,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="#FFFFFF"
+        app:backgroundTint="@color/teal_200"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="@+id/bottomAppBar"
         app:layout_constraintStart_toEndOf="@+id/helpActionButton"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_settings"
         tools:ignore="ContentDescription" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/createActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -272,12 +210,97 @@
         android:id="@+id/textViewResult"
         android:layout_width="336dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="44dp"
         android:text=""
         android:textSize="16sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/toolbar2"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/goToSearch"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="goSearch"
+        android:text="s"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.343" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+<!--<TableRow-->
+<!--android:layout_marginTop="10dp">-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView4"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView5"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView6"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--</TableRow>-->
+
+<!--<TableRow-->
+<!--android:layout_marginTop="10dp">-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView7"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView8"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView9"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--</TableRow>-->
+<!--<TableRow-->
+<!--android:layout_marginTop="10dp">-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView10"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView11"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--<ImageView-->
+<!--    android:id="@+id/postView12"-->
+<!--    android:layout_height="150dp"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_marginLeft="15dp"-->
+<!--    />-->
+<!--</TableRow>-->

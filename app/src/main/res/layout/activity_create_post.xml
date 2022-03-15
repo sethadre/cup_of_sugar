@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_grey"
-    android:backgroundTint="@color/background_grey"
-    tools:context=".CreatePostActivity" >
+    tools:context=".CreatePostActivity">
 
     <RelativeLayout
         android:id="@+id/linearLayout_title_cancelButton"
@@ -18,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView_newPost_label"
@@ -40,6 +39,17 @@
             app:backgroundTint="@color/green"
             app:elevation="0dp"
             app:srcCompat="@android:drawable/ic_delete" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/locationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            app:backgroundTint="@color/white"
+            app:srcCompat="@android:drawable/ic_menu_mylocation" />
     </RelativeLayout>
 
     <EditText
@@ -68,7 +78,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/edittext_bordered_background"
         android:ems="10"
         android:gravity="start|top"
@@ -87,7 +97,7 @@
         android:id="@+id/spinner_filters"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/spinner_color"
         android:dropDownVerticalOffset="24dp"
         android:entries="@array/filter_options"
@@ -97,89 +107,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textDescriptionBox" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout_previewPhotos"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="175dp"
         android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_filters"
         app:layout_constraintBottom_toTopOf="@id/linearLayout_photoButtons"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_filters">
 
         <ImageView
             android:id="@+id/previewImg1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginRight="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_toLeftOf="@id/previewImg2"
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
             android:id="@+id/previewImg2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
             android:id="@+id/previewImg3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_toRightOf="@id/previewImg2"
             tools:srcCompat="@tools:sample/avatars" />
 
-    </LinearLayout>
-<!--    <ImageView-->
-<!--        android:id="@+id/previewImg1"-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="130dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.213"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/spinner_filters"-->
-<!--        app:layout_constraintVertical_bias="1.0"-->
-<!--        tools:srcCompat="@tools:sample/avatars" />-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_removePhoto1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/button_removePhoto2"
+            android:backgroundTint="@color/light_grey"
+            android:clickable="true"
+            app:backgroundTint="@color/light_grey"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/previewImg2"-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="130dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.485"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/spinner_filters"-->
-<!--        app:layout_constraintVertical_bias="1.0"-->
-<!--        tools:srcCompat="@tools:sample/avatars" />-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_removePhoto2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="65dp"
+            android:backgroundTint="@color/light_grey"
+            android:clickable="true"
+            app:backgroundTint="@color/light_grey"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/previewImg3"-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="130dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/linearLayout_photoButtons"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.756"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/spinner_filters"-->
-<!--        app:layout_constraintVertical_bias="1.0"-->
-<!--        tools:srcCompat="@tools:sample/avatars" />-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_removePhoto3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/button_removePhoto2"
+            android:backgroundTint="@color/light_grey"
+            android:clickable="true"
+            app:backgroundTint="@color/light_grey"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+    </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/linearLayout_photoButtons"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/submitBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_previewPhotos">
 
         <Button
@@ -206,12 +215,15 @@
         android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:text="SUBMIT"
-        android:onClick="submitPost"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/green"
+        android:onClick="submitPost"
+        android:text="SUBMIT"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_photoButtons" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

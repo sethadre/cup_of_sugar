@@ -1,51 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gradient"
     android:background="#FFFFFF"
     android:backgroundTint="#474747">
 
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="258dp"
-            android:layout_height="77dp"
-            android:text="Location Of Item"
-            android:textColor="#039BE5"
-            android:textSize="30sp"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+    <!--search view to search our location-->
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/idSearchView"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:layout_above="@+id/map"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="#BFBFBF"
+        android:elevation="5dp"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search Here" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="378dp"
-        android:layout_height="663dp"
+        android:layout_width="match_parent"
+        android:layout_height="508dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goToPostLocationButton"
         app:layout_constraintVertical_bias="0.766"
         tools:context=".GoogleMapsActivity">
 
     </androidx.fragment.app.FragmentContainerView>
 
-    <Button
-        android:id="@+id/goToPostLocationButton"
-        android:layout_width="113dp"
-        android:layout_height="50dp"
-        android:onClick="goBackToPost"
-        android:text="Back"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="290dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
