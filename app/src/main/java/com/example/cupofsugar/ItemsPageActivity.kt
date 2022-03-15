@@ -378,6 +378,13 @@ class ItemsPageActivity : AppCompatActivity() {
         // already home
     }
 
+
+    fun goSearch(view: View) {
+        val intent = Intent(this, SearchBarActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 }
 
 // ****************************                                         ***************************

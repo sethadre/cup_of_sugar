@@ -14,10 +14,15 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.cupofsugar.databinding.ActivityMapsBinding
 import android.location.Geocoder
+import android.util.Log
+import androidx.annotation.NonNull
 import androidx.appcompat.widget.SearchView
 
 
 import androidx.fragment.app.FragmentActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_main_page.*
 import java.io.IOException
 
 
@@ -75,6 +80,10 @@ class GoogleMapsActivity : FragmentActivity(), OnMapReadyCallback {
     // creating a variable
     // for search view.
     private lateinit var searchView: SearchView
+
+    private lateinit var  auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+    private val TAG = "GoogleMapsActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,6 +147,24 @@ class GoogleMapsActivity : FragmentActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+//        db= FirebaseFirestore.getInstance()
+//        auth= FirebaseAuth.getInstance()
+//        val user = auth.currentUser
+//        val docRef = db.collection("Items").document(user?.uid.toString())
+//        docRef.get().addOnSuccessListener { document ->
+//            if (document != null) {
+//                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+//                //Outputting user
+//
+//                // on below line we are adding marker to that position.
+//                mMap.addMarker(MarkerOptions().position(latLng).title(location))
+//
+//                // below line is to animate camera to that position.
+//                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+//            } else {
+//                Log.d(TAG, "No such document")
+//            }
+//        }
     }
 //
 //    fun goBackToPost(view: View) {

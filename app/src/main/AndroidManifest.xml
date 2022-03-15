@@ -56,6 +56,11 @@
             android:exported="false"
             android:label="RegisterActivity" />
 
+        <activity
+            android:name=".SearchBarActivity"
+            android:exported="false"
+            android:label="SearchBarActivity" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
