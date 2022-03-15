@@ -32,6 +32,7 @@ import android.location.LocationManager
 import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import kotlinx.android.synthetic.main.activity_create_post.view.*
 
 
 class CreatePostActivity : AppCompatActivity() {
@@ -56,7 +57,6 @@ class CreatePostActivity : AppCompatActivity() {
     //url for new post image might need to change to String Array for multiple images
     private var uploadCount = 1 //used in openGallery and activity result
     //private var postCount = 0//database post count according to city
-
 
     companion object{
         const val TAG = "CreatePostActivity"
@@ -88,8 +88,13 @@ class CreatePostActivity : AppCompatActivity() {
 
         //FOR DELETE IMAGE PREVIEW
         //USE THIS LINE FOR EACH PREVIEW AND CHANGE COMMENT THE ONE BELOW
-        //If (delete_preview_photo is pressed)
-            //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
+        val removePhotoButton1 = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.button_removePhoto1)
+        removePhotoButton1.setOnClickListener{
+            //DO SOMETHING
+            //arrayIMG[0].remove()
+            //previewIMG1.setimage(null)
+
+        } //THIS WILL CLEAR PREVIEW AFTER UPLOAD
 
 
         // Filter dropdown menu
