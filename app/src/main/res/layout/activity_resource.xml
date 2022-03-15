@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hotlines"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResourceActivity">
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="413dp"
+        android:layout_height="82dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="1dp"
+        app:backgroundTint="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="BottomAppBar,MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profileActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
+        app:srcCompat="@drawable/icon_button_user" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/forumsActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profileActionButton"
+        app:srcCompat="@drawable/icon_button_chat" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/homeActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/forumsActionButton"
+        app:srcCompat="@drawable/icon_button_home" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/helpActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homeActionButton"
+        app:srcCompat="@drawable/icon_button_help" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/settingsActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/helpActionButton"
+        app:srcCompat="@drawable/icon_button_settings" />
+
+    <TextView
+        android:id="@+id/resourceDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:padding="20sp"
+        android:text="On this page, we have culminated a selection of
+sites that could prove to be useful resources for our users. We hope
+that if you require more aid than our application provides you, that these
+sites and organizations can assist you with your needs."
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/hotlineLink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hotlineLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15sp"
+        android:text="@string/hotlines"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resourceDescription" />
+
+    <TextView
+        android:id="@+id/governmentLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15sp"
+        android:text="@string/government"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotlineLink" />
+
+    <TextView
+        android:id="@+id/foodLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15sp"
+        android:text="@string/pantries"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/governmentLink" />
+
+    <TextView
+        android:id="@+id/thriftLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15sp"
+        android:text="@string/thrift"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodLink" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
