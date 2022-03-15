@@ -143,7 +143,7 @@ class CreatePostActivity : AppCompatActivity() {
             Handler().postDelayed(Runnable {
                 //after 3s
                 addressString = getAddress(locationList.get(0),locationList.get(1))
-            }, 5000)
+            }, 10000)
 
         }
     }
