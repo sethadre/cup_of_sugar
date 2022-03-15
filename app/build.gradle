@@ -42,6 +42,9 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+
+    implementation 'com.android.billingclient:billing-ktx:4.1.0'
 
     // Import the BoM for the Firebase platform
     // same as below except 0.4

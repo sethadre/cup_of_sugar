@@ -12,8 +12,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33ad307d-4144-43c9-b3e2-4d7c529fab19" name="Default Changelist" comment="string">
+    <list default="true" id="33ad307d-4144-43c9-b3e2-4d7c529fab19" name="Default Changelist" comment="?">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cupofsugar/HelpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cupofsugar/HelpActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cupofsugar/SupportActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cupofsugar/SupportActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cupofsugar/hcosActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_hcos.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_help.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_support.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_support.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,9 +81,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="valueResourceFile" />
+        <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -85,6 +97,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="20TPqRq7vZEe2BO9O9xVahXLSHy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -93,6 +108,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
@@ -107,6 +123,12 @@
       <recent name="com.example.cupofsugar" />
     </key>
     <key name="android.template.-764084966">
+      <recent name="com.example.cupofsugar" />
+    </key>
+    <key name="android.template.-432209145">
+      <recent name="com.example.cupofsugar" />
+    </key>
+    <key name="android.template.-332576147">
       <recent name="com.example.cupofsugar" />
     </key>
   </component>
@@ -312,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644892592207</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="?">
+      <created>1645711013278</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1645711013278</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -335,6 +364,7 @@
     <MESSAGE value="support page complete except for topic transfer, hcos page created" />
     <MESSAGE value="idk" />
     <MESSAGE value="string" />
-    <option name="LAST_COMMIT_MESSAGE" value="string" />
+    <MESSAGE value="?" />
+    <option name="LAST_COMMIT_MESSAGE" value="?" />
   </component>
 </project>
