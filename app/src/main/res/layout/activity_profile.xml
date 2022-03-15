@@ -36,6 +36,7 @@
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
+                    android:id="@+id/ownerText"
                     android:layout_column="1"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="45dp"

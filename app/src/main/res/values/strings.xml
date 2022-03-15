@@ -9,16 +9,6 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="example_text">"This is a really long example text just to check if scroll view
-        works, I wonder how it will format this, if it takes the new line from the new line
-        I manually enter or it will add new lines as needed. Anyway I saw the movie
-        Little Miss Sunshine tonight before working on this. It was pretty good. Feel good,
-        but at the same time every character has their own tragedy and makes them kinda fucked
-        up but that's what gives characters character you know what I mean? In other news I'm
-        having a blast playing leagues III on runescape. Im gonna hate having to go back to my
-        main account and grind out hours just for a level, but it has also invigorated me
-        and given me goals for ym account. Uh oh there goes a double and in a sentence. My fiancee
-        would roast my writing if she saw that."</string>
 
     <string-array name ="filter_options">
         <item>Clothes</item>item>

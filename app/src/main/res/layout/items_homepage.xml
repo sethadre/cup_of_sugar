@@ -20,7 +20,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2"
         app:layout_constraintVertical_bias="1.0">
-
+<!--        <GridView-->
+<!--            android:id="@+id/GridView"-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:numColumns="3"-->
+<!--            />-->
        <TableLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -56,6 +61,10 @@
        </TableLayout>
     </ScrollView>
 
+
+    <!--END TOP TOOLBAR -->
+
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
@@ -66,13 +75,10 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
-
-
-    <!--END TOP TOOLBAR -->
-
 
     <TextView
         android:id="@+id/textView11"
@@ -204,24 +210,30 @@
         android:id="@+id/textViewResult"
         android:layout_width="336dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="44dp"
         android:text=""
         android:textSize="16sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/toolbar2"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/testTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@id/bottomAppBar"
-        tools:ignore="MissingConstraints"
-
-        tools:layout_editor_absoluteX="3dp" />
-
+    <Button
+        android:id="@+id/goToSearch"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="goSearch"
+        android:text="s"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.343" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

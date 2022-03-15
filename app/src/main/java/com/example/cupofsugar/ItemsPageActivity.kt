@@ -91,105 +91,169 @@ class ItemsPageActivity : AppCompatActivity() {
         val userCity = "Long Beach" //user.getState()
 
         val cityRef = db.collection("Items").document(userState).collection(userCity)
-        val testPostRef = cityRef.document("1")
-        Log.d("testPostRef",testPostRef.toString())
 
+        //Log.d("testPostRef",testPostRef.toString())
 
+        //val testPostRef = cityRef.document(document.id)
 
         cityRef.get().addOnSuccessListener { documents ->
             for (document in documents) {
-                Log.d("ATTEMPTING TO RETURN ALL 'DOCS'","ATTEMPTING TO GET ALL DOCS")
-                Log.d(TAG, "${document.id} => ${document.data}")
-                Log.d("Document Name",document.id)
-            }
-        }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error Getting Docs: ", exception)
-            }
+                val testPostRef = cityRef.document(document.id)
+                if(document.id != "postCount")
+                {
+                    Log.d("THIS DOC IS NOT POST COUNT","YEA NOT POST COUNT")
+                    Log.d("ATTEMPTING TO RETURN ALL 'DOCS'","ATTEMPTING TO GET ALL DOCS")
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                    Log.d("Document Name",document.id)
 
 
+                    testPostRef.get().addOnSuccessListener { document ->
+                        if (document != null) {
+                            Log.d(TAG, "DocumentSnapshot data: ${document.data}\n\n") //this gets the data
+                            val imgURLResult: StringBuffer = StringBuffer()
 
-        //HARD CODED ONE PIC
-        testPostRef.get().addOnSuccessListener { document ->
-            if (document != null) {
-                Log.d(TAG, "DocumentSnapshot data: ${document.data}\n\n") //this gets the data
-                val imgURLResult: StringBuffer = StringBuffer()
+                            val url0 = (document.data?.get("imageURLS") as List<String>)[0]
 
-                val url0 = (document.data?.get("imageURLS") as List<String>)[0]
-                testTextView.setText(url0)
 
-                val postPath1 = storage.reference.child(url0)
+                            val postPath1 = storage.reference.child(url0)
 
-                postPath1.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-                    val bitmap1 = BitmapFactory.decodeByteArray(it, 0, it.size)
-                    //findViewById<ImageView>(R.id.postView1).setImageBitmap(bitmap1)
-                    val imageView = ImageView(this)
-                    imageView.layoutParams = TableLayout.LayoutParams(400, 400)
-                    val layout = findViewById<TableLayout>(R.id.tableLayout)
-                    layout?.addView(imageView)
-                    imageView.setImageBitmap(bitmap1)
+                            postPath1.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+                                val bitmap1 = BitmapFactory.decodeByteArray(it, 0, it.size)
+                                val imageView = ImageView(this)
+                                imageView.layoutParams = TableLayout.LayoutParams(400, 400)
+                                val layout = findViewById<TableLayout>(R.id.tableLayout)
+                                layout?.addView(imageView)
+                                imageView.setImageBitmap(bitmap1)
 
-                    val category: StringBuffer = StringBuffer()
-                    category.append(document.data?.getValue("category")).append(" ")
-                    Log.d("category", category.toString())
-                    val description: StringBuffer = StringBuffer()
-                    description.append(document.data?.getValue("description")).append(" ")
-                    Log.d("description", description.toString())
-                    val image0 = (document.data?.get("imageURLS") as List<String>)[0]
-                    Log.d("1st Image URL: ", image0)
-                    val image1 = (document.data?.get("imageURLS") as List<String>)[1]
-                    Log.d("2nd Image URL: ", image1)
-                    val image2 = (document.data?.get("imageURLS") as List<String>)[2]
-                    Log.d("3rd Image URL: ", image2)
-                    val ownerID: StringBuffer = StringBuffer()
-                    ownerID.append(document.data?.getValue("owner"))
-                    Log.d("owner", ownerID.toString())
-                    val title: StringBuffer = StringBuffer()
-                    title.append(document.data?.getValue("title")).append(" ")
-                    Log.d("title",title.toString())
 
-                    imageView.setOnClickListener {
-                        val intent = Intent(this, ItemPostActivity::class.java)
-                        val titlePass = title.toString()
-                        intent.putExtra("titleKey",titlePass)
-                        intent.putExtra("img0Key", image0)
-                        intent.putExtra("img1Key", image1)
-                        intent.putExtra("img2Key", image2)
-                        val descriptionPass = description.toString()
-                        intent.putExtra("descriptionKey",descriptionPass)
-                        val ownerIDPass = ownerID.toString()
-                        intent.putExtra("ownerIDKey",ownerIDPass)
-                        val refToPost = testPostRef.toString()
-                        intent.putExtra("postRefKey",refToPost)
-                        intent.putExtra("stateKey",userState)
-                        intent.putExtra("cityKey",userCity)
-                        intent.putExtra("docIDKey",document.id)
-                        startActivity(intent)
-                        finish()
-                    }
+                                val category: StringBuffer = StringBuffer()
+                                category.append(document.data?.getValue("category")).append(" ")
+                                Log.d("category of doc", "${document.id}$category.toString()")
 
-//                    val postImagePathReference10 = storage.reference.child("postImages/post0/laptop.jpg")
-//                    postImagePathReference10.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-//                        val bitmap2 = BitmapFactory.decodeByteArray(it,0,it.size)
-//                        findViewById<ImageView>(R.id.imageView10).setImageBitmap(bitmap2)
-//                    }
+                                val description: StringBuffer = StringBuffer()
+                                description.append(document.data?.getValue("description"))
+                                    .append(" ")
+                                Log.d("description", description.toString())
+
+                                val ownerID: StringBuffer = StringBuffer()
+                                ownerID.append(document.data?.getValue("owner"))
+                                Log.d("owner", ownerID.toString())
+
+                                val title: StringBuffer = StringBuffer()
+                                title.append(document.data?.getValue("title")).append(" ")
+
+                                Log.d("title", title.toString())
+                                imageView.setOnClickListener {
+                                    val intent = Intent(this, ItemPostActivity::class.java)
+                                    val titlePass = title.toString()
+                                    intent.putExtra("titleKey", titlePass)
+                                    val descriptionPass = description.toString()
+                                    intent.putExtra("descriptionKey", descriptionPass)
+                                    val ownerIDPass = ownerID.toString()
+                                    intent.putExtra("ownerIDKey", ownerIDPass)
+                                    val refToPost = testPostRef.toString()
+                                    intent.putExtra("postRefKey", refToPost)
+                                    intent.putExtra("stateKey", userState)
+                                    intent.putExtra("cityKey", userCity)
+                                    intent.putExtra("docIDKey", document.id)
+                                    startActivity(intent)
+                                    finish()
+
+                                }
+                            }
+
+
+                        } else {
+                            Log.d(TAG, "No such document")
+                        } }.addOnFailureListener{ exception ->
+                        Log.w(TAG, "Error Getting Docs: ", exception) }
                 }
+                else{
+                    Log.d(TAG, "No such document")
+                }
+            }
+        }.addOnFailureListener{ exception ->
+                Log.w(TAG, "Error Getting Docs: ", exception) }
 
-            } else {
-                Log.d(TAG, "No such document")
-            } }
 
 
 
+//        //HARD CODED ONE PIC
+//        testPostRef.get().addOnSuccessListener { document ->
+//            if (document != null) {
+//                Log.d(TAG, "DocumentSnapshot data: ${document.data}\n\n") //this gets the data
+//                val imgURLResult: StringBuffer = StringBuffer()
+//
+//                val url0 = (document.data?.get("imageURLS") as List<String>)[0]
+//                testTextView.setText(url0)
+//
+//                val postPath1 = storage.reference.child(url0)
+//
+//                postPath1.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+//                    val bitmap1 = BitmapFactory.decodeByteArray(it, 0, it.size)
+//                    val imageView = ImageView(this)
+//                    imageView.layoutParams = TableLayout.LayoutParams(400, 400)
+//                    val layout = findViewById<TableLayout>(R.id.tableLayout)
+//                    layout?.addView(imageView)
+//                    imageView.setImageBitmap(bitmap1)
+//
+//                    val category: StringBuffer = StringBuffer()
+//                    category.append(document.data?.getValue("category")).append(" ")
+//                    Log.d("category", category.toString())
+//                    val description: StringBuffer = StringBuffer()
+//                    description.append(document.data?.getValue("description")).append(" ")
+//                    Log.d("description", description.toString())
+//                    val image0 = (document.data?.get("imageURLS") as List<String>)[0]
+//                    Log.d("1st Image URL: ", image0)
+//                    val image1 = (document.data?.get("imageURLS") as List<String>)[1]
+//                    Log.d("2nd Image URL: ", image1)
+//                    val image2 = (document.data?.get("imageURLS") as List<String>)[2]
+//                    Log.d("3rd Image URL: ", image2)
+//                    val ownerID: StringBuffer = StringBuffer()
+//                    ownerID.append(document.data?.getValue("owner"))
+//                    Log.d("owner", ownerID.toString())
+//                    val title: StringBuffer = StringBuffer()
+//                    title.append(document.data?.getValue("title")).append(" ")
+//                    Log.d("title",title.toString())
+//
+//                    imageView.setOnClickListener {
+//                        val intent = Intent(this, ItemPostActivity::class.java)
+//                        val titlePass = title.toString()
+//                        intent.putExtra("titleKey",titlePass)
+//                        intent.putExtra("img0Key", image0)
+//                        intent.putExtra("img1Key", image1)
+//                        intent.putExtra("img2Key", image2)
+//                        val descriptionPass = description.toString()
+//                        intent.putExtra("descriptionKey",descriptionPass)
+//                        val ownerIDPass = ownerID.toString()
+//                        intent.putExtra("ownerIDKey",ownerIDPass)
+//                        val refToPost = testPostRef.toString()
+//                        intent.putExtra("postRefKey",refToPost)
+//                        intent.putExtra("stateKey",userState)
+//                        intent.putExtra("cityKey",userCity)
+//                        intent.putExtra("docIDKey",document.id)
+//                        startActivity(intent)
+//                        finish()
+//                    }
+//
+//                }
+//
+//            } else {
+//                Log.d(TAG, "No such document")
+//            } }.addOnFailureListener{ exception ->
+//                    Log.w(TAG, "Error Getting Docs: ", exception) }
+//
 
-        val itemRef = db.collection("Items").document("Long Beach").collection("2").document("2")
 
-        val string1 = itemRef.toString()
-        val string2 = docRef.toString()
+
+//        val itemRef = db.collection("Items").document("Long Beach").collection("2").document("2")
+//
+//        val string1 = itemRef.toString()
+//        val string2 = docRef.toString()
        // val photoRef = db.collection("Items").document(itemRef.toString()).collection("postImages/post#2022_02_23_17_28_37/2022_02_23_17_28_37")
-        Log.d("message 1","*********this is a message***********************")
-        Log.i("msg2",string1)
-        Log.i("msg2",string2)
+//        Log.d("message 1","*********this is a message***********************")
+//        Log.i("msg2",string1)
+//        Log.i("msg2",string2)
 
 //        itemRef.get().addOnSuccessListener { document ->
 //            if (document != null) {
@@ -312,6 +376,13 @@ class ItemsPageActivity : AppCompatActivity() {
     }
     fun goToHome(view: View) {
         // already home
+    }
+
+
+    fun goSearch(view: View) {
+        val intent = Intent(this, SearchBarActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

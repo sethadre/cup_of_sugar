@@ -88,22 +88,22 @@ class ItemPostActivity : AppCompatActivity() {
                     val bitmap0 = BitmapFactory.decodeByteArray(it, 0, it.size)
                     findViewById<ImageView>(R.id.imageView0).setImageBitmap(bitmap0)
                 }
-                val url1 = (document.data?.get("imageURLS") as List<String>)[1]
-
-                val postPath1 = storage.reference.child(url1)
-
-                postPath1.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-                    val bitmap1 = BitmapFactory.decodeByteArray(it, 0, it.size)
-                    findViewById<ImageView>(R.id.imageView1).setImageBitmap(bitmap1)
-                }
-                val url2 = (document.data?.get("imageURLS") as List<String>)[2]
-
-                val postPath2 = storage.reference.child(url2)
-
-                postPath2.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-                    val bitmap2 = BitmapFactory.decodeByteArray(it, 0, it.size)
-                    findViewById<ImageView>(R.id.imageView2).setImageBitmap(bitmap2)
-                }
+//                val url1 = (document.data?.get("imageURLS") as List<String>)[1]
+//
+//                val postPath1 = storage.reference.child(url1)
+//
+//                postPath1.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+//                    val bitmap1 = BitmapFactory.decodeByteArray(it, 0, it.size)
+//                    findViewById<ImageView>(R.id.imageView1).setImageBitmap(bitmap1)
+//                }
+//                val url2 = (document.data?.get("imageURLS") as List<String>)[2]
+//
+//                val postPath2 = storage.reference.child(url2)
+//
+//                postPath2.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+//                    val bitmap2 = BitmapFactory.decodeByteArray(it, 0, it.size)
+//                    findViewById<ImageView>(R.id.imageView2).setImageBitmap(bitmap2)
+//                }
             } else {
                 Log.d("TAG", "No such document")
             } }
