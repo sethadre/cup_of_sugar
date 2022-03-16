@@ -24,17 +24,13 @@
             android:name=".ResourceActivity"
             android:exported="false" />
         <activity
-            android:name=".InterstitialAdActivity"
-            android:exported="false" />
-        <activity
-            android:name=".hcosActivity"
-            android:exported="false" />
-        <activity
             android:name=".CreatePostActivity"
             android:exported="false" />
         <activity
             android:name=".ItemPostActivity"
             android:exported="false" />
+        <activity android:name=".SearchResultsActivity"
+            android:exported="false"/>
         <activity
             android:name=".HelpActivity"
             android:exported="false" />
