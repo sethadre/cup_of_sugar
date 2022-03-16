@@ -89,10 +89,27 @@ class CreatePostActivity : AppCompatActivity() {
         }
 
 
-        //FOR DELETE IMAGE PREVIEW
-        //USE THIS LINE FOR EACH PREVIEW AND CHANGE COMMENT THE ONE BELOW
-        //If (delete_preview_photo is pressed)
-            //testImg1.setImageURI(null)//THIS WILL CLEAR PREVIEW AFTER UPLOAD
+        // Deletes the 3 image previews
+        val removePhotoButton1 =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.button_removePhoto1)
+        removePhotoButton1.setOnClickListener{
+            previewImg1.setImageDrawable(null)
+            Toast.makeText(this, "Image removed.", Toast.LENGTH_SHORT).show()
+        }
+
+        val removePhotoButton2 =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.button_removePhoto2)
+        removePhotoButton2.setOnClickListener{
+            previewImg2.setImageDrawable(null)
+            Toast.makeText(this, "Image removed.", Toast.LENGTH_SHORT).show()
+        }
+
+        val removePhotoButton3 =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.button_removePhoto3)
+        removePhotoButton3.setOnClickListener{
+            previewImg3.setImageDrawable(null)
+            Toast.makeText(this, "Image removed.", Toast.LENGTH_SHORT).show()
+        }
 
 
         // Filter dropdown menu
