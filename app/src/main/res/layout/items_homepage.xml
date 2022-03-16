@@ -25,12 +25,10 @@
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:layout_constraintEnd_toStartOf="@id/searchButton"
-            android:layout_constraintStart_toStartOf="searchBar"
             android:hint="Search"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            app:layout_constraintHorizontal_bias="3.0">
+            >
 
         </EditText>
 
@@ -38,8 +36,6 @@
             android:id="@+id/searchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_constraintStartTo_EndOf="@id/searchTextField"
-            android:layout_constraintEnd_toEndOf="searchBar"
             android:backgroundTint="@color/green"
             android:clickable="true"
             app:backgroundTint="@color/green"

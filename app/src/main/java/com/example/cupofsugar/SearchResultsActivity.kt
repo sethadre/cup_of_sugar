@@ -28,8 +28,8 @@ class SearchResultsActivity: AppCompatActivity() {
             finish()
         }
     }
-    private fun search(){
-        fun linearSearch(list:List<Any>, key:Any):Int?{
+    //SEARCH ALGORITHM GOES HERE
+        private fun linearSearch(list:List<Any>, key:Any):Int?{
             for ((index, value) in list.withIndex()) {
                 if (value == key){
                     return index
@@ -37,6 +37,7 @@ class SearchResultsActivity: AppCompatActivity() {
             }
             return null
         }
+
 //        fun main(args: Array<String>) {
 //            println("
 //                    Ordered list:")
