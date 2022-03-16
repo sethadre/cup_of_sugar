@@ -8,7 +8,43 @@
     android:background="#FFFFFF"
     android:backgroundTint="@color/background_grey">
 
+    <LinearLayout
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="3.0">
 
+        <EditText
+            android:id="@+id/searchTextField"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_constraintEnd_toStartOf="@id/searchButton"
+            android:layout_constraintStart_toStartOf="searchBar"
+            android:hint="Search"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintHorizontal_bias="3.0">
+
+        </EditText>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_constraintStartTo_EndOf="@id/searchTextField"
+            android:layout_constraintEnd_toEndOf="searchBar"
+            android:backgroundTint="@color/green"
+            android:clickable="true"
+            app:backgroundTint="@color/green"
+            app:srcCompat="@android:drawable/ic_search_category_default" />
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -18,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:layout_constraintVertical_bias="1.0">
 <!--        <GridView-->
 <!--            android:id="@+id/GridView"-->
@@ -73,7 +109,7 @@
         android:backgroundTint="@color/green"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintBottom_toTopOf="@+id/searchBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

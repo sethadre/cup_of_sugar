@@ -282,6 +282,13 @@ class ItemsPageActivity : AppCompatActivity() {
 
         setContentView(R.layout.items_homepage) //moved this line lower
 
+        val searchActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.searchButton)
+        forumsActionButton.setOnClickListener {
+            val intent = Intent(this, SearchResultsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val createPostActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createPostActionButton)
@@ -309,6 +316,7 @@ class ItemsPageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
 
         //We are home we dont need functionality
 
