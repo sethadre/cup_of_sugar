@@ -123,10 +123,6 @@ class CreatePostActivity : AppCompatActivity() {
         getLocationButton.setOnClickListener{
             //isLocationPermissionGranted()
             getLocation()
-            Handler().postDelayed(Runnable {
-                //after 3s
-                addressString = getAddress(locationList.get(0),locationList.get(1))
-            }, 5000)
 
         }
     }
@@ -152,6 +148,11 @@ class CreatePostActivity : AppCompatActivity() {
                 locationList.set(0, lat)
                 locationList.set(1,long)
                 Log.d(TAG, lat.toString() + "" + long.toString())
+
+                Handler().postDelayed(Runnable {
+                    //after 3s
+                    addressString = getAddress(locationList.get(0),locationList.get(1))
+                }, 5000)
             }
         }
 
