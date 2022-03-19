@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
         <activity
-            android:name=".hcosActivity"
+            android:name=".ResourceActivity"
             android:exported="false" />
         <activity
             android:name=".CreatePostActivity"
@@ -29,6 +29,8 @@
         <activity
             android:name=".ItemPostActivity"
             android:exported="false" />
+        <activity android:name=".SearchResultsActivity"
+            android:exported="false"/>
         <activity
             android:name=".HelpActivity"
             android:exported="false" />
@@ -81,6 +83,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~8691691433" />
     </application>
 
 </manifest>

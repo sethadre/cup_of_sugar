@@ -31,25 +31,30 @@
             android:layout_height="wrap_content" />
     </FrameLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:padding="15sp"
+        android:background="@drawable/round_button"
+        android:textColor="@color/white"
         android:text="Submit"
-        android:backgroundTint="#96d875"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="@+id/messageText"
         app:layout_constraintTop_toBottomOf="@+id/messageText" />
 
     <EditText
         android:id="@+id/messageText"
-        android:layout_width="373dp"
+        android:layout_width="match_parent"
         android:layout_height="321dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/white"
+        android:padding="15sp"
+        android:background="@drawable/edittext_bordered_background_dark"
         android:gravity="start"
         android:hint="Type your message here..."
         android:lines="10"

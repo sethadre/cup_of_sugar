@@ -2,37 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hotlines"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#474747"
-    tools:context=".hcosActivity">
-
-    <Button
-        android:id="@+id/donateButton"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clickable="true"
-        android:text="Donate"
-        android:textSize="24sp"
-        app:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adButton" />
-
-    <Button
-        android:id="@+id/adButton"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clickable="true"
-        android:text="Watch Ads"
-        android:textSize="24sp"
-        app:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/donateButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".ResourceActivity">
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -102,5 +75,80 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/helpActionButton"
         app:srcCompat="@drawable/icon_button_settings" />
+
+    <TextView
+        android:id="@+id/resourceDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:padding="20sp"
+        android:text="On this page, we have culminated a selection of
+sites that could prove to be useful resources for our users. We hope
+that if you require more aid than our application provides you, that these
+sites and organizations can assist you with your needs."
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/hotlineLink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hotlineLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15sp"
+        android:text="@string/hotlines"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resourceDescription" />
+
+    <TextView
+        android:id="@+id/governmentLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15sp"
+        android:text="@string/government"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotlineLink" />
+
+    <TextView
+        android:id="@+id/foodLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15sp"
+        android:text="@string/pantries"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/governmentLink" />
+
+    <TextView
+        android:id="@+id/thriftLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="15sp"
+        android:text="@string/thrift"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodLink" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

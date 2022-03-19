@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TableLayout
@@ -282,6 +283,17 @@ class ItemsPageActivity : AppCompatActivity() {
 
         setContentView(R.layout.items_homepage) //moved this line lower
 
+        //Search Text Field itself
+        val searchQuery= findViewById<EditText>(R.id.searchTextField).text.toString()
+        val searchActionButton =
+            //Button Action
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.searchButton)
+        searchActionButton.setOnClickListener {
+            val intent = Intent(this, SearchResultsActivity::class.java)
+            intent.putExtra("searchQuery", searchQuery)
+            startActivity(intent)
+            finish()
+        }
 
         val createPostActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.createPostActionButton)
@@ -309,6 +321,7 @@ class ItemsPageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
 
         //We are home we dont need functionality
 
