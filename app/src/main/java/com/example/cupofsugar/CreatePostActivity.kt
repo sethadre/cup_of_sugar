@@ -110,6 +110,7 @@ class CreatePostActivity : AppCompatActivity() {
             previewImg3.setImageDrawable(null)
             Toast.makeText(this, "Image removed.", Toast.LENGTH_SHORT).show()
         }
+        // End of deletion of the 3 image previews
 
 
         // Filter dropdown menu

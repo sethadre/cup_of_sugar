@@ -53,5 +53,4 @@ class SearchResultsActivity: AppCompatActivity() {
 //            println("${name2} is in the position ${position2} in the ordered List.
 //                ")
 //        }
-    }
 }
