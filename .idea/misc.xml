@@ -3,7 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2875" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/bordered_round_button.xml" value="0.2875" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/chat_bubble.xml" value="0.2875" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/chat_bubble_other.xml" value="0.2875" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2875" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/ic_filter_arrow_down.xml" value="0.2875" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/round_button.xml" value="0.2875" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/round_input_boxes.xml" value="0.2875" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/spinner_color.xml" value="0.2245" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_conversation.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_conversation_page.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_create_post.xml" value="0.25" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_item_post.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.33469202898550726" />

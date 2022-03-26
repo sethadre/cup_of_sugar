@@ -71,8 +71,6 @@ class SearchResultsActivity: AppCompatActivity() {
                     Log.d("ATTEMPTING TO RETURN ALL 'DOCS'", "ATTEMPTING TO GET ALL DOCS")
                     Log.d(TAG, "${document.id} => ${document.data}")
                     Log.d("Document Name", document.id)
-
-
                     //We need to finish this
                     println("Ordered list:")
                     val someList = listOf(9, 7, "Adam", "Clark", "John", "Tim", "Zack", 6)
@@ -91,3 +89,4 @@ class SearchResultsActivity: AppCompatActivity() {
     }
 }
 //}
+
