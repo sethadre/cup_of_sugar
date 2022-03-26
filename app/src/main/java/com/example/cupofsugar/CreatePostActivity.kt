@@ -371,7 +371,7 @@ class CreatePostActivity : AppCompatActivity() {
                             "Error updating postCount",
                             e
                         )
-                    }//update to databas
+                    }//update to database
             }
 
             val postCountString = postCount.toString()
