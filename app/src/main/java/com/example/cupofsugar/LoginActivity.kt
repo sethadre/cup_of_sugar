@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var  auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private val TAG= "LoginActivity"
 
