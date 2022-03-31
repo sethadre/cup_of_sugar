@@ -1,8 +1,11 @@
 package com.example.cupofsugar
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TableLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,18 +35,18 @@ class SearchResultsActivity: AppCompatActivity() {
         val docRef = db.collection("Items").document(state).collection(city)
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
-                Log.d(TAG, "DocumentSnapshot data: ${document.data}") //this gets the data
-//                    //Outputting users
-                result = StringBuffer()
-                result.append(document.data?.getValue("postTitle")).append(" ")
-                textViewResult.setText(result)
+//                Log.d(TAG, "DocumentSnapshot data: ${document.data}") //this gets the data
+////                    //Outputting users
+//                result = StringBuffer()
+//                result.append(document.data?.getValue("postTitle")).append(" ")
+//                textViewResult.setText(result)
             } else {
                 Log.d(TAG, "No such document")
             }
         }
-        .addOnFailureListener { exception ->
-            Log.d(TAG, "get failed with ", exception)
-        }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
         val cancelActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.goBackButton)
         cancelActionButton.setOnClickListener {
@@ -51,7 +54,7 @@ class SearchResultsActivity: AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        searchResult(searchQuery)
+        val document = searchResult(searchQuery)
     }
 
     //SEARCH ALGORITHM GOES HERE
