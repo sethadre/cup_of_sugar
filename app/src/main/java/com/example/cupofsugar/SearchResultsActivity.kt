@@ -32,14 +32,14 @@ class SearchResultsActivity: AppCompatActivity() {
         val searchQuery = intent.getStringExtra("searchQuery").toString()
 
 
-        val docRef = db.collection("Items").document(state).collection(city)
+        val docRef = db.collection("Items").document(state).collection(city).document(0.toString())
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
-//                Log.d(TAG, "DocumentSnapshot data: ${document.data}") //this gets the data
-////                    //Outputting users
-//                result = StringBuffer()
-//                result.append(document.data?.getValue("postTitle")).append(" ")
-//                textViewResult.setText(result)
+                Log.d(TAG, "DocumentSnapshot data: ${document.data}") //this gets the data
+//                    //Outputting users
+                result = StringBuffer()
+                result.append(document.data?.getValue("postTitle")).append(" ")
+                textViewResult.setText(result)
             } else {
                 Log.d(TAG, "No such document")
             }
@@ -54,23 +54,24 @@ class SearchResultsActivity: AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        val document = searchResult(searchQuery)
+        val foundItems = searchResult(searchQuery)
     }
 
     //SEARCH ALGORITHM GOES HERE
-    private fun linearSearch(list: List<Any>, key: Any): Int? {
+    private fun linearSearch(list: List<Any>, key: Any): ArrayList<Any> {
+        val foundList = ArrayList<Any>()
         for ((index, value) in list.withIndex()) {
             if (value == key) {
-                return index //change to add to list then return at end
+                foundList.add(value) //change to add to list then return at end
             }
         }
-        return null
+        return foundList
     }
 
     private fun searchResult(searchQuery : Any): Array<Any> {
         var results: Array<Any> = arrayOf()
         val docRef = db.collection("Items").document(state).collection(city)
-//        val listOfCategory = ArrayList<Any>()
+        val listOfCategory = ArrayList<Any>()
         var count = 0
         docRef.get().addOnSuccessListener { documents ->
             for (document in documents) {
@@ -81,13 +82,9 @@ class SearchResultsActivity: AppCompatActivity() {
                     Log.d(TAG, "${document.id} => ${document.data}")
                     Log.d("Document Name", document.id)
                     //We need to finish this
-                    val listOfCategory = ArrayList<Any>()
-                    listOfCategory.add(document.data.getValue("category") as String)
-                    if(linearSearch(listOfCategory, searchQuery) != null) {
-                        results[count] = document.id
-                        count += 1
-                    }
-//                    println("Ordered list:")
+//                    val listOfCategory = ArrayList<Any>()
+                    listOfCategory.add(document.data.getValue("title") as String)
+                    //                    println("Ordered list:")
 //                    val someList = listOf(9, 7, "Adam", "Clark", "John", "Tim", "Zack", 6)
 //                    println(someList)
 //                    val name = 7
@@ -99,6 +96,8 @@ class SearchResultsActivity: AppCompatActivity() {
                 }
             }
 //            linearSearch(listOfCategory, searchQuery)
+            results = arrayOf(linearSearch(listOfCategory, searchQuery))
+//            count += 1
         }
         //return an array of itemIDs
         return results
