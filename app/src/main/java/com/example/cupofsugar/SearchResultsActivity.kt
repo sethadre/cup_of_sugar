@@ -42,12 +42,20 @@ class SearchResultsActivity: AppCompatActivity() {
             finish()
         }
         var foundItems = searchResult(searchQuery)
+        val intent = Intent(this, ItemPostActivity::class.java)
+        val text = findViewById<TextView>(R.id.textOne)
+
         val docRef = db.collection("Items").document(state).collection(city)
         for(item in foundItems){
             item.get().addOnSuccessListener { document ->
-                val text = findViewById<TextView>(R.id.textOne)
                 text.text = document.data?.getValue("title") as String
+                val refToPost = item.toString()
+                intent.putExtra("postRefKey", refToPost)
             }
+        }
+        text.setOnClickListener{
+            startActivity(intent)
+            finish()
         }
 
     }
