@@ -392,11 +392,11 @@ class ItemsPageActivity : AppCompatActivity() {
     }
 
 
-    fun goSearch(view: View) {
-        val intent = Intent(this, SearchBarActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
+//    fun goSearch(view: View) {
+//        val intent = Intent(this, SearchBarActivity::class.java)
+//        startActivity(intent)
+//        finish()
+//    }
 
 }
 

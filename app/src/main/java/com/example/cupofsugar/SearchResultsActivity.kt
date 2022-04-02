@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TableLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.items_homepage.*
+import org.w3c.dom.Document
 
 class SearchResultsActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -31,22 +34,6 @@ class SearchResultsActivity: AppCompatActivity() {
         //Get the Search Query from HomePage Search. "the words the user searched for"
         val searchQuery = intent.getStringExtra("searchQuery").toString()
 
-
-        val docRef = db.collection("Items").document(state).collection(city).document(0.toString())
-        docRef.get().addOnSuccessListener { document ->
-            if (document != null) {
-                Log.d(TAG, "DocumentSnapshot data: ${document.data}") //this gets the data
-//                    //Outputting users
-                result = StringBuffer()
-                result.append(document.data?.getValue("postTitle")).append(" ")
-                textViewResult.setText(result)
-            } else {
-                Log.d(TAG, "No such document")
-            }
-        }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
         val cancelActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.goBackButton)
         cancelActionButton.setOnClickListener {
@@ -54,7 +41,15 @@ class SearchResultsActivity: AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        val foundItems = searchResult(searchQuery)
+        var foundItems = searchResult(searchQuery)
+        val docRef = db.collection("Items").document(state).collection(city)
+        for(item in foundItems){
+            item.get().addOnSuccessListener { document ->
+                val text = findViewById<TextView>(R.id.textOne)
+                text.text = document.data?.getValue("title") as String
+            }
+        }
+
     }
 
     //SEARCH ALGORITHM GOES HERE
@@ -68,14 +63,14 @@ class SearchResultsActivity: AppCompatActivity() {
         return foundList
     }
 
-    private fun searchResult(searchQuery : Any): Array<Any> {
-        var results: Array<Any> = arrayOf()
+    private fun searchResult(searchQuery : Any): ArrayList<DocumentReference> {
+        var results: Array<DocumentReference> = arrayOf()
         val docRef = db.collection("Items").document(state).collection(city)
-        val listOfCategory = ArrayList<Any>()
-        var count = 0
+        val listOfMatches = ArrayList<DocumentReference>()
+//        var count = 0
         docRef.get().addOnSuccessListener { documents ->
             for (document in documents) {
-                val testPostRef = docRef.document(document.id)
+                var testPostRef = docRef.document(document.id)
                 if (document.id != "postCount") {
                     Log.d("THIS DOC IS NOT POST COUNT", "YEA NOT POST COUNT")
                     Log.d("ATTEMPTING TO RETURN ALL 'DOCS'", "ATTEMPTING TO GET ALL DOCS")
@@ -83,7 +78,14 @@ class SearchResultsActivity: AppCompatActivity() {
                     Log.d("Document Name", document.id)
                     //We need to finish this
 //                    val listOfCategory = ArrayList<Any>()
-                    listOfCategory.add(document.data.getValue("title") as String)
+                    var post = document.data.getValue("title") as String
+                    var possibleMatch = arrayOf(post.split(" "))
+                    for(word in possibleMatch){
+                        if (searchQuery == word) {
+                            listOfMatches.add(testPostRef)
+                        }
+                    }
+
                     //                    println("Ordered list:")
 //                    val someList = listOf(9, 7, "Adam", "Clark", "John", "Tim", "Zack", 6)
 //                    println(someList)
@@ -96,11 +98,11 @@ class SearchResultsActivity: AppCompatActivity() {
                 }
             }
 //            linearSearch(listOfCategory, searchQuery)
-            results = arrayOf(linearSearch(listOfCategory, searchQuery))
+//            results = arrayOf(linearSearch(listOfCategory, searchQuery))
 //            count += 1
         }
         //return an array of itemIDs
-        return results
+        return listOfMatches
     }
 }
 //}

@@ -19,10 +19,21 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="3dp" />
 
-    <!--List View from which data is to be searched-->
-    <ListView
-        android:id="@+id/listView"
+<!--    &lt;!&ndash;List View from which data is to be searched&ndash;&gt;-->
+<!--    <ListView-->
+<!--        android:id="@+id/listView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="fill_parent" />-->
+
+    <TextView
+        android:id="@+id/textOne"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_vertical"
+        android:paddingLeft="6dip"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        />
+
 
 </RelativeLayout>
