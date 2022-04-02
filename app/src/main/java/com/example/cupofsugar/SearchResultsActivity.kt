@@ -51,6 +51,11 @@ class SearchResultsActivity: AppCompatActivity() {
                 text.text = document.data?.getValue("title") as String
                 val refToPost = item.toString()
                 intent.putExtra("postRefKey", refToPost)
+
+                intent.putExtra("stateKey",state)
+                intent.putExtra("cityKey",city)
+                intent.putExtra("docIDKey",document.id)
+
             }
         }
         text.setOnClickListener{
@@ -91,6 +96,10 @@ class SearchResultsActivity: AppCompatActivity() {
                     for(word in possibleMatch){
                         if (searchQuery == word) {
                             listOfMatches.add(testPostRef)
+                            Log.d("Post Found: ", document.id)
+                        }
+                        else{
+                            Log.d("No match found for : ","${word}")
                         }
                     }
 

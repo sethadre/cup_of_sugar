@@ -68,7 +68,7 @@ class CreatePostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
-
+        addressString = arrayOf("","")
 
 
         testImg1 = findViewById(R.id.previewImg1) //For use below for when photo is uploaded to preview here
@@ -351,7 +351,7 @@ class CreatePostActivity : AppCompatActivity() {
         var postCountRef =
             db.collection("Items").document(state).collection(city).document("postCount")
         postCountRef.get().addOnSuccessListener { document ->
-            if (document != null) {
+            if (document != null && document.data?.getValue("count") !=null) {
                 postCount =
                     document.data?.getValue("count") as Long //casted Any? to Int. This is postCount for a city
                 //
@@ -373,7 +373,11 @@ class CreatePostActivity : AppCompatActivity() {
                         )
                     }//update to database
             }
-
+            else if (document.data?.getValue("count") ==null){
+                val count = hashMapOf("count" to 0)
+                postCountRef.set(count)
+                return@addOnSuccessListener
+            }
             val postCountString = postCount.toString()
             Log.d(TAG, "Post String: $postCountString")
             //postCount.toInt()
