@@ -96,6 +96,14 @@ class GoogleMapsActivity : FragmentActivity(), OnMapReadyCallback {
         // when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
+        val cancelButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.cancelButton)
+        cancelButton.setOnClickListener {
+            val intent = Intent(this, ItemPostActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         // adding on query listener for our search view.
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {

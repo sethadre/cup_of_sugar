@@ -11,6 +11,17 @@
 
     <!--search view to search our location-->
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_grey"
+        android:clickable="true"
+        app:backgroundTint="@color/light_grey"
+        app:srcCompat="@android:drawable/ic_delete"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="3dp" />
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/idSearchView"
         android:layout_width="wrap_content"
