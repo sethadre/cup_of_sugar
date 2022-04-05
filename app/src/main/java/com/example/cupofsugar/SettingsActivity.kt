@@ -84,7 +84,7 @@ class SettingsActivity : AppCompatActivity() {
                 .show()
         }
 
-        // Security
+        // Security (EDIT TO TAKE TO NEW PAGE FOR EDITING USER DETAILS)
         val securityButton =
             findViewById<Button>(R.id.securityButton)
         securityButton.setOnClickListener {
