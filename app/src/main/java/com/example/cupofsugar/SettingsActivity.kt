@@ -8,11 +8,14 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
-    private lateinit var  auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +53,7 @@ class SettingsActivity : AppCompatActivity() {
             finish()
         }
 
-        // Delete account
+        // Delete account option
         val deleteAccountButton =
             findViewById<Button>(R.id.deleteAccountButton)
         deleteAccountButton.setOnClickListener {
@@ -62,12 +65,19 @@ class SettingsActivity : AppCompatActivity() {
                 }
                 .setPositiveButton("Confirm Deletion") { dialog, which ->
                     auth = FirebaseAuth.getInstance()
+                    db = FirebaseFirestore.getInstance()
                     val user = auth.currentUser
+                    // delete from Authentification
                     user?.delete()?.addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Snackbar.make(rootLayout, "Account Deleted", Snackbar.LENGTH_SHORT).show()
+                            // delete user's document Users collection
+                            db.collection("Users").document(user.uid).delete()
+                            // end user session
+                            val intent = Intent(this,LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         } else {
-                            Snackbar.make(rootLayout, "Deletion Failed", Snackbar.LENGTH_SHORT).show()
+                            Snackbar.make(rootLayout, "Account deletion failed. Relog and try again.", Snackbar.LENGTH_SHORT).show()
                         }
                     }
                 }
