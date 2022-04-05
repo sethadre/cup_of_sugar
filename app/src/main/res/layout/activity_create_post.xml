@@ -36,20 +36,25 @@
             android:layout_alignParentLeft="true"
             android:layout_marginStart="15dp"
             android:clickable="true"
-            app:backgroundTint="@color/green"
-            app:elevation="0dp"
-            app:srcCompat="@android:drawable/ic_delete" />
+            android:outlineProvider="none"
+            app:backgroundTint="@android:color/transparent"
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@android:color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/locationButton"
+            android:id="@+id/submitBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_alignParentRight="true"
             android:layout_marginEnd="15dp"
-            android:backgroundTint="@color/white"
             android:clickable="true"
-            app:backgroundTint="@color/white"
-            app:srcCompat="@android:drawable/ic_menu_mylocation" />
+            android:outlineProvider="none"
+            app:backgroundTint="@android:color/transparent"
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/ic_baseline_check_24"
+            app:tint="@android:color/white" />
     </RelativeLayout>
 
     <EditText
@@ -59,13 +64,13 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/edittext_bordered_background"
         android:ems="10"
         android:hint="Add a title..."
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/light_grey"
+        app:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textDescriptionBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,10 +152,12 @@
             android:layout_alignParentBottom="true"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/button_removePhoto2"
-            android:backgroundTint="@color/light_grey"
             android:clickable="true"
-            app:backgroundTint="@color/light_grey"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
+            android:outlineProvider="none"
+            app:backgroundTint="@android:color/transparent"
+            app:borderWidth="0dp"
+            app:srcCompat="@android:drawable/ic_menu_delete"
+            app:tint="@android:color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_removePhoto2"
@@ -160,10 +167,12 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="65dp"
             android:layout_marginRight="65dp"
-            android:backgroundTint="@color/light_grey"
             android:clickable="true"
-            app:backgroundTint="@color/light_grey"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
+            android:outlineProvider="none"
+            app:backgroundTint="@android:color/transparent"
+            app:borderWidth="0dp"
+            app:srcCompat="@android:drawable/ic_menu_delete"
+            app:tint="@android:color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_removePhoto3"
@@ -171,9 +180,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@id/button_removePhoto2"
-            android:backgroundTint="@color/light_grey"
             android:clickable="true"
-            app:backgroundTint="@color/light_grey"
+            android:outlineProvider="none"
+            app:backgroundTint="@android:color/transparent"
+            app:borderWidth="0dp"
+            app:tint="@android:color/white"
             app:srcCompat="@android:drawable/ic_menu_delete" />
     </RelativeLayout>
 
@@ -186,7 +197,7 @@
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/submitBtn"
+        app:layout_constraintBottom_toTopOf="@id/locationButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_previewPhotos">
@@ -197,8 +208,9 @@
             android:layout_height="60dp"
             android:layout_marginRight="10dp"
             android:backgroundTint="@color/white"
-            android:text="Take Photo"
-            android:textColor="#000000" />
+            android:text="Camera"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/ic_baseline_photo_camera_24"/>
 
         <Button
             android:id="@+id/button_upload_photo"
@@ -206,24 +218,26 @@
             android:layout_height="60dp"
             android:layout_marginLeft="10dp"
             android:backgroundTint="@color/white"
-            android:text="Upload Photos"
-            android:textColor="#000000"
-            app:layout_constraintVertical_bias="1.0" />
+            android:text="Gallery"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/ic_baseline_add_photo_alternate_24"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/submitBtn"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/locationButton"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="@color/green"
-        android:onClick="submitPost"
-        android:text="SUBMIT"
-        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:outlineProvider="none"
+        app:backgroundTint="@android:color/transparent"
+        app:borderWidth="0dp"
+        app:srcCompat="@android:drawable/ic_menu_mylocation"
+        app:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout_photoButtons" />
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_photoButtons"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

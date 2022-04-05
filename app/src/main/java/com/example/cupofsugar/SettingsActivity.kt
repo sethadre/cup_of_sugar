@@ -53,7 +53,7 @@ class SettingsActivity : AppCompatActivity() {
             finish()
         }
 
-        // Delete account option
+        // Delete user account
         val deleteAccountButton =
             findViewById<Button>(R.id.deleteAccountButton)
         deleteAccountButton.setOnClickListener {
@@ -67,12 +67,12 @@ class SettingsActivity : AppCompatActivity() {
                     auth = FirebaseAuth.getInstance()
                     db = FirebaseFirestore.getInstance()
                     val user = auth.currentUser
-                    // delete from Authentification
+                    // Delete from Authentification
                     user?.delete()?.addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            // delete user's document Users collection
+                            // Delete user's document Users collection
                             db.collection("Users").document(user.uid).delete()
-                            // end user session
+                            // End user session
                             val intent = Intent(this,LoginActivity::class.java)
                             startActivity(intent)
                             finish()
@@ -82,6 +82,15 @@ class SettingsActivity : AppCompatActivity() {
                     }
                 }
                 .show()
+        }
+
+        // Security
+        val securityButton =
+            findViewById<Button>(R.id.securityButton)
+        securityButton.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

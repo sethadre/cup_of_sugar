@@ -99,11 +99,22 @@
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
 
             <Button
+                android:id="@+id/securityButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  Security"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:gravity="left|center_vertical"
+                android:textSize="16sp"
+                style="?android:attr/borderlessButtonStyle" />
+
+            <Button
                 android:id="@+id/deleteAccountButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#BD0000"
                 android:text="Delete Account"
                 android:textSize="16sp" />
 
