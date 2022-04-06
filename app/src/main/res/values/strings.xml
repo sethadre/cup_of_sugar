@@ -18,6 +18,14 @@
         <item>Feminine Hygiene</item>item>
     </string-array>
 
+    <string-array name="state_options">
+        <item>State</item>item>
+
+    </string-array>
+    <string-array name="city_options">
+        <item>City</item>item>
+    </string-array>
+
     <string-array name="support_reasons">
         <item>Bugs/Technical Issues</item>
         <item>Suggestions</item>

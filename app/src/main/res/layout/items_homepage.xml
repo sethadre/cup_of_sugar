@@ -7,7 +7,71 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="@color/background_grey">
+    <!--Location Bar-->
+    <LinearLayout
+        android:id="@+id/LocationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/searchBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="3.0">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/getLocationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/green"
+            android:clickable="true"
+            app:backgroundTint="@color/white"
+            app:srcCompat="@android:drawable/ic_menu_mylocation" />
+
+
+
+        <Spinner
+            android:id="@+id/spinner_state"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/spinner_color"
+            android:dropDownVerticalOffset="24dp"
+            android:entries="@array/state_options"
+            android:spinnerMode="dropdown"
+             />
+        <Spinner
+            android:id="@+id/spinner_city"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/spinner_color"
+            android:dropDownVerticalOffset="24dp"
+            android:entries="@array/city_options"
+            android:spinnerMode="dropdown"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/confirmButton"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/purple_200"
+            android:clickable="false"
+            app:backgroundTint="@color/purple_200"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
+        <TextView
+            android:id="@+id/textViewResult"
+            android:layout_width="336dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="44dp"
+            android:text=""
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+    <!-- Search Bar-->
     <LinearLayout
         android:id="@+id/searchBar"
         android:layout_width="wrap_content"
@@ -16,7 +80,7 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintTop_toBottomOf="@+id/LocationBar"
         app:layout_constraintVertical_bias="3.0">
 
         <EditText
@@ -39,6 +103,7 @@
             app:backgroundTint="@color/green"
             app:srcCompat="@android:drawable/ic_search_category_default" />
     </LinearLayout>
+
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -235,20 +300,6 @@
         app:layout_constraintEnd_toEndOf="@+id/toolbar2"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
-
-    <TextView
-        android:id="@+id/textViewResult"
-        android:layout_width="336dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="44dp"
-        android:text=""
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/goToSearch"
