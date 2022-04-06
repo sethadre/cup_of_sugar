@@ -88,7 +88,6 @@ class CreatePostActivity : AppCompatActivity() {
             openGallery()
         }
 
-
         // Deletes the 3 image previews
         val removePhotoButton1 =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.button_removePhoto1)
