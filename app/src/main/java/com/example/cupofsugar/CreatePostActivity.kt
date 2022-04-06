@@ -6,6 +6,7 @@ import android.content.ContentProviderClient
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.AssetManager
 import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,7 +34,8 @@ import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
-
+import org.json.JSONException
+import org.json.JSONObject
 
 class CreatePostActivity : AppCompatActivity() {
     //Firebase stuff
@@ -62,13 +64,13 @@ class CreatePostActivity : AppCompatActivity() {
     companion object{
         const val TAG = "CreatePostActivity"
         //private const val PERMISSION_REQUEST_ACCESS_LOCATION = 100
-    private const val permissionCode=100
+        private const val permissionCode=100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
-        addressString = arrayOf("","")
+        addressString = arrayOf("","","")
 
 
         testImg1 = findViewById(R.id.previewImg1) //For use below for when photo is uploaded to preview here
@@ -87,6 +89,7 @@ class CreatePostActivity : AppCompatActivity() {
         buttonUploadPhoto.setOnClickListener{
             openGallery()
         }
+
 
         // Deletes the 3 image previews
         val removePhotoButton1 =
@@ -110,27 +113,9 @@ class CreatePostActivity : AppCompatActivity() {
             Toast.makeText(this, "Image removed.", Toast.LENGTH_SHORT).show()
         }
         // End of deletion of the 3 image previews
+        //CAMERA
 
-
-        // Filter dropdown menu
-//        spinner_filters.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                adapterView: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                Toast.makeText(this@CreatePostActivity,
-//                    adapterView?.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>?) { }
-//        }
-        // End filter dropdown menu
-
-                                //CAMERA
-
-    val buttonTakePhoto =
+        val buttonTakePhoto =
             findViewById<Button>(R.id.button_take_photo)
         buttonTakePhoto.setOnClickListener{
             //placeholder code to ask for camera privileges
@@ -143,7 +128,28 @@ class CreatePostActivity : AppCompatActivity() {
 
         }
     }
-
+    private fun spinnerStateCity(){
+        fun AssetManager.readFile(fileName: String) = open(fileName)
+            .bufferedReader()
+            .use { it.readText() }
+        val jsonString = "{\"New York\":\"name\":\"adolf hitler\",\"salary\":65000}}"
+        val state = ""
+        val city = ""
+        try {
+            // get JSONObject from JSON file
+            val obj = JSONObject(jsonString)
+            // fetch JSONObject named employee
+            val employee: JSONObject = obj.getJSONObject("employee")
+            // get employee name and salary
+            val name = employee.getString("name")
+            val salary = employee.getString("salary")
+            // set employee name and salary in TextView's
+            //textViewName.text = "Name: $name"
+            //textViewSal.text = "Salary: $salary"
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+    }
     private fun getLocation(){
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -169,7 +175,7 @@ class CreatePostActivity : AppCompatActivity() {
                 Handler().postDelayed(Runnable {
                     //after 3s
                     addressString = getAddress(locationList.get(0),locationList.get(1))
-                }, 5000)
+                }, 50)
             }
         }
 
@@ -187,20 +193,25 @@ class CreatePostActivity : AppCompatActivity() {
             ) {
                 getLocation()
             }
-            }
         }
+    }
     private fun getAddress(lat: Double, lng: Double): Array<String> {
         val geocoder = Geocoder(this)
         val list = geocoder.getFromLocation(lat, lng, 1)
         Log.d(TAG,list[0].getAddressLine(0))
+        //Log.d(TAG,list[0].getAddressLine(1))
+        //Log.d(TAG,list[0].getAddressLine(2))
         //We get a ful address starting from address, city, state, zip code, country
         //Now we must split this string to just city and state
         val stringArray= list[0].getAddressLine(0).split(",").toTypedArray()
+        val onlyTheState = stringArray[2].split(" ")
+        stringArray[2] = onlyTheState[1] // ["", "state", "zipcode"]
+        Log.d(TAG, stringArray[2])
         return stringArray
     }
-     private fun openGallery() { //this function opens gallery and the photo you pick is displayed
+    private fun openGallery() { //this function opens gallery and the photo you pick is displayed
 
-         //upload count variable is global to actvity until activity canceled
+        //upload count variable is global to actvity until activity canceled
 
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -258,7 +269,7 @@ class CreatePostActivity : AppCompatActivity() {
                 testImg3.setImageURI(data?.data)
                 testImg3Uri = data?.data!!
             }
-             //needs option to delete photo preview
+            //needs option to delete photo preview
             //change photo size later
         }
     }
@@ -316,6 +327,37 @@ class CreatePostActivity : AppCompatActivity() {
 
         return imageURLS
     }
+    fun getSpinnerValue(): String {
+        // Filter dropdown menu
+        val spinner = findViewById<Spinner>(R.id.spinner_filters) as Spinner
+        var selectedText = "" // as default
+        val category = resources.getStringArray(R.array.filter_options)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, category)
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    selectedText = category[position]
+                    Log.d(TAG, "Category Selected: ${selectedText}")
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    //Exception Error
+
+                }
+            }
+            return selectedText
+        } else {
+            return ""
+        }
+    }
+    // End filter dropdown menu
     fun submitPost(view: View) {
 
         //Tasks
@@ -332,7 +374,7 @@ class CreatePostActivity : AppCompatActivity() {
         var desc: EditText = findViewById(R.id.textDescriptionBox)
         var descString: String = desc.text.toString()//get desc
 
-        var categoryString: String = "plants"
+        var categoryString: String = getSpinnerValue()
 
         //FOR RYAN
 
@@ -343,6 +385,7 @@ class CreatePostActivity : AppCompatActivity() {
 
         val city = addressString[1] //City
         val state = addressString[2] //State
+        Log.d(TAG,state)
         //End of location stuff
 
         //Pull POST NUMBER AND INCREMENT IT FOR EACH NEW POST
@@ -407,11 +450,11 @@ class CreatePostActivity : AppCompatActivity() {
             //Going to posts database
             db.collection("Items").document(state).collection(city).document(postCountString)
                 .set(postInfo).addOnSuccessListener {
-                Log.d(
-                    TAG,
-                    "Post succesfully submitted, post: $postCountString"
-                )
-            }.addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
+                    Log.d(
+                        TAG,
+                        "Post succesfully submitted, post: $postCountString"
+                    )
+                }.addOnFailureListener { e -> Log.w(TAG, "Error writing post document to database", e) }
 
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
