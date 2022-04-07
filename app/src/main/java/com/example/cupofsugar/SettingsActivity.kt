@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -84,13 +85,23 @@ class SettingsActivity : AppCompatActivity() {
                 .show()
         }
 
-        // Security (EDIT TO TAKE TO NEW PAGE FOR EDITING USER DETAILS)
-        val securityButton =
-            findViewById<Button>(R.id.securityButton)
-        securityButton.setOnClickListener {
-            val intent = Intent(this, SettingsActivity::class.java)
+        // Logout
+        val logOutButton =
+            findViewById<Button>(R.id.logoutButton)
+        logoutButton.setOnClickListener {
+            val intent= Intent(this,LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+
+        // Security (EDIT TO TAKE TO NEW PAGE FOR EDITING USER DETAILS)
+//        val securityButton =
+//            findViewById<Button>(R.id.securityButton)
+//        securityButton.setOnClickListener {
+//            val intent = Intent(this, SettingsActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 }
