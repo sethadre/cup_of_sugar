@@ -1,28 +1,32 @@
 package com.example.cupofsugar
 
 import android.content.Intent
+import android.content.Context
+import android.content.res.AssetManager
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.GridView
-import android.widget.ImageView
-import android.widget.TableLayout
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.items_homepage.*
-
+import org.json.JSONArray;
+import org.json.JSONException
+import org.json.JSONObject;
 
 class ItemsPageActivity : AppCompatActivity() {
 
     //Firebase init
     private lateinit var auth: FirebaseAuth
     private  lateinit var db: FirebaseFirestore
-    private val TAG = "ItemsPageActivity"
+    companion object{
+        const val TAG = "ItemsPageActivity"
+    }
+
 
     //Grid
     val postint = 0
@@ -390,6 +394,65 @@ class ItemsPageActivity : AppCompatActivity() {
     fun goToHome(view: View) {
         // already home
     }
+    fun locationSpinners(){
+        fun AssetManager.readFile(fileName: String) = open(fileName)
+            .bufferedReader()
+            .use { it.readText() }
+         lateinit var context: Context
+        val jsonString = context.assets.readFile("US_States_and_Cities.json")
+        val statesArray = arrayOf("Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont",
+            "Washington", "Wisconsin", "West Virginia","Wyoming")
+        val stateSpinner = findViewById<Spinner>(R.id.spinner_state) as Spinner
+        val citySpinner = findViewById<Spinner>(R.id.spinner_city) as Spinner
+        lateinit var citiesList: MutableList<String>
+        if (stateSpinner != null) {
+            var adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, statesArray)
+            stateSpinner.adapter = adapter
+        }
+            stateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
+                            {
+                                try {
+                                    // get JSONObject from JSON file
+                                    val obj = JSONObject(jsonString)
+                                    //val array = JSONArray(obj)
+                                    //Remaining JSON Stuff
+
+                                    // For loop and set adapter based on selected statesArray[n]
+                                        // if n, set city adapter to jsonState.getString(0 -> length)
+                                    val jsonState: JSONArray = obj.getJSONArray(statesArray[position])//get selected state
+                                    Log.d(TAG,statesArray[position])
+                                    var cities:Array<String> = Array<String>(jsonState.length()) {""}
+                                    for (city in 0 until jsonState.length()-1) {
+                                        // get city
+                                        cities[city] = jsonState.getString(city)
+                                        citiesList.add(cities[city])
+                                        Log.d(TAG,jsonState.getString(city))
+                                    }
+                                    //citiesArray = cities
+
+
+
+                                } catch (e: JSONException) {
+                                    e.printStackTrace()
+                                }
+
+                            }
+                            override fun onNothingSelected(parent: AdapterView<*>) {
+                            //Exception Error
+                            }
+
+                        }
+        if (citySpinner != null) {
+            //define ctitesList
+            citiesList = mutableListOf("")
+            val citySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, citiesList)
+            citySpinner.adapter = citySpinnerAdapter
+        }
+                    }
+
+
+
 
 
 //    fun goSearch(view: View) {

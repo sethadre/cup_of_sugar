@@ -21,8 +21,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/getLocationButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:backgroundTint="@color/green"
             android:clickable="true"
@@ -30,37 +30,26 @@
             app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
 
-
         <Spinner
             android:id="@+id/spinner_state"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="40dp"
             android:background="@drawable/spinner_color"
             android:dropDownVerticalOffset="24dp"
             android:entries="@array/state_options"
-            android:spinnerMode="dropdown"
-             />
+            android:spinnerMode="dropdown" />
+
         <Spinner
             android:id="@+id/spinner_city"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/spinner_color"
             android:dropDownVerticalOffset="24dp"
             android:entries="@array/city_options"
-            android:spinnerMode="dropdown"
-            />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/confirmButton"
-            android:layout_width="159dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:backgroundTint="@color/purple_200"
-            android:clickable="false"
-            app:backgroundTint="@color/purple_200"
-            app:srcCompat="@android:drawable/ic_media_play" />
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:id="@+id/textViewResult"
@@ -168,7 +157,7 @@
         android:backgroundTint="@color/green"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/searchBar"
+        app:layout_constraintBottom_toTopOf="@+id/LocationBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
