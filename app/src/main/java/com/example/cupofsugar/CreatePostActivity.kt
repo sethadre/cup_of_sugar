@@ -1,6 +1,7 @@
 package com.example.cupofsugar
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentProviderClient
 import android.content.Context
@@ -128,28 +129,8 @@ class CreatePostActivity : AppCompatActivity() {
 
         }
     }
-    private fun spinnerStateCity(){
-        fun AssetManager.readFile(fileName: String) = open(fileName)
-            .bufferedReader()
-            .use { it.readText() }
-        val jsonString = "{\"New York\":\"name\":\"adolf hitler\",\"salary\":65000}}"
-        val state = ""
-        val city = ""
-        try {
-            // get JSONObject from JSON file
-            val obj = JSONObject(jsonString)
-            // fetch JSONObject named employee
-            val employee: JSONObject = obj.getJSONObject("employee")
-            // get employee name and salary
-            val name = employee.getString("name")
-            val salary = employee.getString("salary")
-            // set employee name and salary in TextView's
-            //textViewName.text = "Name: $name"
-            //textViewSal.text = "Salary: $salary"
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-    }
+
+    @SuppressLint("MissingPermission")
     private fun getLocation(){
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -191,6 +172,7 @@ class CreatePostActivity : AppCompatActivity() {
             permissionCode -> if (grantResults.isEmpty() && grantResults[0] ==
                 PackageManager.PERMISSION_GRANTED
             ) {
+
                 getLocation()
             }
         }
@@ -436,7 +418,10 @@ class CreatePostActivity : AppCompatActivity() {
             val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
             val now = Date()
             val postDate = formatter.format(now)
-
+            Handler().postDelayed(Runnable {
+                //after 3s
+                Log.d(TAG,"Waiting on location, please wait...")
+            }, 100)
             val postInfo = hashMapOf(
                 "title" to titleString,
                 "description" to descString,

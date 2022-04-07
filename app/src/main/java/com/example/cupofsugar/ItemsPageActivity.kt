@@ -1,14 +1,22 @@
 package com.example.cupofsugar
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.Context
+import android.content.pm.PackageManager
 import android.content.res.AssetManager
 import android.graphics.BitmapFactory
+import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -25,9 +33,16 @@ class ItemsPageActivity : AppCompatActivity() {
     private  lateinit var db: FirebaseFirestore
     companion object{
         const val TAG = "ItemsPageActivity"
+        const val permissionCode = 101
     }
-
-
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var currentLocation: Location
+    private var lat: Double = 0.0
+    private var long: Double = 0.0
+    private var locationList: MutableList<Double> = mutableListOf(lat,long)
+    private lateinit var addressString :Array<String>
+    private lateinit var userState:String
+    private lateinit var userCity:String
     //Grid
     val postint = 0
     private lateinit var gridView: GridView
@@ -42,6 +57,9 @@ class ItemsPageActivity : AppCompatActivity() {
 
 
         //Start of Back End Stuff
+        userState = " " //user.getState()
+        userCity = " " //user.getState()
+        addressString = arrayOf("","","")
         val storage = Firebase.storage
         //This is how we download to memory and not as local file
         val ONE_MEGABYTE: Long = 1024 * 1024
@@ -92,8 +110,15 @@ class ItemsPageActivity : AppCompatActivity() {
 
         //LOOP
         //Grab folder refs
-        val userState = "CA" //user.getState()
-        val userCity = "Long Beach" //user.getState()
+        val getLocationButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.getLocationButton)
+        getLocationButton.setOnClickListener{
+            //isLocationPermissionGranted()
+            getLocation()
+            userState = addressString[1] //city
+            userCity = addressString[2]  //state
+        }
+
 
         val cityRef = db.collection("Items").document(userState).collection(userCity)
 
@@ -295,6 +320,8 @@ class ItemsPageActivity : AppCompatActivity() {
         searchActionButton.setOnClickListener {
             val intent = Intent(this, SearchResultsActivity::class.java)
             intent.putExtra("searchQuery", searchQuery)
+            intent.putExtra("stateKey", userState)
+            intent.putExtra("cityKey", userCity)
             startActivity(intent)
             finish()
         }
@@ -352,11 +379,75 @@ class ItemsPageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
         // ****************************************************************************************
         // ****************************************************************************************
         // END BOTTOM BAR BUTTONS
 
     }
+    private fun getAddress(lat: Double, lng: Double): Array<String> {
+        val geocoder = Geocoder(this)
+        val list = geocoder.getFromLocation(lat, lng, 1)
+        Log.d(CreatePostActivity.TAG,list[0].getAddressLine(0))
+        //Log.d(TAG,list[0].getAddressLine(1))
+        //Log.d(TAG,list[0].getAddressLine(2))
+        //We get a ful address starting from address, city, state, zip code, country
+        //Now we must split this string to just city and state
+        val stringArray= list[0].getAddressLine(0).split(",").toTypedArray()
+        val onlyTheState = stringArray[2].split(" ")
+        stringArray[2] = onlyTheState[1] // ["", "state", "zipcode"]
+        Log.d(CreatePostActivity.TAG, stringArray[2])
+        return stringArray
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun getLocation(){
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+            PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, android.Manifest.permission.ACCESS_COARSE_LOCATION
+            ) !=
+            PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), permissionCode)
+            return
+        }
+        val task = fusedLocationProviderClient.lastLocation
+        task.addOnSuccessListener { location ->
+            if (location != null){
+                currentLocation = location
+                lat = currentLocation!!.latitude
+                long = currentLocation!!.longitude
+                locationList.set(0, lat)
+                locationList.set(1,long)
+                Log.d(CreatePostActivity.TAG, lat.toString() + "" + long.toString())
+
+                Handler().postDelayed(Runnable {
+                    //after 3s
+                    addressString = getAddress(locationList.get(0),locationList.get(1))
+                }, 50)
+            }
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode) {
+            permissionCode -> if (grantResults.isEmpty() && grantResults[0] ==
+                PackageManager.PERMISSION_GRANTED
+            ) {
+
+                getLocation()
+            }
+        }
+    }
+
 
     //firebase stuff
     fun readFireStoreData() {

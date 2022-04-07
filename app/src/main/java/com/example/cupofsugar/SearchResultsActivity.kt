@@ -22,8 +22,8 @@ class SearchResultsActivity: AppCompatActivity() {
 //    private val result: StringBuffer = StringBuffer()
 //    private val state = intent.getStringExtra("stateKey").toString()
 //    private val city = intent.getStringExtra("cityKey").toString()
-    private val state = "CA"
-    private val city = "Long Beach"
+    private lateinit var state:String
+    private lateinit var city:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,8 @@ class SearchResultsActivity: AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         //Get the Search Query from HomePage Search. "the words the user searched for"
         val searchQuery = intent.getStringExtra("searchQuery").toString()
-
+        state = intent.getStringExtra("stateKey").toString()
+        city = intent.getStringExtra("cityKey").toString()
         val cancelActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.goBackButton)
         cancelActionButton.setOnClickListener {
