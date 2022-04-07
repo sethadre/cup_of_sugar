@@ -5,8 +5,8 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="@color/background_grey">
+    android:background="@color/beige"
+    android:backgroundTint="@color/beige">
 
     <!-- TOP TOOLBAR -->
 
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="?attr/colorPrimary"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/light_green"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +32,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="136dp"
         android:text="SETTINGS"
+        android:textColor="@color/beige"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,71 +53,58 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_marginTop="45dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="24dp"
-                android:textSize="24sp"
-                android:layout_width="256dp"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"
-                android:text="Dark Mode"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-            <Switch
-                android:id="@+id/switch2"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="24dp"
-                android:textSize="24sp"
-                android:layout_width="256dp"
-                android:layout_height="wrap_content"
-                android:text="Push Notifications"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-            <Switch
-                android:id="@+id/switch3"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="24dp"
-                android:textSize="24sp"
-                android:layout_width="256dp"
-                android:layout_height="wrap_content"
-                android:text="Location Services"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-            <Switch
-                android:id="@+id/switch4"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="24dp"
-                android:textSize="24sp"
-                android:layout_width="256dp"
-                android:layout_height="wrap_content"
-                android:text="Private Profile"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-
             <Button
-                android:id="@+id/securityButton"
+                android:id="@+id/updateEmailButton"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="  Security"
-                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawableTint="@color/green"
                 android:gravity="left|center_vertical"
-                android:textSize="16sp"
-                style="?android:attr/borderlessButtonStyle" />
+                android:padding="15dp"
+                android:text="  Update Email"
+                android:textColor="@color/green"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/changePasswordButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawableTint="@color/green"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Change Password"
+                android:textColor="@color/green"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/deleteAccountButton"
-                android:layout_width="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#BD0000"
-                android:text="Delete Account"
-                android:textSize="16sp" />
+                android:drawableLeft="@drawable/ic_baseline_clear_24"
+                android:drawableTint="@color/green"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Delete Account"
+                android:textColor="@color/green"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/logoutButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_logout_24"
+                android:drawableTint="@color/green"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Logout"
+                android:textColor="@color/green"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>
@@ -126,10 +114,10 @@
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:backgroundTint="@color/green"
+        app:backgroundTint="@color/light_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -139,13 +127,14 @@
         android:id="@+id/profileActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:clickable="true"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
         app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_user"
+        app:tint="@color/green"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -153,11 +142,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@+id/homeActionButton"
         app:layout_constraintStart_toEndOf="@id/profileActionButton"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_chat"
+        app:tint="@color/green"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -165,12 +156,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_home"
+        app:tint="@color/brown"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -178,11 +171,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@id/settingsActionButton"
         app:layout_constraintStart_toEndOf="@+id/homeActionButton"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_help"
+        app:tint="@color/brown"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -190,12 +185,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="#FFFFFF"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="@+id/bottomAppBar"
         app:layout_constraintStart_toEndOf="@+id/helpActionButton"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_settings"
+        app:tint="@color/beige"
         tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
