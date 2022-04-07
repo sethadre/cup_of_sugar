@@ -128,6 +128,14 @@ class CreatePostActivity : AppCompatActivity() {
             getLocation()
 
         }
+        val submitPostButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.submitBtn)
+        submitPostButton.setOnClickListener{
+            if(addressString[1] == "")
+                Toast.makeText(this,"No location. Please Try Again.",Toast.LENGTH_LONG).show()
+            else
+            submitPost()
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -340,7 +348,7 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
     // End filter dropdown menu
-    fun submitPost(view: View) {
+    fun submitPost() {
 
         //Tasks
         //Instances
