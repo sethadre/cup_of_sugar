@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.widget.addTextChangedListener
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
@@ -110,15 +111,6 @@ class ItemsPageActivity : AppCompatActivity() {
 
         //LOOP
         //Grab folder refs
-        val getLocationButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.getLocationButton)
-        getLocationButton.setOnClickListener{
-            //isLocationPermissionGranted()
-            getLocation()
-            userState = addressString[1] //city
-            userCity = addressString[2]  //state
-        }
-
 
         val cityRef = db.collection("Items").document(userState).collection(userCity)
 
@@ -312,12 +304,22 @@ class ItemsPageActivity : AppCompatActivity() {
 
         setContentView(R.layout.items_homepage) //moved this line lower
 
+        //
+        locationSpinners()
         //Search Text Field itself
-        val searchQuery= findViewById<EditText>(R.id.searchTextField).text.toString()
+
+
         val searchActionButton =
             //Button Action
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.searchButton)
         searchActionButton.setOnClickListener {
+
+            val searchText= findViewById<EditText>(R.id.searchTextField)
+            var searchQuery = searchText.text.toString()
+            Log.d(TAG,"This is your search query:  ${searchQuery}")
+            searchText.addTextChangedListener{
+                searchQuery = searchText.text.toString()
+            }
             val intent = Intent(this, SearchResultsActivity::class.java)
             intent.putExtra("searchQuery", searchQuery)
             intent.putExtra("stateKey", userState)
@@ -332,6 +334,14 @@ class ItemsPageActivity : AppCompatActivity() {
             val intent = Intent(this, CreatePostActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        val getLocationButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.getLocationButton)
+        getLocationButton.setOnClickListener{
+            //isLocationPermissionGranted()
+            getLocation()
+            //userState = addressString[1] //city
+            // userCity = addressString[2]  //state
         }
 
 
@@ -400,7 +410,7 @@ class ItemsPageActivity : AppCompatActivity() {
         return stringArray
     }
 
-    @SuppressLint("MissingPermission")
+
     private fun getLocation(){
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -413,6 +423,7 @@ class ItemsPageActivity : AppCompatActivity() {
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), permissionCode)
             return
         }
+        @SuppressLint("MissingPermission")
         val task = fusedLocationProviderClient.lastLocation
         task.addOnSuccessListener { location ->
             if (location != null){
@@ -426,6 +437,8 @@ class ItemsPageActivity : AppCompatActivity() {
                 Handler().postDelayed(Runnable {
                     //after 3s
                     addressString = getAddress(locationList.get(0),locationList.get(1))
+                    userState = addressString[2]
+                    userCity = addressString[1]
                 }, 50)
             }
         }
@@ -489,7 +502,7 @@ class ItemsPageActivity : AppCompatActivity() {
         fun AssetManager.readFile(fileName: String) = open(fileName)
             .bufferedReader()
             .use { it.readText() }
-         lateinit var context: Context
+        var context: Context = this
         val jsonString = context.assets.readFile("US_States_and_Cities.json")
         val statesArray = arrayOf("Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont",
             "Washington", "Wisconsin", "West Virginia","Wyoming")
@@ -539,18 +552,16 @@ class ItemsPageActivity : AppCompatActivity() {
             citiesList = mutableListOf("")
             val citySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, citiesList)
             citySpinner.adapter = citySpinnerAdapter
-        }
+
+//            citySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
+               }
                     }
 
 
 
 
 
-//    fun goSearch(view: View) {
-//        val intent = Intent(this, SearchBarActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
 
 }
 
