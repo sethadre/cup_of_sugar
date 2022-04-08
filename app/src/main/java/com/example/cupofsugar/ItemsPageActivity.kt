@@ -58,8 +58,9 @@ class ItemsPageActivity : AppCompatActivity() {
 
 
         //Start of Back End Stuff
-        userState = " " //user.getState()
-        userCity = " " //user.getState()
+
+        userState = "CA" //user.getState()
+        userCity = "Long Beach" //user.getState()
         addressString = arrayOf("","","")
         val storage = Firebase.storage
         //This is how we download to memory and not as local file
@@ -112,7 +113,7 @@ class ItemsPageActivity : AppCompatActivity() {
         //LOOP
         //Grab folder refs
 
-        val cityRef = db.collection("Items").document(userState).collection(userCity)
+        val cityRef = db.collection("Items").document(userState).collection(" " + userCity)
 
         //Log.d("testPostRef",testPostRef.toString())
 
@@ -176,7 +177,7 @@ class ItemsPageActivity : AppCompatActivity() {
                                     val refToPost = testPostRef.toString()
                                     intent.putExtra("postRefKey", refToPost)
                                     intent.putExtra("stateKey", userState)
-                                    intent.putExtra("cityKey", userCity)
+                                    intent.putExtra("cityKey", " " + userCity)
                                     intent.putExtra("docIDKey", document.id)
                                     startActivity(intent)
                                     finish()
@@ -323,7 +324,8 @@ class ItemsPageActivity : AppCompatActivity() {
             val intent = Intent(this, SearchResultsActivity::class.java)
             intent.putExtra("searchQuery", searchQuery)
             intent.putExtra("stateKey", userState)
-            intent.putExtra("cityKey", userCity)
+            intent.putExtra("cityKey", " " +userCity)
+            //intent.putExtra("docIDKey", docID)
             startActivity(intent)
             finish()
         }
@@ -508,7 +510,9 @@ class ItemsPageActivity : AppCompatActivity() {
             "Washington", "Wisconsin", "West Virginia","Wyoming")
         val stateSpinner = findViewById<Spinner>(R.id.spinner_state) as Spinner
         val citySpinner = findViewById<Spinner>(R.id.spinner_city) as Spinner
-        lateinit var citiesList: MutableList<String>
+        var citiesList: MutableList<String> = mutableListOf("")
+        //var citySpinnerAdapterEmpty = ArrayAdapter(this, android.R.layout.simple_spinner_item, mutableListOf(""))
+        var citySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, citiesList)
         if (stateSpinner != null) {
             var adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, statesArray)
             stateSpinner.adapter = adapter
@@ -516,6 +520,7 @@ class ItemsPageActivity : AppCompatActivity() {
             stateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
                             {
+
                                 try {
                                     // get JSONObject from JSON file
                                     val obj = JSONObject(jsonString)
@@ -532,6 +537,8 @@ class ItemsPageActivity : AppCompatActivity() {
                                         cities[city] = jsonState.getString(city)
                                         citiesList.add(cities[city])
                                         Log.d(TAG,jsonState.getString(city))
+                                        //citySpinner.setSelection(city)
+                                        citySpinner.adapter = citySpinnerAdapter
                                     }
                                     //citiesArray = cities
 
@@ -547,15 +554,15 @@ class ItemsPageActivity : AppCompatActivity() {
                             }
 
                         }
-        if (citySpinner != null) {
-            //define ctitesList
-            citiesList = mutableListOf("")
-            val citySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, citiesList)
-            citySpinner.adapter = citySpinnerAdapter
-
-//            citySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
-               }
+//        if (citySpinner != null) {
+//            //define ctitesList
+//            citiesList = mutableListOf("")
+//            val citySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, citiesList)
+//            citySpinner.adapter = citySpinnerAdapter
+//
+////            citySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+////                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
+//               }
                     }
 
 
