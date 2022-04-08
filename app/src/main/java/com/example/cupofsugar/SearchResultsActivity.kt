@@ -46,7 +46,7 @@ class SearchResultsActivity: AppCompatActivity() {
         val intent = Intent(this, ItemPostActivity::class.java)
         val text = findViewById<TextView>(R.id.textOne)
 
-        val docRef = db.collection("Items").document(state).collection(city)
+        //val docRef = db.collection("Items").document(state).collection(city)
         for(item in foundItems){
             item.get().addOnSuccessListener { document ->
                 text.text = document.data?.getValue("title") as String
@@ -77,7 +77,7 @@ class SearchResultsActivity: AppCompatActivity() {
         return foundList
     }
 
-    private fun searchResult(searchQuery : Any): ArrayList<DocumentReference> {
+    private fun searchResult(searchQuery : String): ArrayList<DocumentReference> {
         var results: Array<DocumentReference> = arrayOf()
         val docRef = db.collection("Items").document(state).collection(city)
         val listOfMatches = ArrayList<DocumentReference>()
@@ -93,9 +93,9 @@ class SearchResultsActivity: AppCompatActivity() {
                     //We need to finish this
 //                    val listOfCategory = ArrayList<Any>()
                     var post = document.data.getValue("title") as String
-                    var possibleMatch = arrayOf(post.split(" "))
+                    var possibleMatch: List<String> = post.split(" ")
                     for(word in possibleMatch){
-                        if (searchQuery == word) {
+                        if (word == searchQuery) {
                             listOfMatches.add(testPostRef)
                             Log.d("Post Found: ", document.id)
                         }

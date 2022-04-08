@@ -138,7 +138,7 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("MissingPermission")
+    //@SuppressLint("MissingPermission")
     private fun getLocation(){
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -151,6 +151,7 @@ class CreatePostActivity : AppCompatActivity() {
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), permissionCode)
             return
         }
+        @SuppressLint("MissingPermission")
         val task = fusedLocationProviderClient.lastLocation
         task.addOnSuccessListener { location ->
             if (location != null){
