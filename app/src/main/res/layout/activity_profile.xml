@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gradient"
+    android:theme="@style/Theme.CupOfSugar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="@color/background_grey">
+    android:background="#FFFFFF" >
 
 
     <ScrollView
@@ -42,9 +42,7 @@
                     android:layout_marginTop="45dp"
                     android:layout_marginBottom="20dp"
                     android:padding="3dip"
-                    android:text="Jimmy Donaldson"
-                    android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    android:text="Jimmy Donaldson" />
 
 
             </TableRow>
@@ -55,9 +53,7 @@
                     android:layout_height="46dp"
                     android:layout_column="0"
                     android:layout_marginLeft="15dp"
-                    android:text="Bio"
-                    android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:text="Bio" />
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="20dp"
@@ -65,16 +61,13 @@
                     android:layout_column="1"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
-                    android:backgroundTint="@color/green"
                     android:text="Add Friend" />
                 
             </TableRow>
             <TableRow>
                 <TextView
                     android:text="This is an example Bio"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="16sp"/>
+                    android:layout_marginLeft="15dp" />
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="20dp"
@@ -82,7 +75,6 @@
                     android:layout_column="1"
                     android:layout_weight="0"
                     android:layout_marginRight="20dp"
-                    android:backgroundTint="@color/green"
                     android:text="Message" />
             </TableRow>
 
@@ -91,10 +83,7 @@
                     android:text = "Posts"
                     android:layout_marginTop="25dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/white"
-                    >
+                    android:layout_marginBottom="15dp" >
                 </TextView>
             </TableRow>
 
@@ -140,10 +129,11 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
+
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="?attr/colorPrimary"
-        android:backgroundTint="@color/green"
+
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintTop_toTopOf="parent"
@@ -155,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="PROFILE"
+        android:text="Profile"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/toolbar2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -173,7 +163,7 @@
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:backgroundTint="@color/green"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

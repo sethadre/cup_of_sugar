@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme ="@style/Theme.CupOfSugar"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,15 +11,11 @@
 
     <!-- TOP TOOLBAR -->
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="?attr/colorPrimary"
-        android:backgroundTint="@color/light_green"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:theme="@style/TopBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +28,7 @@
         android:layout_marginStart="136dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="136dp"
-        android:text="SETTINGS"
+        android:text="Settings"
         android:textColor="@color/beige"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,12 +43,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <Button
                 android:id="@+id/updateEmailButton"
@@ -61,11 +58,13 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/ic_baseline_email_24"
                 android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
                 android:gravity="left|center_vertical"
                 android:padding="15dp"
                 android:text="  Update Email"
+                android:textAllCaps="false"
                 android:textColor="@color/green"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/changePasswordButton"
@@ -74,11 +73,13 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
                 android:gravity="left|center_vertical"
                 android:padding="15dp"
                 android:text="  Change Password"
+                android:textAllCaps="false"
                 android:textColor="@color/green"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/deleteAccountButton"
@@ -87,11 +88,13 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_baseline_clear_24"
                 android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
                 android:gravity="left|center_vertical"
                 android:padding="15dp"
                 android:text="  Delete Account"
+                android:textAllCaps="false"
                 android:textColor="@color/green"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/logoutButton"
@@ -100,21 +103,22 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_baseline_logout_24"
                 android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
                 android:gravity="left|center_vertical"
                 android:padding="15dp"
                 android:text="  Logout"
+                android:textAllCaps="false"
                 android:textColor="@color/green"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
-        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:theme="@style/BottomBar"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:backgroundTint="@color/light_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -163,7 +167,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_home"
-        app:tint="@color/brown"
+        app:tint="@color/green"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -177,7 +181,7 @@
         app:layout_constraintStart_toEndOf="@+id/homeActionButton"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_help"
-        app:tint="@color/brown"
+        app:tint="@color/green"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
