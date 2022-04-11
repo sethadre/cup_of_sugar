@@ -2,12 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cupofsugar"
-    tools:ignore="ImpliedTouchscreenHardware,MissingLeanbackLauncher">
-
-    <uses-feature
-        android:name="android.software.leanback"
-        android:required="false" />
-
+    tools:ignore="MissingLeanbackLauncher">
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -57,12 +55,6 @@
             android:name=".RegisterActivity"
             android:exported="false"
             android:label="RegisterActivity" />
-
-        <activity
-            android:name=".SearchBarActivity"
-            android:exported="false"
-            android:label="SearchBarActivity" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

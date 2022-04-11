@@ -13,17 +13,19 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.items_homepage.*
 import org.w3c.dom.Document
+import org.w3c.dom.Text
 
 class SearchResultsActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private val TAG = "LoginActivity"
     private lateinit var result: StringBuffer
+    private lateinit var foundItems:ArrayList<DocumentReference>
 //    private val result: StringBuffer = StringBuffer()
 //    private val state = intent.getStringExtra("stateKey").toString()
 //    private val city = intent.getStringExtra("cityKey").toString()
-    private val state = "CA"
-    private val city = "Long Beach"
+    private lateinit var state:String
+    private lateinit var city:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,8 @@ class SearchResultsActivity: AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         //Get the Search Query from HomePage Search. "the words the user searched for"
         val searchQuery = intent.getStringExtra("searchQuery").toString()
-
+        state = intent.getStringExtra("stateKey").toString()
+        city = intent.getStringExtra("cityKey").toString()
         val cancelActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.goBackButton)
         cancelActionButton.setOnClickListener {
@@ -41,42 +44,55 @@ class SearchResultsActivity: AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        var foundItems = searchResult(searchQuery)
-        val intent = Intent(this, ItemPostActivity::class.java)
-        val text = findViewById<TextView>(R.id.textOne)
+        foundItems = searchResult(searchQuery)
 
-        val docRef = db.collection("Items").document(state).collection(city)
+        val textOne = findViewById<TextView>(R.id.textOne)
+
+        //Make An array of Views
+        val views: Array<TextView> = arrayOf(textOne,)
+
+        var titlePass = " "
+        //val docRef = db.collection("Items").document(state).collection(city)
         for(item in foundItems){
+            var i = 0
             item.get().addOnSuccessListener { document ->
-                text.text = document.data?.getValue("title") as String
-                val refToPost = item.toString()
+                titlePass = document.data?.getValue("title") as String
+                views[i].text = titlePass //Set the string of that textView
+            }
+            i++
+        }
+        //Change this later once we get a for loop for like items (Views)
+        //We also need to make Views invisible for the amount of items missing out of 10
+
+        textOne.setOnClickListener{
+            foundItems[0].get().addOnSuccessListener {
+                //titlePass = it.data?.getValue("title") as String
+                //textOne.text = titlePass //Set the string of that textView
+                val intent = Intent(this, ItemPostActivity::class.java)
+                val descriptionPass = it.data?.getValue("description") as String
+                val refToPost = foundItems[0].toString()
+                val ownerIDPass = it.data?.getValue("owner") as String
+                intent.putExtra("titleKey", titlePass)
+                intent.putExtra("descriptionKey", descriptionPass)
+                intent.putExtra("ownerIDKey", ownerIDPass)
+
                 intent.putExtra("postRefKey", refToPost)
 
                 intent.putExtra("stateKey",state)
                 intent.putExtra("cityKey",city)
-                intent.putExtra("docIDKey",document.id)
-
+                intent.putExtra("docIDKey",it.id)
+                startActivity(intent)
+                finish()
             }
-        }
-        text.setOnClickListener{
-            startActivity(intent)
-            finish()
+
         }
 
     }
 
     //SEARCH ALGORITHM GOES HERE
-    private fun linearSearch(list: List<Any>, key: Any): ArrayList<Any> {
-        val foundList = ArrayList<Any>()
-        for ((index, value) in list.withIndex()) {
-            if (value == key) {
-                foundList.add(value) //change to add to list then return at end
-            }
-        }
-        return foundList
-    }
 
-    private fun searchResult(searchQuery : Any): ArrayList<DocumentReference> {
+
+    private fun searchResult(searchQuery : String): ArrayList<DocumentReference> {
         var results: Array<DocumentReference> = arrayOf()
         val docRef = db.collection("Items").document(state).collection(city)
         val listOfMatches = ArrayList<DocumentReference>()
@@ -92,9 +108,9 @@ class SearchResultsActivity: AppCompatActivity() {
                     //We need to finish this
 //                    val listOfCategory = ArrayList<Any>()
                     var post = document.data.getValue("title") as String
-                    var possibleMatch = arrayOf(post.split(" "))
+                    var possibleMatch: List<String> = post.split(" ")
                     for(word in possibleMatch){
-                        if (searchQuery == word) {
+                        if (word == searchQuery) {
                             listOfMatches.add(testPostRef)
                             Log.d("Post Found: ", document.id)
                         }

@@ -1,14 +1,23 @@
 package com.example.cupofsugar
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.Context
+import android.content.pm.PackageManager
 import android.content.res.AssetManager
 import android.graphics.BitmapFactory
+import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.widget.addTextChangedListener
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -25,9 +34,16 @@ class ItemsPageActivity : AppCompatActivity() {
     private  lateinit var db: FirebaseFirestore
     companion object{
         const val TAG = "ItemsPageActivity"
+        const val permissionCode = 101
     }
-
-
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var currentLocation: Location
+    private var lat: Double = 0.0
+    private var long: Double = 0.0
+    private var locationList: MutableList<Double> = mutableListOf(lat,long)
+    private lateinit var addressString :Array<String>
+    private lateinit var userState:String
+    private lateinit var userCity:String
     //Grid
     val postint = 0
     private lateinit var gridView: GridView
@@ -42,6 +58,10 @@ class ItemsPageActivity : AppCompatActivity() {
 
 
         //Start of Back End Stuff
+
+        userState = "CA" //user.getState()
+        userCity = "Long Beach" //user.getState()
+        addressString = arrayOf("","","")
         val storage = Firebase.storage
         //This is how we download to memory and not as local file
         val ONE_MEGABYTE: Long = 1024 * 1024
@@ -92,10 +112,8 @@ class ItemsPageActivity : AppCompatActivity() {
 
         //LOOP
         //Grab folder refs
-        val userState = "CA" //user.getState()
-        val userCity = "Long Beach" //user.getState()
 
-        val cityRef = db.collection("Items").document(userState).collection(userCity)
+        val cityRef = db.collection("Items").document(userState).collection(" " + userCity)
 
         //Log.d("testPostRef",testPostRef.toString())
 
@@ -159,7 +177,7 @@ class ItemsPageActivity : AppCompatActivity() {
                                     val refToPost = testPostRef.toString()
                                     intent.putExtra("postRefKey", refToPost)
                                     intent.putExtra("stateKey", userState)
-                                    intent.putExtra("cityKey", userCity)
+                                    intent.putExtra("cityKey", " " + userCity)
                                     intent.putExtra("docIDKey", document.id)
                                     startActivity(intent)
                                     finish()
@@ -287,14 +305,27 @@ class ItemsPageActivity : AppCompatActivity() {
 
         setContentView(R.layout.items_homepage) //moved this line lower
 
+        //
+        locationSpinners()
         //Search Text Field itself
-        val searchQuery= findViewById<EditText>(R.id.searchTextField).text.toString()
+
+
         val searchActionButton =
             //Button Action
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.searchButton)
         searchActionButton.setOnClickListener {
+
+            val searchText= findViewById<EditText>(R.id.searchTextField)
+            var searchQuery = searchText.text.toString()
+            Log.d(TAG,"This is your search query:  ${searchQuery}")
+            searchText.addTextChangedListener{
+                searchQuery = searchText.text.toString()
+            }
             val intent = Intent(this, SearchResultsActivity::class.java)
             intent.putExtra("searchQuery", searchQuery)
+            intent.putExtra("stateKey", userState)
+            intent.putExtra("cityKey", " " +userCity)
+            //intent.putExtra("docIDKey", docID)
             startActivity(intent)
             finish()
         }
@@ -305,6 +336,14 @@ class ItemsPageActivity : AppCompatActivity() {
             val intent = Intent(this, CreatePostActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        val getLocationButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.getLocationButton)
+        getLocationButton.setOnClickListener{
+            //isLocationPermissionGranted()
+            getLocation()
+            //userState = addressString[1] //city
+            // userCity = addressString[2]  //state
         }
 
 
@@ -352,11 +391,78 @@ class ItemsPageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
         // ****************************************************************************************
         // ****************************************************************************************
         // END BOTTOM BAR BUTTONS
 
     }
+    private fun getAddress(lat: Double, lng: Double): Array<String> {
+        val geocoder = Geocoder(this)
+        val list = geocoder.getFromLocation(lat, lng, 1)
+        Log.d(CreatePostActivity.TAG,list[0].getAddressLine(0))
+        //Log.d(TAG,list[0].getAddressLine(1))
+        //Log.d(TAG,list[0].getAddressLine(2))
+        //We get a ful address starting from address, city, state, zip code, country
+        //Now we must split this string to just city and state
+        val stringArray= list[0].getAddressLine(0).split(",").toTypedArray()
+        val onlyTheState = stringArray[2].split(" ")
+        stringArray[2] = onlyTheState[1] // ["", "state", "zipcode"]
+        Log.d(CreatePostActivity.TAG, stringArray[2])
+        return stringArray
+    }
+
+
+    private fun getLocation(){
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+            PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, android.Manifest.permission.ACCESS_COARSE_LOCATION
+            ) !=
+            PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), permissionCode)
+            return
+        }
+        @SuppressLint("MissingPermission")
+        val task = fusedLocationProviderClient.lastLocation
+        task.addOnSuccessListener { location ->
+            if (location != null){
+                currentLocation = location
+                lat = currentLocation!!.latitude
+                long = currentLocation!!.longitude
+                locationList.set(0, lat)
+                locationList.set(1,long)
+                Log.d(CreatePostActivity.TAG, lat.toString() + "" + long.toString())
+
+                Handler().postDelayed(Runnable {
+                    //after 3s
+                    addressString = getAddress(locationList.get(0),locationList.get(1))
+                    userState = addressString[2]
+                    userCity = addressString[1]
+                }, 50)
+            }
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode) {
+            permissionCode -> if (grantResults.isEmpty() && grantResults[0] ==
+                PackageManager.PERMISSION_GRANTED
+            ) {
+
+                getLocation()
+            }
+        }
+    }
+
 
     //firebase stuff
     fun readFireStoreData() {
@@ -398,13 +504,15 @@ class ItemsPageActivity : AppCompatActivity() {
         fun AssetManager.readFile(fileName: String) = open(fileName)
             .bufferedReader()
             .use { it.readText() }
-         lateinit var context: Context
+        var context: Context = this
         val jsonString = context.assets.readFile("US_States_and_Cities.json")
         val statesArray = arrayOf("Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont",
             "Washington", "Wisconsin", "West Virginia","Wyoming")
         val stateSpinner = findViewById<Spinner>(R.id.spinner_state) as Spinner
         val citySpinner = findViewById<Spinner>(R.id.spinner_city) as Spinner
-        lateinit var citiesList: MutableList<String>
+        var citiesList: MutableList<String> = mutableListOf("")
+        //var citySpinnerAdapterEmpty = ArrayAdapter(this, android.R.layout.simple_spinner_item, mutableListOf(""))
+        var citySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, citiesList)
         if (stateSpinner != null) {
             var adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, statesArray)
             stateSpinner.adapter = adapter
@@ -412,6 +520,7 @@ class ItemsPageActivity : AppCompatActivity() {
             stateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
                             {
+
                                 try {
                                     // get JSONObject from JSON file
                                     val obj = JSONObject(jsonString)
@@ -428,6 +537,8 @@ class ItemsPageActivity : AppCompatActivity() {
                                         cities[city] = jsonState.getString(city)
                                         citiesList.add(cities[city])
                                         Log.d(TAG,jsonState.getString(city))
+                                        //citySpinner.setSelection(city)
+                                        citySpinner.adapter = citySpinnerAdapter
                                     }
                                     //citiesArray = cities
 
@@ -443,23 +554,21 @@ class ItemsPageActivity : AppCompatActivity() {
                             }
 
                         }
-        if (citySpinner != null) {
-            //define ctitesList
-            citiesList = mutableListOf("")
-            val citySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, citiesList)
-            citySpinner.adapter = citySpinnerAdapter
-        }
+//        if (citySpinner != null) {
+//            //define ctitesList
+//            citiesList = mutableListOf("")
+//            val citySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, citiesList)
+//            citySpinner.adapter = citySpinnerAdapter
+//
+////            citySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+////                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
+//               }
                     }
 
 
 
 
 
-//    fun goSearch(view: View) {
-//        val intent = Intent(this, SearchBarActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
 
 }
 
