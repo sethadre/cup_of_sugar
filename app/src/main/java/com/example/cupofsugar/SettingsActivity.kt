@@ -86,7 +86,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         // Logout
-        val logOutButton =
+        val logoutButton =
             findViewById<Button>(R.id.logoutButton)
         logoutButton.setOnClickListener {
             val intent= Intent(this,LoginActivity::class.java)

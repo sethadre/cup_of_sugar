@@ -6,7 +6,7 @@
     android:theme="@style/Theme.CupOfSugar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF" >
+    android:background="@color/beige" >
 
 
     <ScrollView
@@ -55,6 +55,7 @@
                     android:layout_marginLeft="15dp"
                     android:text="Bio" />
                 <Button
+                    android:background="@drawable/round_button"
                     android:id="@+id/button2"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
@@ -69,6 +70,7 @@
                     android:text="This is an example Bio"
                     android:layout_marginLeft="15dp" />
                 <Button
+                    android:background="@drawable/round_button"
                     android:id="@+id/button3"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
@@ -129,13 +131,10 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="?attr/colorPrimary"
-
+        android:theme="@style/TopBar"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/profileScroll"
         tools:ignore="MissingConstraints"
@@ -146,6 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Profile"
+        android:textColor="@color/beige"
         android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/toolbar2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -163,7 +163,7 @@
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-
+        android:theme="@style/BottomBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -176,7 +176,8 @@
         android:id="@+id/profileActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        app:backgroundTint="@color/green"
+        app:tint="@color/beige"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
@@ -190,6 +191,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        app:backgroundTint="@color/beige"
+        app:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@+id/homeActionButton"
         app:layout_constraintStart_toEndOf="@id/profileActionButton"
@@ -202,6 +205,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        app:backgroundTint="@color/beige"
+        app:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -215,6 +220,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        app:backgroundTint="@color/beige"
+        app:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@id/settingsActionButton"
         app:layout_constraintStart_toEndOf="@+id/homeActionButton"
@@ -227,7 +234,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="#FFFFFF"
+        app:backgroundTint="@color/beige"
+        app:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="@+id/bottomAppBar"
         app:layout_constraintStart_toEndOf="@+id/helpActionButton"

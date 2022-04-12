@@ -6,8 +6,7 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige"
-    android:backgroundTint="@color/beige">
+    android:background="@color/beige">
 
     <!-- TOP TOOLBAR -->
 
@@ -132,14 +131,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:backgroundTint="@color/beige"
         app:backgroundTint="@color/beige"
+        app:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
         app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_user"
-        app:tint="@color/green"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -147,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:backgroundTint="@color/beige"
+        app:backgroundTint="@color/beige"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@+id/homeActionButton"
         app:layout_constraintStart_toEndOf="@id/profileActionButton"
@@ -161,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:backgroundTint="@color/beige"
+        app:backgroundTint="@color/beige"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -176,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:backgroundTint="@color/beige"
+        app:backgroundTint="@color/beige"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@id/settingsActionButton"
         app:layout_constraintStart_toEndOf="@+id/homeActionButton"

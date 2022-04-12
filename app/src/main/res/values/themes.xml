@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.CupOfSugar" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light_green</item>
+        <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryVariant">@color/green</item>
         <item name="colorOnPrimary">@color/beige</item>
         <!-- Secondary brand color. -->
@@ -16,8 +16,8 @@
         <item name="android:textColor">@color/green</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textAllCaps">false</item>
-        <!-- Background -->
-        <item name = "backgroundColor">@color/beige</item>
+        <!-- Background (Currently doesn't work as intended) -->
+        <!-- <item name = "background">@color/beige</item> -->
         <!-- Customize your theme here. -->
     </style>
 
@@ -39,6 +39,12 @@
     <style name="GreenButton" >
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/green</item>
+        <item name="colorOnPrimary">@color/beige</item>
+    </style>
+
+    <style name="LightGreenButton" >
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/light_green</item>
         <item name="colorOnPrimary">@color/beige</item>
     </style>
 

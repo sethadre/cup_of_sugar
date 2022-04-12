@@ -4,7 +4,8 @@
         <layer-list>
             <item>
                 <shape android:shape="rectangle">
-                    <solid android:color="@color/white"/>
+                    <solid android:color="@color/beige"/>
+                    <stroke android:width="1.5dp" android:color="@color/green" />
                     <padding android:right="12dp"
                         android:left="12dp"/>
                     <corners android:radius="4dp"/>
@@ -12,7 +13,7 @@
             </item>
             <item
                 android:drawable="@drawable/ic_filter_arrow_down"
-                android:gravity="end"/>
+                android:gravity="right" />
         </layer-list>
     </item>
 </selector>
