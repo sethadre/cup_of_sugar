@@ -24,9 +24,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="136dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="Settings"
         android:textColor="@color/beige"
         android:textSize="30sp"

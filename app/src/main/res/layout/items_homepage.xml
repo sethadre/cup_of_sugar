@@ -9,20 +9,56 @@
     <!--Location Bar-->
     <!-- Search Bar-->
     <LinearLayout
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/LocationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" >
+
+        <EditText
+            android:id="@+id/searchTextField"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:hint="Search"
+            android:padding="10dp"
+            android:background="@drawable/searchbar"
+            android:textColor="@color/beige"
+            android:textColorHint="@color/light_green">
+        </EditText>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:outlineProvider="none"
+            app:backgroundTint="@android:color/transparent"
+            app:borderWidth="0dp"
+            app:tint="@color/green"
+            app:srcCompat="@android:drawable/ic_search_category_default" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/LocationBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
+        android:paddingLeft="15dp"
         android:paddingTop="5dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/searchBar"
+        android:paddingRight="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:layout_constraintVertical_bias="3.0">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -64,40 +100,6 @@
             tools:ignore="MissingConstraints" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/searchBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LocationBar" >
-
-        <EditText
-            android:id="@+id/searchTextField"
-            android:layout_width="335dp"
-            android:layout_height="wrap_content"
-            android:hint="Search"
-            android:padding="10dp"
-            android:background="@drawable/searchbar"
-            android:textColor="@color/beige"
-            android:textColorHint="@color/light_green">
-        </EditText>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/searchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:outlineProvider="none"
-            app:backgroundTint="@android:color/transparent"
-            app:borderWidth="0dp"
-            app:tint="@color/green"
-            app:srcCompat="@android:drawable/ic_search_category_default" />
-    </LinearLayout>
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
@@ -106,7 +108,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        app:layout_constraintTop_toBottomOf="@+id/LocationBar"
         app:layout_constraintVertical_bias="1.0">
 <!--        <GridView-->
 <!--            android:id="@+id/GridView"-->
@@ -143,9 +145,7 @@
                    android:onClick="goToPost"
                    android:layout_marginLeft="15dp"
                    />
-
            </TableRow>
-
        </TableLayout>
     </ScrollView>
 
@@ -168,6 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cup of Sugar"
+        android:gravity="center"
         android:textSize="30sp"
         android:textColor="@color/beige"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
@@ -267,7 +268,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="15dp"
         android:clickable="true"
         app:backgroundTint="@color/beige"
         app:tint="@color/green"

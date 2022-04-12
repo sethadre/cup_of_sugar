@@ -91,7 +91,6 @@ class CreatePostActivity : AppCompatActivity() {
             openGallery()
         }
 
-
         // Deletes the 3 image previews
         val removePhotoButton1 =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.button_removePhoto1)
@@ -122,7 +121,7 @@ class CreatePostActivity : AppCompatActivity() {
             //placeholder code to ask for camera privileges
         }
         val getLocationButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.locationButton)
+            findViewById<Button>(R.id.locationButton)
         getLocationButton.setOnClickListener{
             //isLocationPermissionGranted()
             getLocation()

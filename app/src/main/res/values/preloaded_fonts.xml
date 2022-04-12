@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
-        <item>@font/</item>
-        <item>@font/lato</item>
         <item>@font/open_sans</item>
-        <item>@font/open_sans_bold</item>
-        <item>@font/open_sans_extrabold</item>
-        <item>@font/roboto</item>
-        <item>@font/roboto_medium</item>
     </array>
 </resources>
