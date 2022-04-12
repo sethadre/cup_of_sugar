@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/light_green</item>
         <item name="colorPrimaryVariant">@color/green</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/beige</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -36,6 +36,17 @@
         <item name="android:backgroundTint">@color/light_green</item>
     </style>
 
+    <style name="GreenButton" >
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorOnPrimary">@color/beige</item>
+    </style>
+
+    <style name="WhiteButton" >
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/beige</item>
+        <item name="colorOnPrimary">@color/green</item>
+    </style>
 
 </resources>
 
