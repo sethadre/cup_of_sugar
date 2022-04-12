@@ -7,33 +7,39 @@
     android:layout_height="match_parent"
     android:background="@color/beige" >
     <!--Location Bar-->
+    <!-- Search Bar-->
     <LinearLayout
         android:id="@+id/LocationBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/searchBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2"
         app:layout_constraintVertical_bias="3.0">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/getLocationButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:backgroundTint="@color/green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:clickable="true"
-            app:srcCompat="@android:drawable/ic_menu_mylocation" />
-
+            app:backgroundTint="@color/green"
+            app:srcCompat="@drawable/ic_baseline_location_on_24"
+            app:tint="@color/beige" />
 
         <Spinner
             android:id="@+id/spinner_state"
-            android:layout_width="100dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/spinner_color"
             android:dropDownVerticalOffset="24dp"
             android:entries="@array/state_options"
@@ -41,9 +47,8 @@
 
         <Spinner
             android:id="@+id/spinner_city"
-            android:layout_width="100dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:background="@drawable/spinner_color"
             android:dropDownVerticalOffset="24dp"
             android:entries="@array/city_options"
@@ -58,13 +63,13 @@
             android:textSize="16sp"
             tools:ignore="MissingConstraints" />
     </LinearLayout>
-    <!-- Search Bar-->
+
     <LinearLayout
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,9 +78,9 @@
         <EditText
             android:id="@+id/searchTextField"
             android:layout_width="335dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Search"
-            android:padding="15dp"
+            android:padding="10dp"
             android:background="@drawable/searchbar"
             android:textColor="@color/beige"
             android:textColorHint="@color/light_green">
@@ -92,7 +97,6 @@
             app:tint="@color/green"
             app:srcCompat="@android:drawable/ic_search_category_default" />
     </LinearLayout>
-
 
     <ScrollView
         android:id="@+id/scrollView2"
