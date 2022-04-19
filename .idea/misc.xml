@@ -17,14 +17,17 @@
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/round_input_boxes.xml" value="0.2875" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/searchbar.xml" value="0.321" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/drawable/spinner_color.xml" value="0.2245" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/font/open_sans.xml" value="0.4171875" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/font/open_sans_bold.xml" value="0.32864583333333336" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_chat.xml" value="0.33" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_conversation.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_conversation_page.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_create_post.xml" value="0.33" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_forums.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_help.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_homepage.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_item_post.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.33469202898550726" />
+        <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_main_page.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Annie/Documents/GitHub/cup_of_sugar/app/src/main/res/layout/activity_private_messaging.xml" value="0.38697916666666665" />

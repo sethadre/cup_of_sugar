@@ -14,7 +14,7 @@
         android:id="@+id/profileScroll"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -130,7 +130,7 @@
     <!-- TOP TOOLBAR -->
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:theme="@style/TopBar"
@@ -147,9 +147,9 @@
         android:text="Profile"
         android:textColor="@color/beige"
         android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/toolbar2"
+        app:layout_constraintEnd_toStartOf="@+id/toolbar"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/toolbar2"
+        app:layout_constraintStart_toEndOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -180,14 +180,14 @@
         app:tint="@color/beige"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
-        app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/chatActionButton"
         app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_user"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/forumsActionButton"
+        android:id="@+id/chatActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"

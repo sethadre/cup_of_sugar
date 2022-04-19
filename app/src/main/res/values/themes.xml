@@ -38,18 +38,21 @@
 
     <style name="GreenButton" >
         <!-- Primary brand color. -->
+        <item name = "fontFamily">@font/open_sans</item>
         <item name="colorPrimary">@color/green</item>
         <item name="colorOnPrimary">@color/beige</item>
     </style>
 
     <style name="LightGreenButton" >
         <!-- Primary brand color. -->
+        <item name = "fontFamily">@font/open_sans</item>
         <item name="colorPrimary">@color/light_green</item>
         <item name="colorOnPrimary">@color/beige</item>
     </style>
 
     <style name="WhiteButton" >
         <!-- Primary brand color. -->
+        <item name = "fontFamily">@font/open_sans</item>
         <item name="colorPrimary">@color/beige</item>
         <item name="colorOnPrimary">@color/green</item>
     </style>

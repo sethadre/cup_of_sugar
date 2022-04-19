@@ -1,48 +1,17 @@
 package com.example.cupofsugar
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.FrameLayout
-import androidx.fragment.app.FragmentManager
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_support.*
-import android.widget.AutoCompleteTextView
-import kotlinx.android.synthetic.main.fragment_topic.*
+import android.widget.TextView
 
-
-class SupportActivity : AppCompatActivity() {
-
+class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_support)
+        setContentView(R.layout.activity_chat)
         supportActionBar?.hide()
-
-        //add fragment
-        if (findViewById<FrameLayout>(R.id.frameLayout) != null)
-            supportFragmentManager.beginTransaction().add(R.id.frameLayout, TopicFragment()).commit()
-
-        val submitButton = findViewById<Button>(R.id.submitButton)
-        submitButton.setOnClickListener {
-            val s: String = autoCompleteTextView.text.toString()
-            val i = Intent(Intent.ACTION_SEND)
-            i.type = "message/rfc822"
-            i.putExtra(Intent.EXTRA_EMAIL, arrayOf("cupofsugar.com@gmail.com"))
-            i.putExtra(Intent.EXTRA_SUBJECT, s)
-            i.putExtra(Intent.EXTRA_TEXT, messageText.text.toString())
-            try {
-                startActivity(Intent.createChooser(i, "Send mail..."))
-            } catch (ex: ActivityNotFoundException) {
-                Toast.makeText(
-                    this,
-                    "There are no email clients installed.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
 
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
@@ -52,10 +21,10 @@ class SupportActivity : AppCompatActivity() {
             finish()
         }
 
-        val chatActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatActionButton)
-        chatActionButton.setOnClickListener {
-            val intent = Intent(this, ChatActivity::class.java)
+        val conversation =
+            findViewById<Button>(R.id.conversation)
+        conversation.setOnClickListener {
+            val intent = Intent(this, ConversationActivity::class.java)
             startActivity(intent)
             finish()
         }

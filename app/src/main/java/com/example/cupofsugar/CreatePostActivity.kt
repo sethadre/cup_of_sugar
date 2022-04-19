@@ -18,7 +18,7 @@ import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.items_homepage.*
+import kotlinx.android.synthetic.main.activity_homepage.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
@@ -70,6 +70,7 @@ class CreatePostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_create_post)
         addressString = arrayOf("","","")
 
@@ -77,6 +78,7 @@ class CreatePostActivity : AppCompatActivity() {
         testImg1 = findViewById(R.id.previewImg1) //For use below for when photo is uploaded to preview here
         testImg2 = findViewById(R.id.previewImg2)
         testImg3 = findViewById(R.id.previewImg3)
+
         val cancelActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.cancelActionButton)
         cancelActionButton.setOnClickListener {
@@ -120,6 +122,7 @@ class CreatePostActivity : AppCompatActivity() {
         buttonTakePhoto.setOnClickListener{
             //placeholder code to ask for camera privileges
         }
+
         val getLocationButton =
             findViewById<Button>(R.id.locationButton)
         getLocationButton.setOnClickListener{

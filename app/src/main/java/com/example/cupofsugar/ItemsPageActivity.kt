@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.items_homepage.*
+import kotlinx.android.synthetic.main.activity_homepage.*
 import org.json.JSONArray;
 import org.json.JSONException
 import org.json.JSONObject;
@@ -303,7 +303,7 @@ class ItemsPageActivity : AppCompatActivity() {
 //            }
         // end of firebase stuff
 
-        setContentView(R.layout.items_homepage) //moved this line lower
+        setContentView(R.layout.activity_homepage) //moved this line lower
 
         //
         locationSpinners()
@@ -357,10 +357,10 @@ class ItemsPageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        val forumsActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.forumsActionButton)
-        forumsActionButton.setOnClickListener {
-            val intent = Intent(this, ForumPageActivity::class.java)
+        val chatActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatActionButton)
+        chatActionButton.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -368,9 +368,9 @@ class ItemsPageActivity : AppCompatActivity() {
 
         //We are home we dont need functionality
 
-//        val HomeActionButton =
+//        val homeActionButton =
 //            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.homeActionButton)
-//        HomeActionButton.setOnClickListener {
+//        homeActionButton.setOnClickListener {
 //            val intent = Intent(this, ItemsPageActivity::class.java)
 //            startActivity(intent)
 //            finish()

@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toTopOf="@+id/LocationBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" >
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" >
 
         <EditText
             android:id="@+id/searchTextField"
@@ -153,7 +153,7 @@
     <!--END TOP TOOLBAR -->
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:theme="@style/TopBar"
@@ -171,11 +171,11 @@
         android:gravity="center"
         android:textSize="30sp"
         android:textColor="@color/beige"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -199,14 +199,14 @@
         app:backgroundTint="@color/beige"
         app:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
-        app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/chatActionButton"
         app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_user"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/forumsActionButton"
+        android:id="@+id/chatActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -286,10 +286,10 @@
         android:layout_marginBottom="16dp"
         android:onClick="goToPost"
         android:text="g"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Button
         android:id="@+id/goToSearch"
@@ -299,11 +299,11 @@
         android:layout_marginBottom="16dp"
         android:onClick="goSearch"
         android:text="s"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintHorizontal_bias="0.336"
         app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.343" />
 
 

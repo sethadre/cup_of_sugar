@@ -36,7 +36,10 @@
             android:name=".SupportActivity"
             android:exported="false" />
         <activity
-            android:name=".ForumPageActivity"
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConversationActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"

@@ -3,66 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SupportActivity"
-    android:background="@color/beige" >
-
+    android:layout_height="match_parent">
     <!-- TOP TOOLBAR -->
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:theme="@style/TopBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Chats"
+        android:textColor="@color/beige"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <!--END TOP TOOLBAR -->
 
-
-<!--BOTTOM  TOOLBAR -->
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-        <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" >
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </FrameLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:padding="15sp"
-        android:background="@drawable/round_button"
-        android:textColor="@color/beige"
-        android:text="Submit"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
-        app:layout_constraintEnd_toEndOf="@+id/messageText"
-        app:layout_constraintTop_toBottomOf="@+id/messageText" />
-
-    <EditText
-        android:id="@+id/messageText"
-        android:layout_width="match_parent"
-        android:layout_height="321dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="32dp"
-        android:padding="10sp"
-        android:background="@drawable/edittext_bordered_background"
-        android:gravity="start"
-        android:hint="Type your message here..."
-        android:lines="10"
-        android:textColorHint="@color/light_green"
-        android:textColor="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <Button
+                android:id="@+id/conversation"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Username"
+                android:textAllCaps="false"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="80dp" />
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -85,24 +79,24 @@
         app:backgroundTint="@color/beige"
         app:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
-        app:layout_constraintEnd_toStartOf="@+id/chatActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/chatsActionButton"
         app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_user"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/chatActionButton"
+        android:id="@+id/chatsActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="@color/beige"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@+id/homeActionButton"
         app:layout_constraintStart_toEndOf="@id/profileActionButton"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_chat"
-        app:tint="@color/green"
+        app:tint="@color/beige"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -125,13 +119,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="@color/green"
+        app:backgroundTint="@color/beige"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
         app:layout_constraintEnd_toStartOf="@id/settingsActionButton"
         app:layout_constraintStart_toEndOf="@+id/homeActionButton"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_help"
-        app:tint="@color/beige"
+        app:tint="@color/green"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

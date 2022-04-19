@@ -19,7 +19,7 @@
         android:fontFamily="@font/open_sans"
         android:onClick="login"
         android:text="Log In"
-        android:textColor="@color/white"
+        android:textColor="@color/beige"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/buttonSignUp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,8 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-        app:rippleColor="#502A2A" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
     <EditText
         android:id="@+id/editTextEmailAddress"
@@ -56,6 +55,7 @@
         android:textColor="@color/green"
         android:textColorHint="@color/light_green"
         android:backgroundTint="@color/green"
+        android:fontFamily="@font/open_sans"
         app:layout_constraintBottom_toTopOf="@id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +71,7 @@
         android:textColor="@color/green"
         android:textColorHint="@color/light_green"
         android:backgroundTint="@color/green"
+        android:fontFamily="@font/open_sans"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress"

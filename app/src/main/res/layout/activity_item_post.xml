@@ -19,7 +19,7 @@
     <!--        app:layout_constraintEnd_toEndOf="parent"-->
     <!--        app:layout_constraintHorizontal_bias="0.355"-->
     <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/toolbar2"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
     <!--        app:layout_constraintVertical_bias="0.884"-->
     <!--        tools:context=".GoogleMapsActivity">-->
     <!--    </androidx.fragment.app.FragmentContainerView>-->
@@ -146,14 +146,14 @@
         app:backgroundTint="@color/beige"
         app:tint="@color/green"
         app:layout_constraintBottom_toBottomOf="@id/bottomAppBar"
-        app:layout_constraintEnd_toStartOf="@+id/forumsActionButton"
+        app:layout_constraintEnd_toStartOf="@+id/chatActionButton"
         app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
         app:layout_constraintTop_toTopOf="@id/bottomAppBar"
         app:srcCompat="@drawable/icon_button_user"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/forumsActionButton"
+        android:id="@+id/chatActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
