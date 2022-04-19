@@ -52,7 +52,7 @@ class ItemsPageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        supportActionBar?.hide()
         //Front End for Grid
         //gridView = findViewById()
 

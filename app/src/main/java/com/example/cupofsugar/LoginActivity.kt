@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
         title="Login"
         db = FirebaseFirestore.getInstance()
         auth= FirebaseAuth.getInstance()
+        supportActionBar?.hide()
     }
 
     fun login(view: View){

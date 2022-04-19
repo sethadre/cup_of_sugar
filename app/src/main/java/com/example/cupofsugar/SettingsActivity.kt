@@ -21,6 +21,7 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        supportActionBar?.hide()
 
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
@@ -38,9 +39,9 @@ class SettingsActivity : AppCompatActivity() {
             finish()
         }
 
-        val HomeActionButton =
+        val homeActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.homeActionButton)
-        HomeActionButton.setOnClickListener {
+        homeActionButton.setOnClickListener {
             val intent = Intent(this, ItemsPageActivity::class.java)
             startActivity(intent)
             finish()
@@ -49,6 +50,14 @@ class SettingsActivity : AppCompatActivity() {
         val helpActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.helpActionButton)
         helpActionButton.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val settingsActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.settingsActionButton)
+        settingsActionButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
             finish()
