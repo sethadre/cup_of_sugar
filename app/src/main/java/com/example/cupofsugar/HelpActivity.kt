@@ -58,13 +58,13 @@ class HelpActivity : AppCompatActivity() {
             finish()
         }
 
-        val helpActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.helpActionButton)
-        helpActionButton.setOnClickListener {
-            val intent = Intent(this, HelpActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val helpActionButton =
+//            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.helpActionButton)
+//        helpActionButton.setOnClickListener {
+//            val intent = Intent(this, HelpActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         val settingsActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.settingsActionButton)

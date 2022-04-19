@@ -117,13 +117,13 @@ class ProfileActivity : AppCompatActivity() {
                 //You will load conversation Page Activity here
             }
 
-        val profileActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
-        profileActionButton.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val profileActionButton =
+//            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
+//        profileActionButton.setOnClickListener {
+//            val intent = Intent(this, ProfileActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         val chatActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatActionButton)
