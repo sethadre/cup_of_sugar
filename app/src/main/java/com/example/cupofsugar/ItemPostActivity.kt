@@ -44,7 +44,6 @@ class ItemPostActivity : AppCompatActivity() {
 //        }
         //End Back End Stuff
 
-
         val titlePass = intent.getStringExtra("titleKey")
         val titleTextView: TextView = findViewById(R.id.title)
         titleTextView.text = "Title: $titlePass"
@@ -72,7 +71,6 @@ class ItemPostActivity : AppCompatActivity() {
         val statePass = intent.getStringExtra("stateKey")
         val cityPass = intent.getStringExtra("cityKey")
         val docIDPass = intent.getStringExtra("docIDKey")
-
 
         val itemRef =
             db.collection("Items").document(statePass.toString()).collection(cityPass.toString())

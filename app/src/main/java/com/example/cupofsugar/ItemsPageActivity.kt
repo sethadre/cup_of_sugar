@@ -108,6 +108,7 @@ class ItemsPageActivity : AppCompatActivity() {
         //ITEM POST DATA
         //ITEM POST DATA
         //ITEM POST DATA
+        //put this in a loop
 
         //LOOP
         //Grab folder refs
@@ -117,8 +118,6 @@ class ItemsPageActivity : AppCompatActivity() {
         //Log.d("testPostRef",testPostRef.toString())
 
         //val testPostRef = cityRef.document(document.id)
-
-
 
         cityRef.get().addOnSuccessListener { documents ->
             for (document in documents) {
@@ -572,10 +571,6 @@ class ItemsPageActivity : AppCompatActivity() {
 
 
 }
-
-//private fun GridLayout.rowCount(i: Int) {
-//
-//}
 
 // ****************************                                         ***************************
 // ****************************   OLD CODE KEEP FOR ADRIAN's REFERENCE  ***************************

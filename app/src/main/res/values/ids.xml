@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="textView10" type="id" />
-    <item name="tableLayout" type="id" />
-    <item name="postView1" type="id" />
-    <item name="postView2" type="id" />
-    <item name="postView3" type="id" />
 </resources>
