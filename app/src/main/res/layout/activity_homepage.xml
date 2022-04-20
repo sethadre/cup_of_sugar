@@ -22,7 +22,7 @@
 
         <EditText
             android:id="@+id/searchTextField"
-            android:layout_width="325dp"
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:hint="Search"
