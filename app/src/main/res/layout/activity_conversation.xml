@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:theme="@style/Theme.CupOfSugar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/beige">
+    android:layout_height="match_parent">
     <!-- TOP TOOLBAR -->
 
     <androidx.appcompat.widget.Toolbar
@@ -129,15 +128,14 @@
         android:layout_alignParentBottom="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomAppBar">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content" >
+            
         </EditText>
     </RelativeLayout>
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:theme="@style/BottomBar"

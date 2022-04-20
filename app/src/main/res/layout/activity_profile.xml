@@ -54,30 +54,30 @@
                     android:layout_column="0"
                     android:layout_marginLeft="15dp"
                     android:text="Bio" />
-<!--                <Button-->
-<!--                    android:background="@drawable/round_button"-->
-<!--                    android:id="@+id/button2"-->
-<!--                    android:layout_width="20dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_column="1"-->
-<!--                    android:layout_marginRight="20dp"-->
-<!--                    android:layout_marginBottom="20dp"-->
-<!--                    android:text="Add Friend" />-->
+                <Button
+                    android:background="@drawable/round_button"
+                    android:id="@+id/button2"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Add Friend" />
                 
             </TableRow>
             <TableRow>
                 <TextView
-                    android:text="This is an example bio"
+                    android:text="This is an example Bio"
                     android:layout_marginLeft="15dp" />
-<!--                <Button-->
-<!--                    android:background="@drawable/round_button"-->
-<!--                    android:id="@+id/button3"-->
-<!--                    android:layout_width="20dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_column="1"-->
-<!--                    android:layout_weight="0"-->
-<!--                    android:layout_marginRight="20dp"-->
-<!--                    android:text="Message" />-->
+                <Button
+                    android:background="@drawable/round_button"
+                    android:id="@+id/button3"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_weight="0"
+                    android:layout_marginRight="20dp"
+                    android:text="Message" />
             </TableRow>
 
             <TableRow>
