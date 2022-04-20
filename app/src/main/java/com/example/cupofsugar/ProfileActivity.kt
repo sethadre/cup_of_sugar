@@ -110,12 +110,13 @@ class ProfileActivity : AppCompatActivity() {
             Toast.makeText(this,"Image clicked, the cake is a lie",Toast.LENGTH_SHORT).show()
         }
 
-        val messageActionButton =
-            findViewById<android.widget.Button>(R.id.button3)
-            messageActionButton.setOnClickListener{
-                //user String and Owner user
-                //You will load conversation Page Activity here
-            }
+        //MESSAGE BUTTON TO DO LATER
+//        val messageActionButton =
+//            findViewById<android.widget.Button>(R.id.button3)
+//            messageActionButton.setOnClickListener{
+//                //user String and Owner user
+//                //You will load conversation Page Activity here
+//            }
 
 //        val profileActionButton =
 //            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
