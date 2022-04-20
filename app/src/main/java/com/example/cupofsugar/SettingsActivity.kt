@@ -94,6 +94,22 @@ class SettingsActivity : AppCompatActivity() {
                 .show()
         }
 
+        val updateEmailButton =
+            findViewById<Button>(R.id.updateEmailButton)
+        updateEmailButton.setOnClickListener{
+            val intent = Intent (this,UpdateEmailActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+//        val updateUsernameButton =
+//            findViewById<Button>(R.id.updateEmailButton)
+//        updateUsernameButton.setOnClickListener{
+//            val intent = Intent (this,UpdateUsernameActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
+
         // Logout
         val logoutButton =
             findViewById<Button>(R.id.logoutButton)

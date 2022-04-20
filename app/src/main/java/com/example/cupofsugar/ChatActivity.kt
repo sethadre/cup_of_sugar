@@ -13,6 +13,16 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
         supportActionBar?.hide()
 
+
+
+
+
+
+
+
+
+
+
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
         profileActionButton.setOnClickListener {
