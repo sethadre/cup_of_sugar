@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

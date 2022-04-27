@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import android.annotation.SuppressLint
 import android.content.Intent

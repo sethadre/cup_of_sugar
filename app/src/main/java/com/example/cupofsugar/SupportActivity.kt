@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import android.content.ActivityNotFoundException
 import android.content.Intent

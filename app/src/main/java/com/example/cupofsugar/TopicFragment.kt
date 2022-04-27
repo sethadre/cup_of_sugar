@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.example.cupofsugar.databinding.FragmentTopicBinding
+import com.milkcandy.cupofsugar.databinding.FragmentTopicBinding
 
 
 class TopicFragment : Fragment() {
