@@ -224,7 +224,7 @@
             android:backgroundTint="@color/green"
             android:background="@drawable/round_button" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/button_upload_photo"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
@@ -232,6 +232,7 @@
             android:textColor="@color/beige"
             android:textSize="20dp"
             android:textAllCaps="false"
+            android:fontFamily="@font/open_sans"
             android:drawableLeft="@drawable/ic_baseline_add_photo_alternate_24"
             android:drawableTint="@color/beige"
             android:text="Gallery"
