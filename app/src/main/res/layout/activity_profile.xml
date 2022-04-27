@@ -42,6 +42,10 @@
                     android:layout_marginTop="45dp"
                     android:layout_marginBottom="20dp"
                     android:padding="3dip"
+                    android:fontFamily="@font/open_sans"
+                    android:textColor="@color/green"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
                     android:text="Jimmy Donaldson" />
 
 
@@ -53,7 +57,11 @@
                     android:layout_height="46dp"
                     android:layout_column="0"
                     android:layout_marginLeft="15dp"
-                    android:text="Bio" />
+                    android:text="Bio"
+                    android:fontFamily="@font/open_sans"
+                    android:textColor="@color/green"
+                    android:textAllCaps="false"
+                    android:textSize="20sp" />
 <!--                <Button-->
 <!--                    android:background="@drawable/round_button"-->
 <!--                    android:id="@+id/button2"-->
@@ -68,7 +76,11 @@
             <TableRow>
                 <TextView
                     android:text="This is an example bio"
-                    android:layout_marginLeft="15dp" />
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/open_sans"
+                    android:textColor="@color/green"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"/>
 <!--                <Button-->
 <!--                    android:background="@drawable/round_button"-->
 <!--                    android:id="@+id/button3"-->
@@ -85,7 +97,11 @@
                     android:text = "Posts"
                     android:layout_marginTop="25dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="15dp" >
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/open_sans"
+                    android:textColor="@color/green"
+                    android:textAllCaps="false"
+                    android:textSize="20sp">
                 </TextView>
             </TableRow>
 
@@ -147,6 +163,8 @@
         android:text="Profile"
         android:textColor="@color/beige"
         android:textSize="30sp"
+        android:fontFamily="@font/open_sans"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toStartOf="@+id/toolbar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/toolbar"

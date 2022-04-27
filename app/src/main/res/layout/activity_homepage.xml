@@ -147,6 +147,8 @@
         android:gravity="center"
         android:textSize="30sp"
         android:textColor="@color/beige"
+        android:fontFamily="@font/open_sans"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintHorizontal_bias="0.5"
