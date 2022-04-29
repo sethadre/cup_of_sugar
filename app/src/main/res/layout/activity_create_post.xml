@@ -224,7 +224,7 @@
             android:backgroundTint="@color/green"
             android:background="@drawable/round_button" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/button_upload_photo"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
