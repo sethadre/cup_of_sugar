@@ -1,5 +1,5 @@
 
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import android.content.Intent
 import android.os.Bundle

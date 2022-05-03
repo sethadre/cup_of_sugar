@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +18,7 @@ class HelpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help)
+        supportActionBar?.hide()
         initAd()
 
         val supportActionButton = findViewById<Button>(R.id.supportButton)
@@ -49,29 +50,29 @@ class HelpActivity : AppCompatActivity() {
             finish()
         }
 
-        val forumsActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.forumsActionButton)
-        forumsActionButton.setOnClickListener {
-            val intent = Intent(this, ForumPageActivity::class.java)
+        val chatActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatActionButton)
+        chatActionButton.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        val HomeActionButton =
+        val homeActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.homeActionButton)
-        HomeActionButton.setOnClickListener {
+        homeActionButton.setOnClickListener {
             val intent = Intent(this, ItemsPageActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        val helpActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.helpActionButton)
-        helpActionButton.setOnClickListener {
-            val intent = Intent(this, HelpActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val helpActionButton =
+//            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.helpActionButton)
+//        helpActionButton.setOnClickListener {
+//            val intent = Intent(this, HelpActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         val settingsActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.settingsActionButton)

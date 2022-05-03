@@ -14,8 +14,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:hint="Topic"
-        app:boxStrokeColor="#96d875"
-        app:hintTextColor="#96d875">
+        app:boxStrokeColor="@color/green"
+        app:hintTextColor="@color/green">
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextView"
@@ -27,5 +27,4 @@
             android:paddingBottom="16dp"
             android:text="--Select a reason for contacting us--" />
     </com.google.android.material.textfield.TextInputLayout>
-
 </FrameLayout>

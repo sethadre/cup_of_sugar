@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import android.content.Intent
 import android.location.Address
@@ -12,7 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.example.cupofsugar.databinding.ActivityMapsBinding
+import com.milkcandy.cupofsugar.databinding.ActivityMapsBinding
 import android.location.Geocoder
 import android.util.Log
 import androidx.annotation.NonNull
@@ -95,6 +95,14 @@ class GoogleMapsActivity : FragmentActivity(), OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified
         // when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+
+        val cancelButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.cancelButton)
+        cancelButton.setOnClickListener {
+            val intent = Intent(this, ItemPostActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         // adding on query listener for our search view.
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

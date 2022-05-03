@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.cupofsugar"
-    tools:ignore="ImpliedTouchscreenHardware,MissingLeanbackLauncher">
-
-    <uses-feature
-        android:name="android.software.leanback"
-        android:required="false" />
-
+    package="com.milkcandy.cupofsugar"
+    tools:ignore="MissingLeanbackLauncher">
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -21,13 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
         <activity
-            android:name=".TipsActivity"
+            android:name=".ResourceActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ResourceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateEmailActivity"
             android:exported="false" />
         <activity
             android:name=".CreatePostActivity"
@@ -40,6 +41,12 @@
             android:exported="false" />
         <activity
             android:name=".SupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConversationActivity"
             android:exported="false" />
         <activity
             android:name=".ForumPageActivity"
@@ -62,9 +69,8 @@
             android:exported="false"
             android:label="RegisterActivity" />
         <activity
-            android:name=".SearchBarActivity"
-            android:exported="false"
-            android:label="SearchBarActivity" />
+            android:name=".SearchResultsActivity"
+            android:exported="false"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -89,6 +95,9 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~8691691433" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import android.content.Intent
 import android.net.Uri
@@ -13,6 +13,7 @@ class ResourceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resource)
+        supportActionBar?.hide()
 
         val hotlineLink =
             findViewById<android.widget.Button>(R.id.hotlineLink)
@@ -50,17 +51,17 @@ class ResourceActivity : AppCompatActivity() {
             finish()
         }
 
-        val forumsActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.forumsActionButton)
-        forumsActionButton.setOnClickListener {
-            val intent = Intent(this, ForumPageActivity::class.java)
+        val chatActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatActionButton)
+        chatActionButton.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        val HomeActionButton =
+        val homeActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.homeActionButton)
-        HomeActionButton.setOnClickListener {
+        homeActionButton.setOnClickListener {
             val intent = Intent(this, ItemsPageActivity::class.java)
             startActivity(intent)
             finish()

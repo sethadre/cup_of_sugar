@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +11,7 @@ import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.items_homepage.*
+import kotlinx.android.synthetic.main.activity_homepage.*
 
 class ItemPostActivity : AppCompatActivity() {
 
@@ -125,10 +125,10 @@ class ItemPostActivity : AppCompatActivity() {
             finish()
         }
 
-        val forumsActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.forumsActionButton)
-        forumsActionButton.setOnClickListener {
-            val intent = Intent(this, ForumPageActivity::class.java)
+        val chatActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatActionButton)
+        chatActionButton.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -1,4 +1,4 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -22,7 +22,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
+        supportActionBar?.hide()
         //Start of Back End Stuff
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
@@ -110,32 +110,33 @@ class ProfileActivity : AppCompatActivity() {
             Toast.makeText(this,"Image clicked, the cake is a lie",Toast.LENGTH_SHORT).show()
         }
 
-        val messageActionButton =
-            findViewById<android.widget.Button>(R.id.button3)
-            messageActionButton.setOnClickListener{
-                //user String and Owner user
-                //You will load conversation Page Activity here
-            }
+        //MESSAGE BUTTON TO DO LATER
+//        val messageActionButton =
+//            findViewById<android.widget.Button>(R.id.button3)
+//            messageActionButton.setOnClickListener{
+//                //user String and Owner user
+//                //You will load conversation Page Activity here
+//            }
 
-        val profileActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
-        profileActionButton.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
+//        val profileActionButton =
+//            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)
+//        profileActionButton.setOnClickListener {
+//            val intent = Intent(this, ProfileActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
+
+        val chatActionButton =
+            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatActionButton)
+        chatActionButton.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        val forumsActionButton =
-            findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.forumsActionButton)
-        forumsActionButton.setOnClickListener {
-            val intent = Intent(this, ForumPageActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        val HomeActionButton =
+        val homeActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.homeActionButton)
-        HomeActionButton.setOnClickListener {
+        homeActionButton.setOnClickListener {
             val intent = Intent(this, ItemsPageActivity::class.java)
             startActivity(intent)
             finish()
