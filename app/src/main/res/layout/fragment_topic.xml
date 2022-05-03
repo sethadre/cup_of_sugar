@@ -24,7 +24,6 @@
             android:layout_weight="1"
             android:inputType="none"
             android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:text="--Select a reason for contacting us--" />
+            android:paddingBottom="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
 </FrameLayout>

@@ -83,7 +83,7 @@ class SettingsActivity : AppCompatActivity() {
                             // Delete user's document Users collection
                             db.collection("Users").document(user.uid).delete()
                             // End user session
-                            val intent = Intent(this,LoginActivity::class.java)
+                            val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {

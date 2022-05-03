@@ -1,16 +1,17 @@
-package com.example.cupofsugar
+package com.milkcandy.cupofsugar
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var  auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private val TAG= "LoginActivity"
 
@@ -48,11 +49,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-  /*  fun goToItems(view: View){
-        val intent= Intent(this,ItemsPageActivity::class.java)
-        startActivity(intent)
-        finish()
-    }*/
+    /*  fun goToItems(view: View){
+          val intent= Intent(this,ItemsPageActivity::class.java)
+          startActivity(intent)
+          finish()
+      }*/
     fun goToRegister(view: View){
         val intent= Intent(this,RegisterActivity::class.java)
         startActivity(intent)
