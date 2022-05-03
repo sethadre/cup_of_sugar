@@ -1,6 +1,7 @@
 package com.example.cupofsugar
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -13,17 +14,33 @@ class ResourceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resource)
 
-        val hlTextView = findViewById<TextView>(R.id.hotlineLink)
-        hlTextView.movementMethod = LinkMovementMethod.getInstance()
+        val hotlineLink =
+            findViewById<android.widget.Button>(R.id.hotlineLink)
+        hotlineLink.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.apa.org/topics/crisis-hotlines"))
+            startActivity(i)
+        }
 
-        val govTextView = findViewById<TextView>(R.id.governmentLink)
-        govTextView.movementMethod = LinkMovementMethod.getInstance()
+        val governmentLink =
+            findViewById<android.widget.Button>(R.id.governmentLink)
+        governmentLink.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.usa.gov/benefits"))
+            startActivity(i)
+        }
 
-        val foodTextView = findViewById<TextView>(R.id.foodLink)
-        foodTextView.movementMethod = LinkMovementMethod.getInstance()
+        val foodLink =
+            findViewById<android.widget.Button>(R.id.foodLink)
+        foodLink.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.foodpantries.org/"))
+            startActivity(i)
+        }
 
-        val thriftTextView = findViewById<TextView>(R.id.thriftLink)
-        thriftTextView.movementMethod = LinkMovementMethod.getInstance()
+        val thriftLink =
+            findViewById<android.widget.Button>(R.id.thriftLink)
+        thriftLink.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.thethriftshopper.com/"))
+            startActivity(i)
+        }
 
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)

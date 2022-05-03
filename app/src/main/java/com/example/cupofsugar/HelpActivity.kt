@@ -12,6 +12,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 class HelpActivity : AppCompatActivity() {
 
     private var mInterstitialAd: InterstitialAd? = null
+
     private var TAG = "HelpActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,13 @@ class HelpActivity : AppCompatActivity() {
         val resourceActionButton = findViewById<Button>(R.id.resourcesButton)
         resourceActionButton.setOnClickListener {
             val intent = Intent(this, ResourceActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val tipsActionButton = findViewById<Button>(R.id.tipButton)
+        tipsActionButton.setOnClickListener {
+            val intent = Intent(this, TipsActivity::class.java)
             startActivity(intent)
             finish()
         }

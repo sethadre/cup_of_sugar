@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,6 +21,13 @@ class LoginActivity : AppCompatActivity() {
         title="Login"
         db = FirebaseFirestore.getInstance()
         auth= FirebaseAuth.getInstance()
+
+        val forgotPasswordButton = findViewById<Button>(R.id.forgotPasswordButton)
+        forgotPasswordButton.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     fun login(view: View){

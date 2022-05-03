@@ -21,13 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CupOfSugar">
         <activity
+            android:name=".TipsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResourceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".InterstitialAdActivity"
-            android:exported="false" />
-        <activity
-            android:name=".hcosActivity"
             android:exported="false" />
         <activity
             android:name=".CreatePostActivity"
@@ -61,7 +61,6 @@
             android:name=".RegisterActivity"
             android:exported="false"
             android:label="RegisterActivity" />
-
         <activity
             android:name=".SearchBarActivity"
             android:exported="false"
@@ -76,8 +75,7 @@
 
         <activity
             android:name=".GoogleMapsActivity"
-            android:exported="true"
-             />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

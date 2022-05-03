@@ -83,19 +83,19 @@
         android:text="Watch Ads"
         android:textSize="24sp"
         app:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@id/donateButton"
+        app:layout_constraintBottom_toTopOf="@id/tipButton"
         app:layout_constraintEnd_toEndOf="@+id/help_ys"
         app:layout_constraintStart_toStartOf="@+id/help_ys"
         app:layout_constraintTop_toBottomOf="@+id/help_cos" />
 
     <Button
-        android:id="@+id/donateButton"
+        android:id="@+id/tipButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        android:text="Donate"
+        android:text="Tip Developers"
         android:textSize="24sp"
         app:backgroundTint="@color/green"
         app:layout_constraintBottom_toTopOf="@id/bottomAppBar"

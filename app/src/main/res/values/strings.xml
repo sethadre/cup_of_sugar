@@ -24,26 +24,6 @@
         <item>Other</item>
     </string-array>
 
-    <string name="hotlines"> Crisis Hotlines:
-        <a href="https://www.apa.org/topics/crisis-hotlines">
-            apa.org
-        </a>
-    </string>
-    <string name="government"> Government Aide:
-        <a href="https://www.usa.gov/benefits">
-            usa.gov
-        </a>
-    </string>
-    <string name="pantries"> Food Pantries:
-        <a href="https://www.foodpantries.org/">
-            foodpantries.org
-        </a>
-    </string>
-    <string name="thrift"> Thrift Stores:
-        <a href="https://www.thethriftshopper.com/">
-            thethriftshopper.com
-        </a>
-    </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
