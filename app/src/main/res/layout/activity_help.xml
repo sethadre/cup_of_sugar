@@ -7,99 +7,149 @@
     android:background="@color/beige"
     tools:context=".HelpActivity">
 
-    <TextView
-        android:id="@+id/help_ys"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="Help Yourself"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/supportButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- TOP TOOLBAR -->
 
-    <TextView
-        android:id="@+id/help_cos"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="Help Cup Of Sugar"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/adButton"
+        android:layout_height="80dp"
+        android:theme="@style/TopBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/resourcesButton" />
-
-    <Button
-        android:id="@+id/supportButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        android:text="Contact Support"
-        android:textSize="20sp"
-        app:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/resourcesButton"
-        app:layout_constraintEnd_toEndOf="@+id/help_ys"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/help_ys"
-        app:layout_constraintTop_toBottomOf="@+id/help_ys" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/resourcesButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        android:text="Find Resources"
-        app:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@id/help_cos"
-        app:layout_constraintEnd_toEndOf="@+id/help_ys"
-        app:layout_constraintStart_toStartOf="@+id/help_ys"
-        app:layout_constraintTop_toBottomOf="@+id/supportButton" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Help"
+        android:textColor="@color/beige"
+        android:textSize="30sp"
+        android:fontFamily="@font/open_sans"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/adButton"
-        android:onClick="show"
-        android:layout_width="0dp"
+    <!--END TOP TOOLBAR -->
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        android:text="Watch Ads"
-        android:textSize="20sp"
-        app:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@id/donateButton"
-        app:layout_constraintEnd_toEndOf="@+id/help_ys"
-        app:layout_constraintStart_toStartOf="@+id/help_ys"
-        app:layout_constraintTop_toBottomOf="@+id/help_cos" />
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" >
 
-    <Button
-        android:id="@+id/donateButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        android:text="Donate"
-        android:textSize="20sp"
-        app:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@id/bottomAppBar"
-        app:layout_constraintEnd_toEndOf="@+id/help_ys"
-        app:layout_constraintStart_toStartOf="@+id/help_ys"
-        app:layout_constraintTop_toBottomOf="@id/adButton" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/help_ys"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Help Yourself"
+                android:clickable="false"
+                android:textAllCaps="false"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/supportButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Contact Support"
+                android:clickable="true"
+                android:textAllCaps="false"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/resourcesButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/lb_ic_in_app_search"
+                android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Find Resources"
+                android:clickable="true"
+                android:textAllCaps="false"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/help_cos"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Help Cup of Sugar"
+                android:clickable="false"
+                android:textAllCaps="false"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/adButton"
+                android:onClick="show"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/lb_ic_play"
+                android:drawableTint="@color/green"
+                android:fontFamily="@font/open_sans"
+                android:gravity="left|center_vertical"
+                android:padding="15dp"
+                android:text="  Watch Ads"
+                android:clickable="true"
+                android:textAllCaps="false"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
+
+<!--            <Button-->
+<!--                android:id="@+id/tipButton"-->
+<!--                style="?android:attr/borderlessButtonStyle"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:drawableLeft="@drawable/lb_ic_thumb_up"-->
+<!--                android:drawableTint="@color/green"-->
+<!--                android:fontFamily="@font/open_sans"-->
+<!--                android:gravity="left|center_vertical"-->
+<!--                android:padding="15dp"-->
+<!--                android:text="  Tip Developers"-->
+<!--                android:clickable="true"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/green"-->
+<!--                android:textSize="20sp" />-->
+
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"

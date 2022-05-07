@@ -60,7 +60,7 @@ class MainPageActivity : AppCompatActivity(){
     }
 
     fun logout(view: View){
-        val intent= Intent(this,LoginActivity::class.java)
+        val intent= Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }
