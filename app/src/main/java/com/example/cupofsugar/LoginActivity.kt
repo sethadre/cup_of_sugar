@@ -23,12 +23,12 @@ class LoginActivity : AppCompatActivity() {
         auth= FirebaseAuth.getInstance()
         supportActionBar?.hide()
 
-        val forgotPasswordButton = findViewById<Button>(R.id.forgotPasswordButton)
-        forgotPasswordButton.setOnClickListener {
-            val intent = Intent(this, ForgotPasswordActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val forgotPasswordButton = findViewById<Button>(R.id.forgotPasswordButton)
+//        forgotPasswordButton.setOnClickListener {
+//            val intent = Intent(this, ForgotPasswordActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 
     fun login(view: View){

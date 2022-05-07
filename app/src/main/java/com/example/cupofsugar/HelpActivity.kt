@@ -35,12 +35,12 @@ class HelpActivity : AppCompatActivity() {
             finish()
         }
 
-        val tipsActionButton = findViewById<Button>(R.id.tipButton)
-        tipsActionButton.setOnClickListener {
-            val intent = Intent(this, TipsActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val tipsActionButton = findViewById<Button>(R.id.tipButton)
+//        tipsActionButton.setOnClickListener {
+//            val intent = Intent(this, TipsActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         val profileActionButton =
             findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.profileActionButton)

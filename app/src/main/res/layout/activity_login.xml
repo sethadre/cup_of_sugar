@@ -45,21 +45,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
-    <android.widget.Button
-        android:id="@+id/forgotPasswordButton"
-        android:layout_width="280dp"
-        android:layout_height="60dp"
-        android:background="@drawable/round_button"
-        android:elevation="0dp"
-        android:text="Forgot Password?"
-        android:textColor="@color/white"
-        android:textColorLink="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonSignUp"
-        app:layout_constraintStart_toStartOf="@+id/buttonSignUp"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"
-        app:rippleColor="#502A2A" />
+<!--    <android.widget.Button-->
+<!--        android:id="@+id/forgotPasswordButton"-->
+<!--        android:layout_width="280dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:background="@drawable/round_button"-->
+<!--        android:elevation="0dp"-->
+<!--        android:text="Forgot Password?"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textColorLink="#FFFFFF"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/buttonSignUp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/buttonSignUp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"-->
+<!--        app:rippleColor="#502A2A" />-->
 
     <EditText
         android:id="@+id/editTextEmailAddress"
@@ -90,7 +90,9 @@
         android:backgroundTint="@color/green"
         android:fontFamily="@font/open_sans"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress"
+        app:layout_constraintBottom_toTopOf="@id/buttonLogin"/>
 
     <ImageView
         android:id="@+id/image_CoS"
