@@ -5,6 +5,7 @@
     android:id="@+id/hotlines"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/beige"
     tools:context=".ResourceActivity">
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -95,63 +96,95 @@
         android:id="@+id/resourceDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
+        android:background="@drawable/edittext_bordered_background"
         android:gravity="center"
         android:padding="20sp"
         android:text="On this page, we have culminated a selection of
 sites that could prove to be useful resources for our users. We hope
 that if you require more aid than our application provides you, that these
-sites and organizations can assist you with your needs."
+sites and organizations can assist with your needs."
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/hotlineLink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/hotlineLink"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button"
         android:paddingLeft="15sp"
-        android:text="@string/hotlines"
+        android:text="Crisis Hotlines"
+        android:textColor="@color/beige"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/governmentLink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resourceDescription" />
 
-    <TextView
+    <Button
         android:id="@+id/governmentLink"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button"
         android:paddingLeft="15sp"
-        android:text="@string/government"
+        android:text="Government Aide"
+        android:textColor="@color/beige"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/foodLink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotlineLink" />
 
-    <TextView
+    <Button
         android:id="@+id/foodLink"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button"
         android:paddingLeft="15sp"
-        android:text="@string/pantries"
+        android:text="Food Pantries"
+        android:textColor="@color/beige"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/thriftLink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/governmentLink" />
 
-    <TextView
+    <Button
         android:id="@+id/thriftLink"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button"
         android:paddingLeft="15sp"
-        android:text="@string/thrift"
+        android:text="Thrift Stores"
+        android:textColor="@color/beige"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

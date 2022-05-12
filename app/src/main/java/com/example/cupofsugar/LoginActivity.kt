@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +22,13 @@ class LoginActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         auth= FirebaseAuth.getInstance()
         supportActionBar?.hide()
+
+//        val forgotPasswordButton = findViewById<Button>(R.id.forgotPasswordButton)
+//        forgotPasswordButton.setOnClickListener {
+//            val intent = Intent(this, ForgotPasswordActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 
     fun login(view: View){
@@ -41,11 +49,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-  /*  fun goToItems(view: View){
-        val intent= Intent(this,ItemsPageActivity::class.java)
-        startActivity(intent)
-        finish()
-    }*/
+    /*  fun goToItems(view: View){
+          val intent= Intent(this,ItemsPageActivity::class.java)
+          startActivity(intent)
+          finish()
+      }*/
     fun goToRegister(view: View){
         val intent= Intent(this,RegisterActivity::class.java)
         startActivity(intent)

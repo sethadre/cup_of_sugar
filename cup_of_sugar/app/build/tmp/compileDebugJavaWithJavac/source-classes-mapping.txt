@@ -1,0 +1,12 @@
+com/example/cupofsugar/databinding/ActivityLoginBinding.java
+ com.example.cupofsugar.databinding.ActivityLoginBinding
+com/example/cupofsugar/databinding/ActivityMainPageBinding.java
+ com.example.cupofsugar.databinding.ActivityMainPageBinding
+com/example/cupofsugar/databinding/ActivityRegisterBinding.java
+ com.example.cupofsugar.databinding.ActivityRegisterBinding
+com/example/cupofsugar/databinding/ActivityHelpBinding.java
+ com.example.cupofsugar.databinding.ActivityHelpBinding
+com/example/cupofsugar/databinding/ActivityMainBinding.java
+ com.example.cupofsugar.databinding.ActivityMainBinding
+com/example/cupofsugar/BuildConfig.java
+ com.example.cupofsugar.BuildConfig
